@@ -107,7 +107,7 @@ It is one of the four purchase-side adjustment documents in the platform (server
 
 | Position | Document / applet | Why |
 |---|---|---|
-| Module | [Purchasing](/modules-v2/purchasing/), [Financial Accounting](/modules-v2/financial-accounting/), [E-Invoice](/modules-v2/e-invoice/) | Purchase-side adjustment that posts to the General Ledger and is an e-Invoice purchase document type. |
+| Module | [Purchasing](/modules/purchasing/), [Financial Accounting](/modules/financial-accounting/), [E-Invoice](/modules/e-invoice/) | Purchase-side adjustment that posts to the General Ledger and is an e-Invoice purchase document type. |
 | Upstream | [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/) | The invoice whose value is being reduced. The **Search Document → Purchase Invoice** tab lists FINAL purchase invoices, copies their lines into the debit note and links the two documents. |
 | Upstream (knock-off) | [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/), [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/) | The create screen's **KO For** tab lets a debit-note line knock off an open purchase-order or GRN line. |
 | Upstream (intercompany) | [Sales Debit Note (Internal)](/applets/sales-workflow/internal-sales-debit-note-applet/) | When intercompany processing is set up between two companies in the tenant, finalising the seller's Sales Debit Note queues a Purchase Debit Note in the buyer's company (`IntercompanyProcessingService`, the `INTERNAL_SALES_DEBIT_NOTE → INTERNAL_PURCHASE_DEBIT_NOTE` pair). |
@@ -485,6 +485,6 @@ The listing's DISCARD and VOID confirmation dialogs are client-side prompts, not
 
 ## Related documentation
 
-- [Purchasing module](/modules-v2/purchasing/) and its [related applets](/modules-v2/purchasing/related-applets/)
+- [Purchasing module](/modules/purchasing/) and its [related applets](/modules/purchasing/related-applets/)
 - [MyInvois setup](/guides/einvoice-guides/myinvois-setup/) and [e-Invoice validation](/guides/einvoice-guides/einvoice-validation/) — the guides that cover purchase-side e-Invoice processing
 - [Purchase Credit Note (Internal)](/applets/purchase-workflow/internal-purchase-credit-note-applet/) — the companion reference page

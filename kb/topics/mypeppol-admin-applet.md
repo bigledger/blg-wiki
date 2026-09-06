@@ -40,4 +40,4 @@ Tenant-side Peppol console: posting queue → waiting queue → to-XAP documents
 
 ## Wiki impact
 
-- `guides/einvoice-guides/peppol-configuration.md` and the modules-v2 e-invoice pages: remove "after LHDN validates" wording for the Waiting Queue.
+- `guides/einvoice-guides/peppol-configuration.md` and the modules e-invoice pages: remove "after LHDN validates" wording for the Waiting Queue.

@@ -78,9 +78,9 @@ main > br { display: none !important; }
 
 | Operational Area | Required Applets | Key Capabilities |
 | :--- | :--- | :--- |
-| **Point of Sale (POS) Integration** | [POS Applet](/modules-v2/pos/) · Daily Z-Read | High-speed order entry, table layout management, offline resilience, and automatic daily sales sync |
-| **Central Kitchen & Procurement** | [Purchasing Module](/modules-v2/purchasing/) · [Inventory Module](/modules-v2/inventory/) | Centralized raw ingredient procurement, internal transfer orders to outlets, and wastage tracking |
-| **Recipe Costing & Production** | [Manufacturing Module](/modules-v2/manufacturing/) | Bill of Materials (BOM) per menu item, automatic ingredient deduction upon sale, yield management |
+| **Point of Sale (POS) Integration** | [POS Applet](/modules/pos/) · Daily Z-Read | High-speed order entry, table layout management, offline resilience, and automatic daily sales sync |
+| **Central Kitchen & Procurement** | [Purchasing Module](/modules/purchasing/) · [Inventory Module](/modules/inventory/) | Centralized raw ingredient procurement, internal transfer orders to outlets, and wastage tracking |
+| **Recipe Costing & Production** | [Manufacturing Module](/modules/manufacturing/) | Bill of Materials (BOM) per menu item, automatic ingredient deduction upon sale, yield management |
 | **Banking & Reconciliation** | [Bank Reconciliation](/applets/finance/bank-reconciliation-applet/) · [SST Applet](/applets/finance/sst-applet/) | Automated matching of e-wallet and credit card merchant settlements with bank statement feeds |
 
 ---

@@ -1,4 +1,6 @@
 ﻿---
+aliases:
+- /modules/budgetary/
 title: "Budgetary Applet"
 description: "Set up budget items, categories, profit centres and votebooks; open a fiscal year to create one budget register per item per month; move allocation with virements and adjustments; and read allocated versus utilised per register in the Budget Report."
 applet_code: "budgetaryApplet"
@@ -345,6 +347,6 @@ Reads `bl_fi_budget_register` grouped by votebook, profit centre, register and i
 
 ## Related documentation
 
-- [Budgetary Management Module](/modules/budgetary/) — module-level narrative and workflow diagram.
-- [Financial Accounting module](/modules-v2/financial-accounting/).
+- [Financial Accounting module](/modules/financial-accounting/) — where budgetary control sits in the module map.
+- [Financial Accounting module](/modules/financial-accounting/).
 - [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/) and [Sales Invoice (Internal)](/applets/sales-workflow/internal-sales-invoice-applet/) — the documents that consume budget.

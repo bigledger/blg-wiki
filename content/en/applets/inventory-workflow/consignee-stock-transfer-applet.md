@@ -198,5 +198,5 @@ VOID reverses both ledger lines. There is no knock-off between an issued and a r
 
 ## Related documentation
 
-- [Inventory module](/modules-v2/inventory/) — [core concepts](/modules-v2/inventory/core-concepts/), [related applets](/modules-v2/inventory/related-applets/).
+- [Inventory module](/modules/inventory/) — [core concepts](/modules/inventory/core-concepts/), [related applets](/modules/inventory/related-applets/).
 - [Inventory guides](/guides/inventory-guides/).

@@ -63,7 +63,7 @@ There are two routes, and which one you are on changes what you have to do:
 ## What happens after you submit
 
 1. **Submission.** BigLedger sends the e-invoice to LHDN. Your document status becomes *Submitted*.
-2. **[Validation](/modules-v2/e-invoice/concepts/validation-and-clearance/).** LHDN checks it and returns *Valid* or *Invalid*, along with a unique identifier for the validated document.
+2. **[Validation](/modules/e-invoice/concepts/validation-and-clearance/).** LHDN checks it and returns *Valid* or *Invalid*, along with a unique identifier for the validated document.
 3. **Sharing.** The validated e-invoice — with its QR code — is what you give the buyer. BigLedger can e-mail it automatically.
 4. **The 72-hour window.** From validation, the supplier has 72 hours to cancel the e-invoice, and the buyer has 72 hours to reject it. After that neither is possible, and the only correction is a credit note. See [Cancelling and Correcting a Validated E-Invoice](/guides/einvoice-guides/einvoice-cancel-and-correct/).
 
@@ -73,7 +73,7 @@ There are two routes, and which one you are on changes what you have to do:
 
 ## Consolidated e-invoices, and why retailers care
 
-You do not issue an individual e-invoice for every walk-in sale. Receipts where the buyer did not give their details are reported together in a [consolidated e-invoice](/modules-v2/e-invoice/concepts/consolidated-e-invoice/) — one document, the buyer recorded as General Public, due at LHDN **by the 7th of the following month**.
+You do not issue an individual e-invoice for every walk-in sale. Receipts where the buyer did not give their details are reported together in a [consolidated e-invoice](/modules/e-invoice/concepts/consolidated-e-invoice/) — one document, the buyer recorded as General Public, due at LHDN **by the 7th of the following month**.
 
 For a 22-branch electronics retailer like GadgetSphere Sdn Bhd that is the difference between a small set of documents somebody can actually check before the 7th and roughly 38,000 that nobody can.
 

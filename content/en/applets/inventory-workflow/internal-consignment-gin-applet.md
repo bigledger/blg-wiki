@@ -108,7 +108,7 @@ The applet is a single-document applet: one listing, a create/edit form, a cross
 | Downstream | [Creditor Report](/applets/finance/creditor-report-applet/), [Debtor and Creditor Report](/applets/finance/debtor-and-creditor-report-applet/) | Treat the GIN as a supplier-side (AP) document: it can be selected for contra in the Creditor Report and is excluded from the debtor side |
 | Sibling | [Consignment Return (Internal)](/applets/purchase-workflow/internal-consignment-return-applet/), [Consignment Billing](/applets/sales-workflow/internal-consignment-billing-applet/), [Consignor Purchase Billing](/applets/purchase-workflow/internal-consignor-purchase-billing-applet/) | The other consignment documents; none of them reads the GIN |
 
-Modules: [Purchasing](/modules-v2/purchasing/), [Inventory](/modules-v2/inventory/).
+Modules: [Purchasing](/modules/purchasing/), [Inventory](/modules/inventory/).
 
 ## Screens and menus
 
@@ -311,4 +311,4 @@ Known housekeeping: the applet is still on the pre-Angular-14 toolchain (open mi
 ## Related documentation
 
 - [Consignment Purchasing guide](/guides/purchasing-guides/consignment-purchasing/) — the end-to-end process the GIN belongs to.
-- [Purchasing module](/modules-v2/purchasing/) and [Inventory module](/modules-v2/inventory/).
+- [Purchasing module](/modules/purchasing/) and [Inventory module](/modules/inventory/).

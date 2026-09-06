@@ -1,306 +1,102 @@
 ---
-title: "Point of Sales Module"
-description: "Complete retail store operations with offline/online sync capabilities"
-weight: 20
+aliases:
+- /modules-v2/pos/
+title: "Sales & POS Module"
+description: "Unified revenue engine managing B2B commercial sales workflows and retail point-of-sale checkout counter operations."
+weight: 35
 ---
 
-The Point of Sales (POS) Module provides comprehensive retail store operations capabilities, enabling seamless cashier operations, multi-outlet management, and robust offline/online synchronization.
+The **Sales & POS Module** is BigLedger's centralized revenue engine. It connects both B2B commercial sales channels (Quotations, Orders, Invoices) and retail checkout counter operations (POS General Applet) into a single, real-time commercial workflow integrated directly with Inventory and Financial Accounting.
 
-## Overview
+## Architecture & Data Flow
 
-The POS Module is designed for retail businesses that need:
-- **In-store sales processing** - Fast and reliable point-of-sale transactions
-- **Multi-outlet management** - Centralized control of multiple retail locations
-- **Offline capability** - Continue operations even when internet is unavailable
-- **Real-time sync** - Automatic data synchronization when connected
-- **Comprehensive reporting** - Sales analytics and store performance insights
+Whether a commercial deal is negotiated via sales quotation or an item is scanned at a retail checkout counter, the Sales & POS module processes pricing, allocates stock, and posts revenue centrally.
+
+| Architecture Layer | System Component | Primary Role in Sales Operations |
+|-------------------|------------------|----------------------------------|
+| **Sales & POS Engine** | Document Processing & Pricing Engine | Central calculation of customer pricebooks, tax, discounts, and real-time inventory allocation. |
+| **Retail Checkout** | [POS General Applet](/applets/sales-workflow/pos-general-applet/) | Fast-paced counter selling, barcode scanning, member lookup, and receipt settlement. |
+| **B2B Sales Workflow** | Commercial Sales Applets | Formal commercial lifecycle from proposal (Quotation) to commitment (Order) and billing (Invoice). |
+| **Fulfillment & GL** | Inventory & Financial Accounting | Automated stock-out reduction upon delivery and revenue GL posting upon invoice finalization. |
+
+---
+
+## Who Uses This Module
+
+| Role | Primary Responsibilities | Core Applets Used |
+|------|--------------------------|-------------------|
+| **Store Cashier** | Process retail customer checkouts, handle barcode scanning, collect payment, issue receipts | [POS General Applet](/applets/sales-workflow/pos-general-applet/) |
+| **Store Supervisor** | Review daily drawer totals, approve price overrides or voided sales, manage Z-reports | [Daily Cashier Report Applet](/applets/sales-workflow/daily-cashier-report-applet/) |
+| **Sales Representative** | Prepare client proposals, issue formal quotes, manage sales orders, track customer deals | [Sales Quotation](/applets/sales-workflow/internal-sales-quotation-applet/), [Sales Order](/applets/sales-workflow/internal-sales-order-applet/) |
+| **Billing / AR Clerk** | Convert orders to invoices, issue credit notes, verify payment terms, post AR | [Sales Invoice](/applets/sales-workflow/internal-sales-invoice-applet/), [Sales Return](/applets/sales-workflow/internal-sales-return-applet/) |
+| **Warehouse Controller** | Fulfill sales orders, dispatch delivery orders, track customer consignment stock | [Customer Consignment Applet](/applets/sales-workflow/customer-consignment-applet/) |
+
+---
+
+## Four Commercial Documents Every Team Must Differentiate
+
+Confusing commercial document types creates balance sheet and stock control errors:
+
+| Commercial Document | When it is used | Stock Impact | Financial Accounting Impact |
+|---------------------|-----------------|--------------|-----------------------------|
+| **Sales Quotation** | Non-binding commercial proposal sent to customer | None | None |
+| **Sales Order** | Confirmed customer commitment / contract | Stock Reserved (Hard/Soft allocation) | None |
+| **Sales Invoice** | Final billing document demanding payment | Stock Reduced (if unlinked to DO) | Revenue Recognized, Accounts Receivable Debited |
+| **POS Checkout Sale** | Instant counter retail transaction | Stock Reduced immediately | Cash/Bank Debited, Revenue Recognized immediately |
+
+---
+
+## Applet Map
+
+| Applet | What it does in this module |
+|--------|-----------------------------|
+| [POS General Applet](/applets/sales-workflow/pos-general-applet/) | Retail checkout interface — fast item scanning, cashier settlement, member points integration |
+| [Daily Cashier Report Applet](/applets/sales-workflow/daily-cashier-report-applet/) | Cashier shift balancing, cash drawer auditing, payment breakdown, and end-of-day Z-reports |
+| [Sales Quotation Applet](/applets/sales-workflow/internal-sales-quotation-applet/) | Formal B2B price proposals, discount approvals, and validity tracking |
+| [Sales Order Applet](/applets/sales-workflow/internal-sales-order-applet/) | Confirmed commercial orders, inventory reservation, credit availability display, and fulfillment tracking |
+| [Sales Invoice Applet](/applets/sales-workflow/internal-sales-invoice-applet/) | Final commercial billing, tax invoice generation, payment terms enforcement, and AR posting |
+| [Sales Return Applet](/applets/sales-workflow/internal-sales-return-applet/) | Processing returned merchandise, stock inspection, and credit note authorization |
+| [Customer Consignment Applet](/applets/sales-workflow/customer-consignment-applet/) | Managing consignment inventory located at customer sites, tracking consumption and billing |
+
+---
+
+## ERP Dependency Table
+
+| Connected Module | What Sales & POS needs from it |
+|------------------|--------------------------------|
+| **Core** | Customer master profiles, organization branch structures, pricebooks, tax codes |
+| **Inventory** | Real-time item availability, warehouse stock locations, batch/serial selection |
+| **Membership** | Member identification, tier discounts, point accrual events, voucher redemptions |
+| **Financial Accounting** | Chart of accounts mapping, revenue accounts, accounts receivable ledgers, tax GLs |
+
+---
+
+## Go-Live Checklist
+
+- [x] Customer master records and branch locations ready in Core
+- [ ] Product master data, barcodes, and pricing schemes active in Inventory & Core
+- [ ] Tax codes (GST/SST/VAT) configured for commercial invoices and POS receipts
+- [ ] Cashier drawers and terminal hardware mapped in POS General Applet
+- [ ] Payment methods (Cash, Card, E-Wallet) configured and tested
+- [ ] Sales order-to-invoice conversion verified (sales documents have no approval workflow)
+- [ ] Finance team aligned on daily cashier reconciliation procedures
+
+---
+
+## Module Learning Roadmap
+
+Follow the documentation in this sequence to master the Sales & POS Module:
+
+1. **[Core Concepts](core-concepts/)** *(Next Step)* — Understand sales document hierarchies, stock reservation mechanics, and how customer credit is shown.
+2. **[Configuration](configuration/)** — Step-by-step setup guides for POS terminals, commercial pricing rules, and sales workflows.
+3. **[Use Cases](use-cases/)**
+4. **[Reports 3. **[Use Cases](use-cases/)** Analytics](reports/)** — Scenario guide for choosing the best sales and cashier reports. — Real-world business scenarios for retail chains, B2B wholesale, and consignment sales.
+4. **[API Reference](api-reference/)** — Developer APIs for external e-commerce connectors and custom sales tools.
+5. **[Related Applets](related-applets/)** — Complete guide to native applet dependencies across the BigLedger ecosystem.
+
+---
 
 {{< callout type="info" >}}
-**Module Dependencies**: Requires Core Module applets (Customer Maintenance, Inventory Item Maintenance, Tax Configuration, Cashbook, Organization) to be configured first.
-{{< /callout >}}
-
-## Core POS Applets
-
-### 1. POS Terminal Applet
-**Purpose**: Main point-of-sale interface for cashiers
-- Touch-friendly sales interface
-- Barcode scanning integration
-- Quick product search
-- Payment processing
-- Receipt printing
-
-**Used by**: Front-line cashiers and sales staff
-**Documentation**: [TODO: POS Terminal Applet](/applets/pos-terminal-applet/) - *Documentation pending*
-
-### 2. Cashbook Applet 
-Before configuring the POS applet, several dependent systems must be prepared. Proper setup of these prerequisites ensures full payment functionality and a smooth cashier workflow.
-2.1 Configuring the Cashbook Applet (Mandatory for Payment Processing)
-
-The Cashbook Applet defines all payment options available in the POS.
-Two configuration steps are required:
-
-**Purpose**: Cash drawer and register management
-- Opening cash count
-- Cash drawer operations
-- End-of-day reconciliation
-- Cash deposit tracking
-- Variance reporting
-
-**Used by**: Cashiers and store supervisors
-**Documentation**: [Cashbook Applet](/applets/cashbook-applet/) - *Documentation pending*
-
-### 3. Store Configuration Applet
-**Purpose**: Store-specific settings and configurations
-- Store profiles and settings
-- Terminal assignments
-- Local pricing rules
-- Store-specific promotions
-- Operating hours configuration
-
-**Used by**: Store managers and IT administrators
-**Documentation**: [TODO: Store Configuration Applet](/applets/store-configuration-applet/) - *Documentation pending*
-
-### 4. POS Offline Sync Applet
-**Purpose**: Offline operations and data synchronization
-- Offline transaction storage
-- Automatic sync when online
-- Conflict resolution
-- Data integrity checks
-- Connection monitoring
-
-**Used by**: System administrators and IT support
-**Documentation**: [TODO: POS Offline Sync Applet](/applets/pos-offline-sync-applet/) - *Documentation pending*
-
-### 5. Receipt Management Applet
-**Purpose**: Receipt templates and printing management
-- Receipt template design
-- Logo and branding setup
-- Printer configuration
-- Email receipt options
-- Receipt history tracking
-
-**Used by**: Store managers and marketing teams
-**Documentation**: [TODO: Receipt Management Applet](/applets/receipt-management-applet/) - *Documentation pending*
-
-### 6. POS Reports Applet
-**Purpose**: Sales reporting and analytics for POS operations
-- Daily sales reports
-- Cashier performance reports
-- Product sales analysis
-- Payment method breakdown
-- Store comparison reports
-
-**Used by**: Store managers and business analysts
-**Documentation**: [TODO: POS Reports Applet](/applets/pos-reports-applet/) - *Documentation pending*
-
-## Shared Core Module Applets
-
-The POS Module leverages these essential Core Module applets:
-
-### From Core Module
-- **[Customer Maintenance Applet](/applets/organization-applet/)** - Customer profiles and loyalty programs
-- **[Inventory Item Maintenance Applet](/applets/organization-applet/)** - Product master data and pricing
-- **[Tax Configuration Applet](/applets/organization-applet/)** - GST/SST rates and compliance
-- **[Cashbook Applet](/applets/organization-applet/)** - Payment methods and cash accounts
-- **[Organization Applet](/applets/organization-applet/)** - Store hierarchy and structure
-
-## Business Process Flows
-
-### Standard Sale Transaction
-```
-1. Customer brings items to checkout
-2. Cashier scans items (POS Terminal)
-3. System calculates totals with tax
-4. Customer pays (Cash Management)
-5. Receipt printed (Receipt Management)
-6. Transaction synced to headquarters
-```
-
-### End-of-Day Process
-```
-1. Complete all pending transactions
-2. Count cash drawer (Cash Management)
-3. Generate daily reports (POS Reports)
-4. Reconcile payments and deposits
-5. Sync data to central system
-```
-
-### Offline Operations
-```
-1. System detects network disconnection
-2. Switch to offline mode (POS Offline Sync)
-3. Store transactions locally
-4. Continue normal operations
-5. Auto-sync when connection restored
-```
-
-## Implementation Scenarios
-
-### Single Store Setup
-Ideal for:
-- Small retail businesses
-- Boutique stores
-- Specialty shops
-- Service counters
-
-**Key Features**:
-- Simple setup process
-- Basic reporting
-- Essential POS functions
-- Local customer database
-
-### Multi-Store Chain
-Perfect for:
-- Retail chains
-- Franchise operations
-- Department stores
-- Shopping mall outlets
-
-**Key Features**:
-- Centralized inventory management
-- Store-to-store transfers
-- Consolidated reporting
-- Chain-wide promotions
-
-### Offline-First Retail
-Designed for:
-- Remote locations
-- Markets and fairs
-- Mobile sales units
-- Areas with poor connectivity
-
-**Key Features**:
-- Robust offline capability
-- Batch synchronization
-- Conflict resolution
-- Data integrity protection
-
-## Integration with Other Modules
-
-### With Inventory Module
-- Real-time stock updates
-- Automatic stock depletion
-- Low stock alerts
-- Inter-store transfers
-
-### With Financial Accounting Module
-- Automatic sales journal entries
-- Cash reconciliation
-- Revenue recognition
-- Tax reporting
-
-### With E-Commerce Module
-- Unified inventory across channels
-- Buy online, pick up in store
-- Return processing
-- Customer loyalty points
-
-### With CRM Module
-- Customer purchase history
-- Loyalty program integration
-- Customer feedback collection
-- Marketing campaign tracking
-
-## Setup Requirements
-
-### Hardware Requirements
-1. **POS Terminal/Computer**
-   - Touch screen capability
-   - Minimum 4GB RAM
-   - Local storage for offline operations
-
-2. **Peripheral Devices**
-   - Barcode scanner
-   - Receipt printer
-   - Cash drawer
-   - Customer display (optional)
-
-3. **Network Setup**
-   - Reliable internet connection
-   - Local network for multiple terminals
-   - Backup connectivity (4G/mobile)
-
-### Software Prerequisites
-1. **Core Module Configuration**
-   - Organization structure
-   - Chart of accounts
-   - Tax configuration
-   - Customer and item master data
-
-2. **POS Specific Setup**
-   - Store configuration
-   - Terminal assignments
-   - Receipt templates
-   - Payment methods
-
-## Best Practices
-
-### Performance Optimization
-- **Local caching** of frequently accessed data
-- **Batch processing** of transactions
-- **Regular maintenance** of local databases
-- **Network optimization** for sync operations
-
-### Security Measures
-- **User authentication** for each terminal
-- **Transaction logging** for audit trails
-- **Secure payment processing** compliance
-- **Regular backup** procedures
-
-### Staff Training
-- **System operation** training for cashiers
-- **Troubleshooting** procedures
-- **End-of-day processes** training
-- **Customer service** best practices
-
-## Troubleshooting
-
-### Common Issues
-
-**POS Terminal Not Responding**
-- Check network connectivity
-- Restart POS application
-- Verify hardware connections
-- Check system resources
-
-**Offline Sync Problems**
-- Verify internet connection
-- Check sync service status
-- Review error logs
-- Contact IT support
-
-**Printer Issues**
-- Check printer connection
-- Verify paper and ink levels
-- Update printer drivers
-- Test with different receipt template
-
-## Related Documentation
-
-### Setup Guides
-- [POS Hardware Setup Guide](/guides/) - *TODO: Create guide*
-- [Store Configuration Guide](/guides/) - *TODO: Create guide*
-- [Receipt Template Design](/guides/) - *TODO: Create guide*
-
-### Training Materials
-- [Cashier Training Manual](/guides/) - *TODO: Create manual*
-- [Store Manager Guide](/guides/) - *TODO: Create guide*
-- [Troubleshooting Procedures](/guides/) - *TODO: Create procedures*
-
-### Integration Guides
-- [Multi-Store Setup](/guides/) - *TODO: Create guide*
-- [Offline Operations Guide](/guides/) - *TODO: Create guide*
-
-## Next Steps
-
-After implementing the POS Module:
-
-1. **Configure store settings** using Store Configuration Applet
-2. **Set up terminals** and assign to staff
-3. **Train cashiers** on system operations
-4. **Test offline capabilities** thoroughly
-5. **Monitor performance** and optimize as needed
-
-{{< callout type="tip" >}}
-**Pro Tip**: Start with a pilot store to test all POS operations before rolling out to multiple locations. This helps identify any configuration issues early.
+**Ready to explore sales architecture?**  
+Proceed to **[Core Concepts →](core-concepts/)** to understand commercial document lifecycles and stock allocation logic.
 {{< /callout >}}

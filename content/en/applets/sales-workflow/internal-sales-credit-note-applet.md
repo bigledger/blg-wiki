@@ -326,5 +326,5 @@ No inventory transaction is written (quantity signum 0) and no COGS entry is mad
 ## Related documentation
 
 - [Returns and Exchanges Workflow](/guides/sales-guides/returns-exchanges-workflow/), [Credit Sales Workflow](/guides/sales-guides/credit-sales-workflow/)
-- [Financial Accounting module](/modules-v2/financial-accounting/), [E-Invoice module](/modules-v2/e-invoice/)
+- [Financial Accounting module](/modules/financial-accounting/), [E-Invoice module](/modules/e-invoice/)
 - [Sales Workflow applets](/applets/sales-workflow/)

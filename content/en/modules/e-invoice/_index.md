@@ -1,338 +1,132 @@
 ---
-title: "E-Invoice Module"
-description: "Complete electronic invoicing solution with MyInvois and PEPPOL compliance"
-weight: 35
+aliases:
+- /modules-v2/e-invoice/
+title: "E-Invoice & PEPPOL Module"
+description: "Government tax compliance and global e-invoicing engine managing real-time tax authority validation, QR clearances, and PEPPOL network B2B exchanges."
+weight: 36
 ---
 
-The E-Invoice Module provides comprehensive electronic invoicing capabilities with full compliance for MyInvois (Malaysia) and PEPPOL (international) standards. This module enables businesses to meet statutory e-invoicing requirements while streamlining their invoicing processes.
+The **E-Invoice & PEPPOL Module** is BigLedger's tax compliance and global electronic invoicing engine. It automates real-time clearance validation with government tax authorities (e.g., LHDN in Malaysia), embeds QR code validation stamps into commercial billing, and exchanges structured e-invoices across the global PEPPOL network.
 
-## Overview
+## Start here
 
-The E-Invoice Module delivers:
-- **MyInvois Compliance** - Full integration with Malaysia's national e-invoicing system
-- **PEPPOL Integration** - International electronic document exchange
-- **Automated Processing** - Streamlined invoice generation and submission
-- **Compliance Management** - Built-in validation and error handling
-- **Digital Workflow** - Paperless invoicing processes
+**New to e-invoicing?** Start with the three concepts every guide assumes. They answer *what is this and why does it exist* — no screens, no steps, about two minutes each.
+
+{{< cards >}}
+  {{< card link="/modules/e-invoice/concepts/consolidated-e-invoice/" title="Consolidated e-invoices" subtitle="A month of counter receipts in one document, and the RM 10,000 line it cannot cross" >}}
+  {{< card link="/modules/e-invoice/concepts/pools-and-queues/" title="Pools and queues" subtitle="A pool holds what cannot be sent; a queue holds what is on its way" >}}
+  {{< card link="/modules/e-invoice/concepts/validation-and-clearance/" title="Validation and clearance" subtitle="What LHDN decides, what Valid closes off, and where the 72-hour clock starts" >}}
+{{< /cards >}}
+
+**Here to *do* something?** Go straight to the guide that matches the job:
+
+{{< cards >}}
+  {{< card link="/guides/einvoice-guides/malaysia-e-invoice-guide/" title="What Malaysia Requires" subtitle="The background — phased rollout, what LHDN puts on an e-invoice, and how validation works" >}}
+  {{< card link="/guides/einvoice-guides/myinvois-setup/" title="MyInvois Setup" subtitle="Authorise BigLedger as your intermediary and get your master data ready" >}}
+  {{< card link="/guides/einvoice-guides/einvoice-pools-and-routing/" title="Pools & Submission Routing" subtitle="Individual vs consolidated, the RM 10,000 rule, and the three pools" >}}
+  {{< card link="/guides/einvoice-guides/einvoice-month-end/" title="The Month-End Cycle (1st–7th)" subtitle="Clear the pools, work the Invalid list, reconcile before the 7th" >}}
+  {{< card link="/guides/einvoice-guides/einvoice-validation/" title="Validation Rules & Troubleshooting" subtitle="Why LHDN rejects a document, and which record to fix" >}}
+  {{< card link="/guides/einvoice-guides/einvoice-cancel-and-correct/" title="Cancelling & Correcting an E-Invoice" subtitle="The 72-hour window, and the credit-note path once it closes" >}}
+{{< /cards >}}
+
+The pages below are the module's architecture reference: who does what, which applets are involved, and what has to be true before go-live.
+
+---
+
+## Architecture & Data Flow
+
+E-Invoice operates directly on top of commercial sales billing and accounts payable. When a Sales Invoice or Credit Note is generated, BigLedger transforms commercial billing into validated JSON/XML payloads, signs them digitally, and submits them to tax authorities for instant clearance before customer delivery.
+
+| Architecture Layer | System Component | Primary Role in Compliance Operations |
+|-------------------|------------------|---------------------------------------|
+| **Submission Engine** | [MY E-Invoice Admin Applet](/applets/e-invoice/my-e-invoice-admin-applet/) | Posting queue, the three holding pools, monthly consolidation, cancellation requests and the monthly reconciliation report. |
+| **Tax Authority API** | Government Tax Gateway (LHDN API) | Real-time validation checking, cryptographic hashing, and clearance UUID / QR code stamping. |
+| **Global PEPPOL Exchange** | [MY PEPPOL Admin Applet](/applets/e-invoice/mypeppol-admin-applet/) | PEPPOL Access Point routing for automated cross-border B2B document exchange. |
+| **Commercial Billing** | Sales & Financial Accounting | Commercial invoice trigger, consolidated monthly billing, and audit compliance logging. |
 
 {{< callout type="info" >}}
-**Compliance Note**: This module ensures full compliance with Malaysian e-invoicing regulations and international PEPPOL standards, making it essential for businesses operating in regulated environments.
+**There is no signing certificate for you to obtain, upload or renew.** BigLedger is configured as your **e-invoice intermediary**: you authorise it once on the MyInvois portal, and from then on BigLedger holds the credentials centrally and submits on behalf of your company's tax number. Any checklist that asks you to upload a certificate or paste a client ID and secret is out of date. See [MyInvois Setup](/guides/einvoice-guides/myinvois-setup/).
 {{< /callout >}}
 
-## Core E-Invoice Applets (8)
+---
 
-### 1. MyInvois Integration Applet
-**Purpose**: Direct integration with Malaysia's MyInvois platform
-- Real-time submission to MyInvois
-- Invoice status tracking
-- Compliance validation
-- Error handling and retry logic
-- Batch processing capabilities
+## Who Uses This Module
 
-**Used by**: Finance teams and accounting staff
-**Documentation**: [TODO: MyInvois Integration Applet](/applets/myinvois-integration-applet/) - *Documentation pending*
+| Role | Primary Responsibilities | Core Applets Used |
+|------|--------------------------|-------------------|
+| **Tax Compliance Officer** | Work the e-invoice pools, map MSIC and item classification codes, run the monthly consolidation and reconcile before the 7th | [MY E-Invoice Admin Applet](/applets/e-invoice/my-e-invoice-admin-applet/) |
+| **Accounts Receivable Clerk** | Issue validated e-invoices, manage rejected tax submissions, monitor buyer clearance status | [MY E-Invoice Portal Applet](/applets/e-invoice/my-e-invoice-portal-applet/) |
+| **Global Trade Manager** | Configure PEPPOL Participant IDs, manage cross-border B2B electronic document exchanges | [MY PEPPOL Admin Applet](/applets/e-invoice/mypeppol-admin-applet/) |
+| **B2B Customer / Supplier** | View validated tax invoices, verify clearance QR codes, submit self-billed e-invoices | [MY E-Invoice for Customer & Supplier Applet](/applets/e-invoice/my-einvoice-for-customer-and-supplier-applet/) |
 
-### 2. PEPPOL Connectivity Applet
-**Purpose**: International PEPPOL network integration
-- PEPPOL participant registration
-- Document routing and delivery
-- International format compliance
-- Trading partner connectivity
-- Cross-border invoicing
+---
 
-**Used by**: International trade and finance teams
-**Documentation**: [TODO: PEPPOL Connectivity Applet](/applets/peppol-connectivity-applet/) - *Documentation pending*
+## Four E-Invoice Document Types Every Team Must Differentiate
 
-### 3. E-Invoice Template Designer Applet
-**Purpose**: Create and manage compliant invoice templates
-- Template design tools
-- Compliance field mapping
-- Multi-language support
-- Corporate branding integration
-- Format validation
+Confusing e-invoice submission types leads to tax audit penalties and clearance rejections:
 
-**Used by**: IT administrators and finance managers
-**Documentation**: [TODO: E-Invoice Template Designer Applet](/applets/einvoice-template-designer-applet/) - *Documentation pending*
-
-### 4. Digital Signature Management Applet
-**Purpose**: Manage digital certificates and signatures
-- Certificate management
-- Digital signing workflows
-- Security compliance
-- Signature validation
-- Certificate renewal alerts
-
-**Used by**: IT security and compliance teams
-**Documentation**: [TODO: Digital Signature Management Applet](/applets/digital-signature-management-applet/) - *Documentation pending*
-
-### 5. Compliance Validation Engine Applet
-**Purpose**: Validate invoices against regulatory requirements
-- Real-time validation
-- Compliance rule engine
-- Error detection and reporting
-- Format verification
-- Regulatory updates
-
-**Used by**: Finance and compliance teams
-**Documentation**: [TODO: Compliance Validation Engine Applet](/applets/compliance-validation-engine-applet/) - *Documentation pending*
-
-### 6. E-Invoice Status Tracking Applet
-**Purpose**: Monitor invoice submission and processing status
-- Real-time status updates
-- Delivery confirmation
-- Error tracking and alerts
-- Processing analytics
-- Audit trail maintenance
-
-**Used by**: Finance teams and customer service
-**Documentation**: [TODO: E-Invoice Status Tracking Applet](/applets/einvoice-status-tracking-applet/) - *Documentation pending*
-
-### 7. Tax Authority Reporting Applet
-**Purpose**: Generate reports for tax authorities
-- Regulatory report generation
-- Tax compliance summaries
-- Audit support documentation
-- Period-end reporting
-- Export capabilities
-
-**Used by**: Tax and compliance teams
-**Documentation**: [TODO: Tax Authority Reporting Applet](/applets/tax-authority-reporting-applet/) - *Documentation pending*
-
-### 8. E-Invoice Archive Management Applet
-**Purpose**: Long-term storage and retrieval of e-invoices
-- Secure document storage
-- Search and retrieval
-- Retention policy management
-- Backup and recovery
-- Audit support
-
-**Used by**: Document management and compliance teams
-**Documentation**: [TODO: E-Invoice Archive Management Applet](/applets/einvoice-archive-management-applet/) - *Documentation pending*
-
-## Integration with Core Module
-
-The E-Invoice Module requires and integrates with these Core Module applets:
-
-### Essential Dependencies
-- **[Tax Configuration Applet](/applets/organization-applet/)** - Tax codes and rates for compliance
-- **[Organization Applet](/applets/organization-applet/)** - Company registration details
-- **[Customer Maintenance Applet](/applets/organization-applet/)** - Customer tax identification
-- **[Chart of Accounts Applet](/applets/organization-applet/)** - Financial account mapping
-
-## Business Process Flows
-
-### MyInvois Submission Process
-```
-1. Invoice generated in accounting system
-2. Compliance validation (Validation Engine)
-3. Digital signature applied (Signature Management)
-4. Submission to MyInvois (MyInvois Integration)
-5. Status monitoring (Status Tracking)
-6. Archive for compliance (Archive Management)
-```
-
-### PEPPOL Document Exchange
-```
-1. Invoice prepared with PEPPOL formatting
-2. Recipient lookup in PEPPOL directory
-3. Document routing through PEPPOL network
-4. Delivery confirmation received
-5. Response processing and archival
-```
-
-### Compliance Reporting Flow
-```
-1. Period-end compliance check
-2. Report generation (Tax Authority Reporting)
-3. Validation against requirements
-4. Submission to authorities
-5. Confirmation and archival
-```
-
-## Compliance Features
-
-### Malaysian MyInvois Compliance
-- **Real-time submission** to government platform
-- **QR code generation** for invoice verification
-- **Structured data formats** as per specifications
-- **Tax validation** for GST/SST compliance
-- **Buyer/supplier validation** against government databases
-
-### PEPPOL International Standards
-- **UBL 2.1 format** compliance
-- **EN 16931 standard** adherence
-- **Cross-border interoperability**
-- **Multi-currency support**
-- **International tax handling**
-
-### Audit and Compliance
-- **Complete audit trails** for all transactions
-- **Immutable records** with digital signatures
-- **Compliance reporting** for authorities
-- **Error logging** and resolution tracking
-- **Retention policies** as per regulations
-
-## Implementation Scenarios
-
-### Small-Medium Enterprise (SME)
-Perfect for businesses needing:
-- Basic MyInvois compliance
-- Simple invoice workflows
-- Cost-effective solution
-- Minimal IT complexity
-
-**Setup Features**:
-- Pre-configured templates
-- Automated submission
-- Basic reporting
-- Standard compliance
-
-### Large Enterprise
-Designed for complex organizations requiring:
-- High-volume processing
-- Multi-entity support
-- Custom workflows
-- Advanced integration
-
-**Enterprise Features**:
-- Batch processing capabilities
-- Multi-company structures
-- Custom validation rules
-- Advanced analytics
-
-### International Business
-Ideal for companies with:
-- Cross-border operations
-- Multiple tax jurisdictions
-- PEPPOL requirements
-- Complex compliance needs
-
-**Global Features**:
-- Multi-country compliance
-- Currency handling
-- International formats
-- Cross-border validation
-
-## Security and Data Protection
-
-### Data Security
-- **Encrypted in transit** — traffic runs over TLS, and Peppol documents are exchanged over AS4
-- **Secure key management** for digital signatures
-- **Access control** with role-based permissions
-- **Data backup** and disaster recovery
-
-### Compliance Security
-- **Digital certificate management**
-- **Signature verification**
-- **Non-repudiation** guarantees
-- **Secure archival** systems
-
-## Performance and Scalability
-
-### High-Volume Processing
-- **Batch submission** capabilities
-- **Queue management** for peak loads
-- **Retry mechanisms** for failures
-- **Performance monitoring**
-
-### System Integration
-- **API-based integration** with existing systems
-- **Real-time synchronization**
-- **Webhook notifications**
-- **Standard interfaces**
-
-## Monitoring and Analytics
-
-### Operational Dashboards
-- Invoice submission statistics
-- Compliance status overview
-- Error rate monitoring
-- Performance metrics
-- System health indicators
-
-### Compliance Reporting
-- Regulatory compliance summaries
-- Audit trail reports
-- Tax authority submissions
-- Period-end reconciliation
-- Exception reporting
-
-## Troubleshooting and Support
-
-### Common Issues
-- **Connectivity problems** with MyInvois/PEPPOL
-- **Validation errors** in invoice data
-- **Certificate expiration** alerts
-- **Format compliance** issues
-
-### Support Resources
-- 24/7 technical support for compliance issues
-- Regular updates for regulatory changes
-- Training programs for users
-- Best practice guidance
-- Escalation procedures
-
-## Training and Certification
-
-### User Training
-- **System operation** for finance staff
-- **Compliance requirements** understanding
-- **Error handling** procedures
-- **Reporting capabilities**
-
-### Administrator Training
-- **System configuration**
-- **Certificate management**
-- **Integration setup**
-- **Troubleshooting procedures**
-
-## Related Documentation
-
-### Setup Guides
-- [MyInvois Setup Guide](/guides/einvoice-guides/myinvois-setup/)
-- [PEPPOL Configuration Guide](/guides/einvoice-guides/peppol-configuration/)
-- [E-Invoice Validation Guide](/guides/einvoice-guides/einvoice-validation/)
-
-### Compliance Resources
-- [Malaysian E-Invoice Regulations](/guides/einvoice-guides/malaysia-e-invoice-guide/)
-- [PEPPOL Standards Documentation](/guides/) - *TODO: Create standards guide*
-- [Tax Authority Requirements](/guides/) - *TODO: Create requirements guide*
-
-### Integration Guides
-- [Third-Party Connector Setup](/guides/) - *TODO: Create connector guide*
-- [API Integration Manual](/developers/api-reference/einvoice-api-reference/)
-
-## Regulatory Updates
-
-### Staying Compliant
-- **Automatic updates** for regulatory changes
-- **Notification system** for new requirements
-- **Testing environment** for validation
-- **Compliance calendar** with key dates
-
-### Change Management
-- **Version control** for templates and rules
-- **Rollback capabilities** for issues
-- **Testing procedures** for updates
-- **User communication** for changes
-
-## Next Steps
-
-After implementing the E-Invoice Module:
-
-1. **Complete compliance assessment** for your business
-2. **Configure MyInvois integration** with government platform
-3. **Set up PEPPOL connectivity** if needed for international trade
-4. **Design compliant invoice templates**
-5. **Configure digital signature certificates**
-6. **Train finance and compliance teams**
-7. **Conduct testing** with sample invoices
-8. **Go live** with monitoring and support
+| E-Invoice Document | When it is used | Tax Authority Requirement | Financial Accounting Impact |
+|--------------------|-----------------|---------------------------|-----------------------------|
+| **Standard B2B E-Invoice** | Commercial sales between registered business entities | Submitted individually; LHDN returns a clearance UUID | Revenue recognized, Accounts Receivable debited |
+| **Consolidated E-Invoice** | High-volume B2C retail POS sales to end-consumers | Aggregated monthly submission within 7 days of month-end | POS Cash revenue posted, summary tax liability cleared |
+| **Self-Billed E-Invoice** | Import of foreign services, e-commerce commissions, or agricultural payouts | Buyer issues tax invoice on behalf of supplier | Accounts Payable credited, Input Tax GL debited |
+| **E-Credit / Debit Note** | Post-billing commercial adjustments, price corrections, or returns | Must reference original validated E-Invoice UUID | Revenue adjusted, AR / AP ledgers modified |
 
 {{< callout type="warning" >}}
-**Important**: E-invoicing compliance is mandatory for many businesses. Ensure proper testing and validation before going live to avoid regulatory penalties.
+**Self-billed lines need a classification code that has nowhere obvious to come from.** An expense line has no item master behind it, so the LHDN item classification code has to be derived from your GL or expense mapping. Plan where that code will come from before your first self-billed submission, and expect to set it by hand until you have.
 {{< /callout >}}
 
-{{< callout type="tip" >}}
-**Pro Tip**: Start with a phased implementation - begin with MyInvois compliance for local operations, then add PEPPOL for international requirements as your business grows.
+---
+
+## Applet Map
+
+| Applet | What it does in this module |
+|--------|-----------------------------|
+| [MY E-Invoice Admin Applet](/applets/e-invoice/my-e-invoice-admin-applet/) | Central compliance control hub — pools, submission and cancellation queues, consolidation, and the Discrepancies Report |
+| [MY E-Invoice Portal Applet](/applets/e-invoice/my-e-invoice-portal-applet/) | Billing clerk portal for manual tax invoice submission, clearance status checks, and PDF QR printing |
+| [MY E-Invoice for Customer & Supplier Applet](/applets/e-invoice/my-einvoice-for-customer-and-supplier-applet/) | External portal for trading partners to view validated tax documents and upload self-billed e-invoices |
+| [MY PEPPOL Admin Applet](/applets/e-invoice/mypeppol-admin-applet/) | International PEPPOL network access point configuration and global document exchange logs |
+
+---
+
+## ERP Dependency Table
+
+| Connected Module | What E-Invoice needs from it |
+|------------------|------------------------------|
+| **Core** | Tax Identification Numbers (TIN), Business Registration Numbers (BRN), MSIC codes, UOM mappings |
+| **Sales & POS** | Commercial Sales Invoices, POS counter retail sales receipts, Credit Notes, Debit Notes |
+| **Purchasing** | Foreign supplier invoices requiring self-billed e-invoices, vendor TIN master profiles |
+| **Financial Accounting** | Tax GL ledgers (Output SST / Input SST), General Ledger audit trails |
+
+---
+
+## Go-Live Checklist
+
+- [x] Company Tax Identification Number (TIN) and BRN registered in Core
+- [ ] BigLedger authorised as your e-invoice intermediary on the MyInvois portal, with the full permission set
+- [ ] E-invoicing switched **on** for each company **before** any document is finalised
+- [ ] Tax classification codes and MSIC industry codes mapped to item master data
+- [ ] Consolidated monthly B2C retail workflow rules established for POS counters
+- [ ] Finance and AR staff trained on resolving submission rejection codes
+
+---
+
+## Module Learning Roadmap
+
+Follow the documentation in this sequence to master the E-Invoice & PEPPOL Module:
+
+1. **[Concepts](/modules/e-invoice/concepts/)** *(Next Step)* — What a consolidated e-invoice, a pool and an LHDN validation actually are, in plain English.
+2. **[Core Concepts](/modules/e-invoice/core-concepts/)** — The architecture underneath them: real-time API clearance, QR cryptographic stamps, and PEPPOL network routing.
+3. **[Configuration](/modules/e-invoice/configuration/)** — Step-by-step setup for tax registrations, intermediary authorisation and classification mapping.
+4. **[Use Cases](/modules/e-invoice/use-cases/)** — Real-world reference architectures for B2B commercial billing, consolidated retail POS, and foreign self-billing.
+5. **[API Reference](/modules/e-invoice/api-reference/)** — Direct reference link to official developer e-invoice APIs.
+6. **[Best Practices](/modules/e-invoice/best-practices/)** — Operational recommendations for rejection handling, master-data hygiene and monthly reconciliation.
+7. **[Reports & Analytics](/modules/e-invoice/reports/)** — Scenario guide for choosing the best tax clearance and audit submission reports.
+8. **[Related Applets](/modules/e-invoice/related-applets/)** — Complete guide to native applet dependencies across the BigLedger ecosystem.
+
+---
+
+{{< callout type="info" >}}
+**Not sure where to begin?**  
+Read **[Concepts →](/modules/e-invoice/concepts/)** first — three short pages that make every guide on this module readable. Then **[Core Concepts →](/modules/e-invoice/core-concepts/)** for the clearance lifecycle and the cryptographic validation behind them.
 {{< /callout >}}

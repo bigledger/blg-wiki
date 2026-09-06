@@ -17,7 +17,7 @@ Yesterday afternoon a GadgetSphere branch invoiced a corporate customer **RM 12,
 
 ## The one rule that decides everything
 
-Once LHDN marks an e-invoice **Valid** it is a filed tax record — that is [what validation does](/modules-v2/e-invoice/concepts/validation-and-clearance/), and it is why BigLedger refuses **Save and Resubmit** on it: *"already validated with 'Valid' status. Please cancel it first before creating a new invoice."* The refusal is deliberate, not a bug. (You get a similar refusal at **Submitted**, which only means LHDN is still deciding; wait a few minutes and the status settles.)
+Once LHDN marks an e-invoice **Valid** it is a filed tax record — that is [what validation does](/modules/e-invoice/concepts/validation-and-clearance/), and it is why BigLedger refuses **Save and Resubmit** on it: *"already validated with 'Valid' status. Please cancel it first before creating a new invoice."* The refusal is deliberate, not a bug. (You get a similar refusal at **Submitted**, which only means LHDN is still deciding; wait a few minutes and the status settles.)
 
 Everything on this page follows from one date field on that record:
 

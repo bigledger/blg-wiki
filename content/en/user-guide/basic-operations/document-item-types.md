@@ -464,7 +464,7 @@ Expand your understanding of BigLedger's item management:
 - [Item Maintenance Procedures](/user-guide/basic-operations/item-maintenance/) - Creating and managing individual items
 - [Inventory Management](/modules/inventory/) - Complete inventory control system
 - [Pricing Schemes](/user-guide/daily-tasks/pricing-scheme/) - Advanced pricing strategies
-- [Sales Operations](/modules/crm/) - Customer relationship and sales management
+- [Digital CRM Module](/modules/crm-digital/) - Customer relationship and sales management
 - [Manufacturing Integration](/modules/manufacturing/) - Production and assembly workflows
 
 ---

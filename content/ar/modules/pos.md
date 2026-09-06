@@ -1,5 +1,6 @@
 ---
 title: "نقاط البيع"
+draft: true  # unpublished 2026-09-07: its English original (content/en/modules/pos.md) was archived with the modules-tree consolidation — planning/specs/modules-tree-consolidation.md; retranslate from the rebuilt English module page
 description: "حل نقاط بيع شامل لشركات التجزئة والضيافة"
 weight: 20
 ---

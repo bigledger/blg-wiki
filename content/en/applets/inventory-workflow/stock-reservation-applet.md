@@ -314,6 +314,6 @@ The applet repository has one GitHub issue (#1, the Angular 14 migration, closed
 
 ## Related documentation
 
-- [Inventory module](/modules-v2/inventory/) and its [related applets](/modules-v2/inventory/related-applets/).
-- [Manufacturing module](/modules-v2/manufacturing/) — job-order and packing-order reservations.
+- [Inventory module](/modules/inventory/) and its [related applets](/modules/inventory/related-applets/).
+- [Manufacturing module](/modules/manufacturing/) — job-order and packing-order reservations.
 - [Standard sales workflow](/guides/sales-guides/standard-sales-workflow/) — where reserving stock sits in the order-to-cash flow.

@@ -399,5 +399,5 @@ This is a master-data applet: it has no document type, no quantity or amount sig
 ## Related documentation
 
 - [Purchasing guides](/guides/purchasing-guides/) and [Creating a purchase order](/user-guide/daily-tasks/creating-purchase-order/) — where inventory items first meet a document.
-- [Inventory module](/modules-v2/inventory/) and [Core module](/modules-v2/core/).
+- [Inventory module](/modules/inventory/) and [Core module](/modules/core/).
 - [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) — read it first; most day-to-day item maintenance happens there.

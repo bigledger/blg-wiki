@@ -1,4 +1,6 @@
 ---
+aliases:
+- /modules-v2/membership/best-practices/data-management/
 title: "Data Management Best Practices"
 description: "Operational excellence in customer data quality, privacy compliance, synchronization, and analytics"
 weight: 20

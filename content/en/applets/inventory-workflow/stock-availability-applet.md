@@ -278,4 +278,4 @@ Read-only — the applet writes nothing. Balances change only when stock documen
 
 ## Related documentation
 
-- [Inventory module](/modules-v2/inventory/) — [configuration](/modules-v2/inventory/configuration/), [reports](/modules-v2/inventory/reports/) and [use cases](/modules-v2/inventory/use-cases/).
+- [Inventory module](/modules/inventory/) — [configuration](/modules/inventory/configuration/), [reports](/modules/inventory/reports/) and [use cases](/modules/inventory/use-cases/).

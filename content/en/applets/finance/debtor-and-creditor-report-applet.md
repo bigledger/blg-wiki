@@ -270,5 +270,5 @@ There is **no ARAP Type filter** on any listing; the side is fixed by the menu i
 ## Related documentation
 
 - [Reports & Analytics](/user-guide/reports-analytics/) — where this applet sits among the finance reports.
-- [Financial Accounting module](/modules-v2/financial-accounting/), [Digital CRM module](/modules-v2/crm-digital/) and [Purchasing module](/modules-v2/purchasing/).
+- [Financial Accounting module](/modules/financial-accounting/), [Digital CRM module](/modules/crm-digital/) and [Purchasing module](/modules/purchasing/).
 - [Debtor Report Applet](/applets/finance/debtor-report-applet/) and [Creditor Report Applet](/applets/finance/creditor-report-applet/) — the single-sided reference pages.

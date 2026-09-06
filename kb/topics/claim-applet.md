@@ -46,4 +46,4 @@ Employees submit expense claims (header + claim lines) and supervisors approve t
 
 ## Wiki impact
 
-- Claims module page says "Claim Cycle Applet defines approval routing matrices" — approval settings live in the Claim Applet; cycle only reviews. Suggest correcting `content/en/modules-v2/claims/_index.md`.
+- Claims module page says "Claim Cycle Applet defines approval routing matrices" — approval settings live in the Claim Applet; cycle only reviews. Suggest correcting `content/en/modules/claims/_index.md`.

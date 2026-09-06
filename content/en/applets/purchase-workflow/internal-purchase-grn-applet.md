@@ -87,7 +87,7 @@ A short introduction to the applet:
 
 | Position | Document / applet | Why |
 |---|---|---|
-| Module | [Purchasing](/modules-v2/purchasing/), [Inventory](/modules-v2/inventory/) | Receiving document; its open lines appear in stock availability as "GRN not yet invoiced". |
+| Module | [Purchasing](/modules/purchasing/), [Inventory](/modules/inventory/) | Receiving document; its open lines appear in stock availability as "GRN not yet invoiced". |
 | Upstream | [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) | **KO For → Purchase Order** (create), **Search Purchase Order** and the **Import** tab (edit) pull open PO lines; the PO applet's *PO Line with GRN KO* report shows ordered versus received. |
 | Upstream | [Supplier Delivery Order](/applets/purchase-workflow/supplier-delivery-order-applet/) | The B2B queue (`bl_b2b_ipo_xdo_igrn_queue`) matches a supplier's delivery order to the buyer's PO and GRN. |
 | Upstream (copy) | Another Purchase GRN | **Search Purchase GRN** clones the lines of a finalised GRN into a new draft. |
@@ -356,6 +356,6 @@ So the two supported receipt-to-bill paths are **GRN (0/0) → Purchase Invoice 
 
 ## Related documentation
 
-- [Purchasing module](/modules-v2/purchasing/) and its [related applets](/modules-v2/purchasing/related-applets/)
+- [Purchasing module](/modules/purchasing/) and its [related applets](/modules/purchasing/related-applets/)
 - [Standard procurement workflow](/guides/purchasing-guides/standard-procurement-workflow/) — PR → PO → GRN → Purchase Invoice → Payment
 - [Direct GRN workflow](/guides/purchasing-guides/direct-grn-workflow/) — receiving without a purchase order

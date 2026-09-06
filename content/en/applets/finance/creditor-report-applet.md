@@ -313,5 +313,5 @@ There is no create/edit form; the fields are the advanced-search filters of each
 ## Related documentation
 
 - [Reports & Analytics](/user-guide/reports-analytics/) — where this applet sits among the finance reports.
-- [Financial Accounting module](/modules-v2/financial-accounting/) and [Purchasing module](/modules-v2/purchasing/).
+- [Financial Accounting module](/modules/financial-accounting/) and [Purchasing module](/modules/purchasing/).
 - [Debtor Report Applet](/applets/finance/debtor-report-applet/) and [Debtor and Creditor Report](/applets/finance/debtor-and-creditor-report-applet/) — the sibling reference pages.

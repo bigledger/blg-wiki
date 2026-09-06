@@ -268,5 +268,5 @@ Costing: the receiving location takes the item's cost from the company-level mov
 
 ## Related documentation
 
-- [Inventory module](/modules-v2/inventory/) — [core concepts](/modules-v2/inventory/core-concepts/), [configuration](/modules-v2/inventory/configuration/), [related applets](/modules-v2/inventory/related-applets/).
+- [Inventory module](/modules/inventory/) — [core concepts](/modules/inventory/core-concepts/), [configuration](/modules/inventory/configuration/), [related applets](/modules/inventory/related-applets/).
 - [Inventory guides](/guides/inventory-guides/).

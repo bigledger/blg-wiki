@@ -331,4 +331,4 @@ Posting proof:
 
 ## Related documentation
 
-- [Sales & CRM module](/modules-v2/crm-digital/) and [e-Invoice module](/modules-v2/e-invoice/).
+- [Sales & CRM module](/modules/crm-digital/) and [e-Invoice module](/modules/e-invoice/).

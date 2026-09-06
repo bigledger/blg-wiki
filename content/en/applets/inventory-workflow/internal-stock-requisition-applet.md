@@ -109,7 +109,7 @@ The applet also carries a per-line **Line Items** listing, a CSV **File Import**
 | Master data | [Warehouse Management](/applets/inventory-workflow/warehouse-management-applet/) (locations), [Organisation](/applets/master-data/organisation-applet/) (company, branch, Knock Off Configuration), [Inventory Item Maintenance](/applets/inventory-workflow/inv-item-maintenance-applet/) / [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) (items), [Employee](/applets/master-data/employee-applet/) (Branch Designation employees) | Sending / receiving locations, the company whose Knock Off Configuration decides whether FINAL leaves open-queue rows, the items on the lines, and the employees named in approval designations. |
 | Reports | [Stock Balance](/applets/inventory-workflow/stock-balance-applet/), [Stock Availability](/applets/inventory-workflow/stock-availability-applet/) | A requisition changes neither report; only the transfer does. The item picker can show the current balance per location while you add lines (`SHOW_ITEM_STOCK_BALANCE`). |
 
-Module: [Inventory](/modules-v2/inventory/).
+Module: [Inventory](/modules/inventory/).
 
 ## Screens and menus
 
@@ -343,4 +343,4 @@ CSV only (`accept=".csv"`), with a delimiter selector. The *File Type* drop-down
 - [Stock Transfer](/applets/inventory-workflow/stock-transfer-applet/) — the fulfilment document.
 - [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/) — the upstream knock-off source.
 - [Organisation](/applets/master-data/organisation-applet/) — Knock Off Configuration.
-- [Inventory module](/modules-v2/inventory/).
+- [Inventory module](/modules/inventory/).

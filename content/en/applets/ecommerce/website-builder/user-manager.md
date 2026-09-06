@@ -206,4 +206,4 @@ The component reports nothing to the screen when a call fails: every failure pat
 - [CP Commerce Admin applet](/applets/ecommerce/cp-commerce-admin-applet/) — the Webstore dashboard, the Website record and every other tile.
 - [Push Notification Configuration](/applets/ecommerce/cp-commerce/push-notification-configuration/) — the other Customer Portal feature configured through the website record rather than a screen.
 - [Tenant Admin applet](/applets/external-tenant-admin/tenant-admin-applet/) — roles, ranks, applet installs and uninstalls.
-- [E-Commerce module](/modules-v2/ecommerce/)
+- [E-Commerce module](/modules/ecommerce/)

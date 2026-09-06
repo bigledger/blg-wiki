@@ -134,7 +134,7 @@ Approvals here are **optional and off until you build them** — a tenant with n
 
 ## Where it fits
 
-Module: [Purchasing](/modules-v2/purchasing/).
+Module: [Purchasing](/modules/purchasing/).
 
 | Direction | Document / applet | Relationship |
 |---|---|---|
@@ -373,6 +373,6 @@ What the workflow does **not** do: nothing stops a user from clicking **FINAL** 
 
 ## Related documentation
 
-- [Purchasing module](/modules-v2/purchasing/)
+- [Purchasing module](/modules/purchasing/)
 - [Standard procurement workflow](/guides/purchasing-guides/standard-procurement-workflow/)
 - [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) — approval and Approval Monitor on the order side

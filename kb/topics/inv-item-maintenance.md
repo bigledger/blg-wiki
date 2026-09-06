@@ -62,4 +62,4 @@ The stock side of an item: the `bl_inv_mst_item_hdr` row that ledgers, balances,
 - stock-balance-applet / stock-availability-applet (lane 4, done) — state that Min Qty / Max Qty shown there are maintained on the inventory item's Location tab or by the Min-Max import, and that a daily e-mail can be scheduled here.
 - warehouse-management-applet, organisation-applet (lane 4, queued) — add `inv-item-maintenance-applet` to `related_applets`.
 - Data Fix applet page (utilities owner) — document the scan-code mismatch query/align feature.
-- modules-v2/inventory pages — any "ABC analysis", "safety stock", "FIFO/LIFO/Average cost method per item" wording inherited from the old page is not a feature of this applet.
+- modules/inventory pages — any "ABC analysis", "safety stock", "FIFO/LIFO/Average cost method per item" wording inherited from the old page is not a feature of this applet.

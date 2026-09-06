@@ -3,6 +3,15 @@ title: "EcomSync Related Applets"
 description: "Index of the applets that together provide marketplace synchronisation (EcomSync) in BigLedger: which applet holds each setup step, what it writes, and which background jobs run."
 weight: 195
 aliases:
+- /modules/ecommerce/introduction-to-ecomsync/
+- /modules/ecommerce/ecomsync-features/
+- /modules/ecommerce/ecomsync-applet/
+- /modules/ecommerce/integration-with-shopify/
+- /modules/ecommerce/listing/
+- /modules/ecommerce/marketplace-tab/
+- /modules/ecommerce/create-single-tab/
+- /modules/ecommerce/update-and-delete-item/
+- /modules/ecommerce/b2b/
 - /applets/90-ecomsync-related-applets/
 modules: [ecommerce, inventory]
 related_applets: [organisation-applet, doc-item-maintenance-applet, internal-sales-order-applet, stock-availability-applet, internal-receipt-voucher-applet, cp-commerce-admin-applet, pricebook-applet]
@@ -145,7 +154,6 @@ Only the Lazada and Shopee jobs can be created from the Doc Item *Scheduler* scr
 
 ## Related documentation
 
-- Legacy EcomSync module pages (imported from the original product wiki; screen names may be older): [Introduction to EcomSync](/modules/ecommerce/introduction-to-ecomsync/), [Ecomsync Features](/modules/ecommerce/ecomsync-features/), [EcomSync Applet](/modules/ecommerce/ecomsync-applet/)
-- [E-Commerce module](/modules-v2/ecommerce/) and its [related applets](/modules-v2/ecommerce/related-applets/)
+- [E-Commerce module](/modules/ecommerce/) and its [related applets](/modules/ecommerce/related-applets/)
 - [Order listing](/business-operations/order-listing/) and [Item maintenance](/user-guide/basic-operations/item-maintenance/) user guides
 - Applet reference pages: [Organisation Applet](/applets/master-data/organisation-applet/) · [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) · [Sales Order (Internal)](/applets/sales-workflow/internal-sales-order-applet/) · [Receipt Voucher (Internal)](/applets/finance/internal-receipt-voucher-applet/) · [Stock Availability Applet](/applets/inventory-workflow/stock-availability-applet/) · [Pricebook Applet](/applets/master-data/pricebook-applet/) · [CP Commerce Admin Applet](/applets/ecommerce/cp-commerce-admin-applet/)

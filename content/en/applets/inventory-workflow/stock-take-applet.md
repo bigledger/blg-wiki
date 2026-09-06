@@ -122,7 +122,7 @@ An Android companion app (repository `akn-kotlin-mobile-stocktake`) writes to th
 
 | Position | Applet / document | Why |
 |---|---|---|
-| Module | [Inventory](/modules-v2/inventory/) | Physical audit of one location at a time |
+| Module | [Inventory](/modules/inventory/) | Physical audit of one location at a time |
 | Upstream | [Organisation](/applets/master-data/organisation-applet/) (locations and their company), [Inventory Item Maintenance](/applets/master-data/inv-item-maintenance-applet/) (scan codes, multi-UOM barcodes, serial / batch type) | A session is keyed by location; records are keyed by item scan code |
 | Upstream | Finalised stock documents — GRN, sales, transfers, adjustments | They build the ledger the report compares against; without them every system balance is 0 |
 | Sibling | [Stock Balance](/applets/inventory-workflow/stock-balance-applet/), [Stock Availability](/applets/inventory-workflow/stock-availability-applet/), [Stock Report](/applets/inventory-workflow/stock-report-applet/) | Read the same ledger; the Stock Balance With Serial report doubles as a count sheet |
@@ -382,6 +382,6 @@ A regeneration overwrites counted quantities, balances, serials and cost on exis
 
 ## Related documentation
 
-- [Inventory module](/modules-v2/inventory/) — where stock takes sit in the receive → move → count → adjust cycle.
+- [Inventory module](/modules/inventory/) — where stock takes sit in the receive → move → count → adjust cycle.
 - [Stock Adjustment (Internal)](/applets/inventory-workflow/stock-adjustment-applet/) — posting the variances you accept.
 - [Stock Availability](/applets/inventory-workflow/stock-availability-applet/) — investigating a variance line before adjusting.

@@ -121,7 +121,7 @@ The old framing of this applet as an invoice "for services and overheads" is wro
 
 ## Where it fits
 
-Modules: [Purchasing](/modules-v2/purchasing/) and [Financial Accounting](/modules-v2/financial-accounting/).
+Modules: [Purchasing](/modules/purchasing/) and [Financial Accounting](/modules/financial-accounting/).
 
 | Direction | Document / applet | Relationship |
 |---|---|---|
@@ -364,6 +364,6 @@ What FINAL actually does (`GenericDocumentService.updatePostingStatus`, FINAL br
 
 ## Related documentation
 
-- [Purchasing module](/modules-v2/purchasing/) and [Financial Accounting module](/modules-v2/financial-accounting/)
+- [Purchasing module](/modules/purchasing/) and [Financial Accounting module](/modules/financial-accounting/)
 - [Purchase GRN Stock In (Internal)](/applets/purchase-workflow/internal-purchase-grn-stock-in-applet/) — the receipt leg of this pair
 - [Standard procurement workflow](/guides/purchasing-guides/standard-procurement-workflow/) and [Direct GRN workflow](/guides/purchasing-guides/direct-grn-workflow/) — where the GRN Stock In → PI No Stock In pair sits in the PO → receipt → invoice flow

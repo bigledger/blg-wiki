@@ -370,5 +370,5 @@ This is an administration applet: no server document type, no signums, no journa
 ## Related documentation
 
 - [Team management (user guide)](/user-guide/administration/team/)
-- [Core platform module](/modules-v2/core/)
+- [Core platform module](/modules/core/)
 - [Applet Store](/applets/applet-store/) and [Applet Catalog](/applets/applet-catalog/)

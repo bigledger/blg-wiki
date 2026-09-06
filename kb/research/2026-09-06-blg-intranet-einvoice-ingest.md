@@ -40,7 +40,7 @@ Extended: `e-invoice`, `e-invoice-consolidation`, `e-invoice-submission-errors`,
 | 6 | `guides/einvoice-guides/einvoice-pools-and-routing.md` | extend | small | Accurate; needs the automation reality and the by-branch/by-document distinction |
 | 7 | **NEW** `guides/einvoice-guides/einvoice-self-billed.md` | new (blocked) | medium | Blocked on kb/questions/2026-09-06-einvoice-self-billed-scope.md |
 | 8 | `guides/einvoice-guides/peppol-configuration.md` | rewrite (blocked) | medium | Blocked on kb/questions/2026-09-06-peppol-participant-id-scheme.md |
-| 9 | `modules-v2/e-invoice/_index.md` | correct | small | Three factual errors in the hub's tables and checklist |
+| 9 | `modules/e-invoice/_index.md` | correct | small | Three factual errors in the hub's tables and checklist |
 | 10 | `guides/einvoice-guides/malaysia-e-invoice-guide.md` | clean up | small | Broken markup; overlapping scope with the section index |
 | 11 | applet pages | extend | small | Targeted additions only; the pages are already strong |
 
@@ -374,7 +374,7 @@ partner, domestic included. → `[src:gh:bigledger/blg-intranet#5693]`
 
 ---
 
-## 9. `content/en/modules-v2/e-invoice/_index.md` — correct
+## 9. `content/en/modules/e-invoice/_index.md` — correct
 
 Three factual errors:
 

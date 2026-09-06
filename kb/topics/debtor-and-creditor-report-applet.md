@@ -54,4 +54,4 @@ A separate applet (registry code `debtor-and-creditor-report-applet`, name "Debt
 ## Wiki impact
 
 - `content/en/applets/finance/debtor-and-creditor-report-applet.md` — rewritten 2026-09-05 (this topic).
-- `content/en/user-guide/reports-analytics-v2/_index.md` and `modules-v2/financial-accounting/_index.md` — if they describe this applet as configurable or as having Statement buttons, correct to "read-only, Printable Format Settings only".
+- `content/en/user-guide/reports-analytics-v2/_index.md` and `modules/financial-accounting/_index.md` — if they describe this applet as configurable or as having Statement buttons, correct to "read-only, Printable Format Settings only".

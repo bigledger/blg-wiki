@@ -9,7 +9,7 @@ wiki:
   - content/en/applets/finance/creditor-report-applet.md
   - content/en/applets/finance/debtor-and-creditor-report-applet.md
   - content/en/user-guide/reports-analytics-v2/_index.md
-  - content/en/modules-v2/financial-accounting/_index.md
+  - content/en/modules/financial-accounting/_index.md
 status: growing
 updated: 2026-09-05
 ---
@@ -55,4 +55,4 @@ The Debtor Report Applet is the accounts-receivable reporting front end: seven r
 - `content/en/applets/finance/debtor-report-applet.md` — rewritten 2026-09-05 (this topic).
 - `content/en/applets/finance/internal-receipt-voucher-applet.md` — add one sentence on contras created from the Debtor Report Applet (mirror of the PV note).
 - `content/en/applets/sales-workflow/commission-scheme-applet.md` — already links here; could mention Collection Invoice with Aging as the collection-performance view.
-- `content/en/modules-v2/financial-accounting/_index.md` — opening-balance verification note (use Outstanding Document Report) is still accurate.
+- `content/en/modules/financial-accounting/_index.md` — opening-balance verification note (use Outstanding Document Report) is still accurate.

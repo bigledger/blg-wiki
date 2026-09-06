@@ -58,7 +58,7 @@ It is read-only — no create screen, no save, no delete — and the listing pin
 
 | Position | Document / applet | Why |
 |---|---|---|
-| Module | [Purchasing](/modules-v2/purchasing/), [Financial Accounting](/modules-v2/financial-accounting/) | The payable the buyer owes the supplier. |
+| Module | [Purchasing](/modules/purchasing/), [Financial Accounting](/modules/financial-accounting/) | The payable the buyer owes the supplier. |
 | The document | [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/) | Same rows; creation, FINAL, payment, contra and VOID happen there. |
 | Upstream (access) | [Supplier](/applets/master-data/supplier-applet-1/) | The login must be linked to the supplier entity (`bl_fi_mst_entity_login_subject_link`, `ACTIVE`). |
 | Upstream (document) | [Purchase Order Supplier Access (Internal)](/applets/purchase-workflow/internal-purchase-order-supplier-access-applet/), [Purchase GRN Supplier Access (Internal)](/applets/purchase-workflow/internal-purchase-grn-supplier-access-applet/) | The order and receipt the invoice is knocked off against; both appear in Doc Link. |
@@ -190,5 +190,5 @@ This applet writes nothing. The buyer-side document behaves as follows.
 ## Related documentation
 
 - [Purchase Invoice (Internal) applet](/applets/finance/internal-purchase-invoice-applet/)
-- [Purchasing module](/modules-v2/purchasing/)
+- [Purchasing module](/modules/purchasing/)
 - [Supplier applet](/applets/master-data/supplier-applet-1/)

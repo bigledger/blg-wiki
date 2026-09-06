@@ -9,7 +9,7 @@ wiki:
   - content/en/applets/finance/debtor-report-applet.md
   - content/en/applets/finance/debtor-and-creditor-report-applet.md
   - content/en/user-guide/reports-analytics-v2/_index.md
-  - content/en/modules-v2/financial-accounting/_index.md
+  - content/en/modules/financial-accounting/_index.md
 status: growing
 updated: 2026-09-05
 ---
@@ -63,4 +63,4 @@ The Creditor Report Applet is the accounts-payable reporting front end: eight re
 - `content/en/applets/finance/creditor-report-applet.md` — rewritten 2026-09-05 (this topic).
 - `content/en/applets/finance/debtor-report-applet.md` — same structure; its "Aging Period Settings — e.g. 30/60/90/120+" and "Printable formats affect PRINT" sentences need the same corrections; its link to `/applets/creditor-report-applet/` should point at `/applets/finance/creditor-report-applet/`.
 - `content/en/applets/finance/debtor-and-creditor-report-applet.md` — says "does not expose an As of Date filter" and "no separate Debtor/Creditor aging menus"; the current repo has Debtor/Creditor Historical Transaction Aging Analysis and Historical reports and separate aging menus (15 items) — needs a rewrite from the repo.
-- `content/en/modules-v2/financial-accounting/_index.md` — "prioritize by due date" is fine; nothing false found.
+- `content/en/modules/financial-accounting/_index.md` — "prioritize by due date" is fine; nothing false found.

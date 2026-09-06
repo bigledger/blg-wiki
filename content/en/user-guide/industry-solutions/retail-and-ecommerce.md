@@ -78,7 +78,7 @@ main > br { display: none !important; }
 
 | Operational Area | Required Applets | Key Capabilities |
 | :--- | :--- | :--- |
-| **Omnichannel Inventory Pool** | [Inventory Module](/modules-v2/inventory/) · [Stock Report](/applets/inventory-workflow/stock-report-applet/) | Unified stock master; preventing overselling by reserving inventory dynamically across online & offline channels |
-| **Store POS & Checkout** | [POS Module](/modules-v2/pos/) | Fast barcode scanning, multi-currency support, digital receipt generation, and shift cash control |
-| **Customer Loyalty & Membership** | [Membership Module](/modules-v2/membership/) | Cross-channel membership tiers, points accumulation, e-vouchers, and personalized promotions |
-| **Marketplace & E-Invoice Sync** | [E-Commerce Module](/modules-v2/ecommerce/) · [E-Invoice Module](/modules-v2/e-invoice/) | Automated marketplace order import, courier consignment creation, and automated LHDN MyInvois submission |
+| **Omnichannel Inventory Pool** | [Inventory Module](/modules/inventory/) · [Stock Report](/applets/inventory-workflow/stock-report-applet/) | Unified stock master; preventing overselling by reserving inventory dynamically across online & offline channels |
+| **Store POS & Checkout** | [POS Module](/modules/pos/) | Fast barcode scanning, multi-currency support, digital receipt generation, and shift cash control |
+| **Customer Loyalty & Membership** | [Membership Module](/modules/membership/) | Cross-channel membership tiers, points accumulation, e-vouchers, and personalized promotions |
+| **Marketplace & E-Invoice Sync** | [E-Commerce Module](/modules/ecommerce/) · [E-Invoice Module](/modules/e-invoice/) | Automated marketplace order import, courier consignment creation, and automated LHDN MyInvois submission |

@@ -102,7 +102,7 @@ The window title is *Internal Consignment Return Applet*; the listing is *Intern
 
 | Position | Document / applet | Why |
 |---|---|---|
-| Module | [Purchasing](/modules-v2/purchasing/), [Inventory](/modules-v2/inventory/), [Financial Accounting](/modules-v2/financial-accounting/) | Posts a journal and an ARAP balance; lives in the consignment purchase family. |
+| Module | [Purchasing](/modules/purchasing/), [Inventory](/modules/inventory/), [Financial Accounting](/modules/financial-accounting/) | Posts a journal and an ARAP balance; lives in the consignment purchase family. |
 | Upstream (value) | [Consignment GRN Applet (Internal)](/applets/inventory-workflow/internal-consignment-grn-applet/) | The GRN books consigned stock (Dr Consignment Stock / Cr Consignment Liability); the return reverses it. There is no KO tab for the Consignment GRN — the link is by value, and by contra on the Contra tab. |
 | Upstream (lines) | [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/) | The **Search** tab (*Search By Invoice / By Supplier / By Serial Number*) lists purchase-invoice lines and creates document links `INTERNAL_PURCHASE_INVOICE` → `INTERNAL_PURCHASE_CONSIGNMENT_RETURN`. |
 | Upstream (knock-off) | [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/), [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/), [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/), [Purchase Requisition (Internal)](/applets/purchase-workflow/internal-purchase-requisition-applet/), [Supplier Delivery Order](/applets/purchase-workflow/supplier-delivery-order-applet/) | The five **KO For** sub-tabs. They are the ordinary purchase documents — the applet is a fork of the [Purchase Return (Internal)](/applets/purchase-workflow/internal-purchase-return-applet/) applet with a different document type. |
@@ -339,6 +339,6 @@ There is no DISCARD in this applet.
 
 ## Related documentation
 
-- [Purchasing module](/modules-v2/purchasing/) and [Inventory module](/modules-v2/inventory/)
+- [Purchasing module](/modules/purchasing/) and [Inventory module](/modules/inventory/)
 - [Consignment purchasing guide](/guides/purchasing-guides/consignment-purchasing/)
 - Sibling reference: [Purchase Return (Internal)](/applets/purchase-workflow/internal-purchase-return-applet/)

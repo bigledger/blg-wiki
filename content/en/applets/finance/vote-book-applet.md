@@ -15,7 +15,7 @@ weight: 155
 The Vote Book Applet is your central hub for real-time budget monitoring and control. It provides an up-to-the-minute view of how funds are being utilized, ensuring that expenditures remain within the allocated budget. This applet is designed to bring transparency and accountability to your financial operations by tracking every transaction from allocation to final payment.
 
 {{< callout type="info" >}}
-**Core Component**: This applet is a critical part of the [Budgetary Management Module](/modules/budgetary/), providing the detailed ledger for tracking funds allocated through the **Budget Applet**.
+**Core Component**: This applet is a critical part of the [Budgetary Applet](/applets/finance/budgetary-applet/), providing the detailed ledger for tracking funds allocated through the **Budget Applet**.
 {{< /callout >}}
 
 ### Who Benefits from This Applet?

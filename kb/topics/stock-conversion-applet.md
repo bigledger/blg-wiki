@@ -50,4 +50,4 @@ A stand-alone inventory document that turns one set of items into another at one
 - content/en/applets/inventory-workflow/stock-conversion-applet.md (lane 4, done run 22) — rewritten from these facts; direction reversal documented in Lifecycle and Troubleshooting.
 - content/en/applets/inventory-workflow/related-applets-stock-balance.md (lane 4, own) — its Stock Conversion rows should say the doc type is the literal string `Stock Conversion Applet` and that Input adds / Output removes.
 - content/en/applets/manufacturing/internal-packing-order-applet.md (lane 3?) — should state which applet does kitting (Packing Order vs Stock Conversion vs the un-registered kitting applet).
-- content/en/modules-v2/inventory/_index.md, content/en/modules-v2/manufacturing/*: link text "Stock Conversion Applet" → "Stock Conversion"; "kitting, item bundling, assembly disassembly" is fair, but add "no bill of materials, no costing".
+- content/en/modules/inventory/_index.md, content/en/modules/manufacturing/*: link text "Stock Conversion Applet" → "Stock Conversion"; "kitting, item bundling, assembly disassembly" is fair, but add "no bill of materials, no costing".

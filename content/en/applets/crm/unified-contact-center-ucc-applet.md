@@ -557,7 +557,7 @@ posting.
 
 ## Related documentation
 
-- [CRM and Digital module](/modules-v2/crm-digital/)
+- [CRM and Digital module](/modules/crm-digital/)
 - [Applet directory](/applets/applet-directory/)
 
 ### Recorded walkthroughs

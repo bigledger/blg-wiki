@@ -283,5 +283,5 @@ This applet writes master data; nothing here posts to the ledger or moves stock.
 
 ## Related documentation
 
-- [Core module](/modules-v2/core/) · [Purchasing module](/modules-v2/purchasing/) · [HR & Payroll module](/modules-v2/hr-payroll/) · [Claims module](/modules-v2/claims/)
+- [Core module](/modules/core/) · [Purchasing module](/modules/purchasing/) · [HR & Payroll module](/modules/hr-payroll/) · [Claims module](/modules/claims/)
 - [Customer Maintenance](/applets/master-data/customer-maintenance-applet/) — the fullest description of the shared entity model and its settings

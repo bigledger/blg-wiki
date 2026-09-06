@@ -1,4 +1,6 @@
 ---
+aliases:
+- /modules-v2/membership/use-cases/retail-loyalty-program/
 title: "Retail Loyalty Program"
 description: "Implementing a three-tier retail loyalty program with points, benefits, and tier progression"
 weight: 10
@@ -21,6 +23,9 @@ Fashion Forward is a mid-sized retail chain operating 15 stores across Malaysia,
 **Revenue Growth**: Achieve 30% of total revenue from loyalty program members within 18 months of launch.
 
 ## Program Design
+
+> [!NOTE]
+> This use case demonstrates a standard "Earn & Burn" structure with hierarchical tiers. Notice how the thresholds encourage a specific target spend (RM2,500 and RM8,000) based on Fashion Forward's business goals.
 
 ### Three-Tier Structure
 
@@ -485,7 +490,11 @@ Weekend Bonus: 1,575 × 2 = 3,150 points
 - Personalized recommendations based on past purchase patterns
 - Exclusive member-only sales and events
 
-### Data Privacy and Compliance
+## Data Privacy and Compliance
+
+> [!CAUTION]
+> **Regulatory Compliance**
+> Loyalty programs collect vast amounts of Personal Identifiable Information (PII). Ensure you comply with local regulations (like PDPA in Malaysia) before launching.
 
 **PDPA Compliance**
 - Clear consent collection at enrollment

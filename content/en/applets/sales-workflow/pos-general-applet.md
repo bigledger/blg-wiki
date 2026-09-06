@@ -455,6 +455,6 @@ The app also reads `POS_SHOW_Z_REPORT`, `POS_SHOW_CASHIER_COLECTION_REPORT`, `EX
 
 ## Related documentation
 
-- [Sales & POS module](/modules-v2/pos/) and its [configuration page](/modules-v2/pos/configuration/)
+- [Sales & POS module](/modules/pos/) and its [configuration page](/modules/pos/configuration/)
 - [Daily tasks video library](/user-guide/daily-tasks/) — cash bill creation, discounts, settlement and reports
 - [Sales Workflow applets](/applets/sales-workflow/)

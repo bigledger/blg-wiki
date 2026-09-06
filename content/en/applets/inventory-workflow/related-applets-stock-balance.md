@@ -191,6 +191,6 @@ The balance is read through the `current-location-stock-balances` / `current-com
 
 ## Related documentation
 
-- Module overview: [Inventory](/modules-v2/inventory/) and its [related applets](/modules-v2/inventory/related-applets/)
+- Module overview: [Inventory](/modules/inventory/) and its [related applets](/modules/inventory/related-applets/)
 - Applet pages: [Stock Balance](/applets/inventory-workflow/stock-balance-applet/), [Stock Availability](/applets/inventory-workflow/stock-availability-applet/), [Stock Report](/applets/inventory-workflow/stock-report-applet/), [Stock Adjustment](/applets/inventory-workflow/stock-adjustment-applet/), [Stock Transfer](/applets/inventory-workflow/stock-transfer-applet/), [Stock Take](/applets/inventory-workflow/stock-take-applet/)
 - Marketplace stock: [EcomSync Related Applets](/applets/integrations/90-ecomsync-related-applets/)

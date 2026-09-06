@@ -81,7 +81,7 @@ This applet does not create, edit, acknowledge or delete blanket agreements. Ear
 
 | Position | Document / applet | Why |
 |---|---|---|
-| Module | [Purchasing](/modules-v2/purchasing/) | Supplier-facing end of the blanket-agreement chain. |
+| Module | [Purchasing](/modules/purchasing/) | Supplier-facing end of the blanket-agreement chain. |
 | The document | [Blanket Purchase Order](/applets/purchase-workflow/blanket-purchase-order-applet/) | Same `bl_fi_generic_doc_hdr` rows, same document type. Buyers create and finalise there. |
 | Upstream (access) | [Supplier](/applets/master-data/supplier-applet-1/) | The supplier's login must be linked to the supplier entity (`bl_fi_mst_entity_login_subject_link`) before anything appears here. |
 | Drawn down by | [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) | The reports join each agreement line to the PO lines that knocked it off, and show PO quantity, balance quantity and PO amount. |
@@ -283,5 +283,5 @@ The backend does offer a supplier-side write path for generic documents — `PUT
 ## Related documentation
 
 - [Blanket Purchase Order applet](/applets/purchase-workflow/blanket-purchase-order-applet/) — the buyer-side reference for the same document.
-- [Purchasing module](/modules-v2/purchasing/)
+- [Purchasing module](/modules/purchasing/)
 - [Supplier applet](/applets/master-data/supplier-applet-1/) — the login link that switches this applet on.

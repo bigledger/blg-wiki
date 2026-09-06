@@ -1,4 +1,9 @@
 ---
+aliases:
+- /modules/cp-commerce/
+- /modules/ecommerce/cp-commerce/
+- /modules/ecommerce/cp-commerce-menu-pages/
+- /modules/ecommerce/20-website-configuration/
 title: "CP Commerce Admin"
 description: "Reference for the CP Commerce Admin applet: the tenant-side console that configures Customer Portal websites and mobile apps — pricing, menus, layouts, sign-in providers, forms, notifications, spending limits, facilities and events — its menus, every configuration screen, fields and known failure modes."
 applet_code: "cp_commerce_admin_console_v1"
@@ -58,7 +63,7 @@ It is a configuration applet, not a document applet: nothing here posts to stock
 
 | Position | Applet / system | Why |
 |---|---|---|
-| Module | [E-Commerce](/modules-v2/ecommerce/), [Membership](/modules-v2/membership/) | Storefront configuration; post-registration can create members and customers. |
+| Module | [E-Commerce](/modules/ecommerce/), [Membership](/modules/membership/) | Storefront configuration; post-registration can create members and customers. |
 | Front end | Customer Portal web and mobile app (the `wavelet-cp-commerce` cross-platform app); the **Website Builder** dashboard the applet opens | Reads the website's layouts, menus, images, agreements and auth configuration configured here. |
 | Master data | [Organisation](/applets/master-data/organisation-applet/), [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/), [Pricebook](/applets/master-data/pricebook-applet/), [Shipping Pricebook](/applets/master-data/shipping-pricebook-applet/), [Cashbook](/applets/master-data/cashbook-applet/) | Branch and merchant, items, pricing schemes / price books, shipping price books, settlement methods. |
 | Customers and members | [Customer](/applets/master-data/customer-applet/), [Membership Admin](/applets/membership/membership-admin-applet/) | Post Registration Config creates the customer and/or membership; the Account tab links entities to a gated website; Spending Limit applies per member class. |
@@ -1084,6 +1089,6 @@ The create and edit forms are documented tab by tab above under *Screens and men
 
 ## Related documentation
 
-- [E-Commerce module](/modules-v2/ecommerce/)
+- [E-Commerce module](/modules/ecommerce/)
 - [Push Notification Configuration](/applets/ecommerce/cp-commerce/push-notification-configuration/) — Firebase setup for the mobile app
 - [Website Builder — User Manager](/applets/ecommerce/website-builder/user-manager/) — admin users and permissions for the webstore dashboard

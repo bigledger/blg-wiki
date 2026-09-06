@@ -119,7 +119,7 @@ The window title is *Internal Consignment Purchase Order Applet*; the listing is
 
 | Position | Document / applet | Why |
 |---|---|---|
-| Module | [Purchasing](/modules-v2/purchasing/), [Inventory](/modules-v2/inventory/) | Procurement document for consigned stock; it never moves stock itself. |
+| Module | [Purchasing](/modules/purchasing/), [Inventory](/modules/inventory/) | Procurement document for consigned stock; it never moves stock itself. |
 | Upstream | [Blanket Purchase Order](/applets/purchase-workflow/blanket-purchase-order-applet/), [Purchase Quotation (Internal)](/applets/purchase-workflow/internal-purchase-quotation-applet/), [Purchase Requisition (Internal)](/applets/purchase-workflow/internal-purchase-requisition-applet/) | The **KO For** tab on the create screen pulls open lines from these three types (`INTERNAL_BLANKET_PURCHASE_ORDER`, `INTERNAL_PURCHASE_QUOTATION`, `INTERNAL_PURCHASE_REQUISITION`). The first sub-tab is labelled *Blanket Consignment Purchase Order* but searches the ordinary blanket purchase order type — there is no separate blanket consignment document. |
 | Downstream | [Consignment GRN Applet (Internal)](/applets/inventory-workflow/internal-consignment-grn-applet/) | Its *KO For → Consignment Purchase Order* tab reads open-queue rows typed `INTERNAL_PURCHASE_CONSIGNMENT_ORDER` → `INTERNAL_PURCHASE_CONSIGNMENT_GRN` and copies `qty_open` onto the GRN line. This is the only applet in the repository set that knocks this document off. |
 | Downstream (later) | [Consignment GIN](/applets/inventory-workflow/internal-consignment-gin-applet/), [Consignment Return](/applets/purchase-workflow/internal-consignment-return-applet/), [Consignor Purchase Billing](/applets/purchase-workflow/internal-consignor-purchase-billing-applet/), [Consignment Billing](/applets/inventory-workflow/internal-consignment-billing-applet/) | Consumption, return and settlement of the consigned stock start from the GRN, not from this order. |
@@ -361,6 +361,6 @@ Client-side: the registry has **no** `bl_applet_client_side_perm_dfn` rows for `
 
 ## Related documentation
 
-- [Purchasing module](/modules-v2/purchasing/) and its [use cases](/modules-v2/purchasing/use-cases/)
+- [Purchasing module](/modules/purchasing/) and its [use cases](/modules/purchasing/use-cases/)
 - [Consignment purchasing guide](/guides/purchasing-guides/consignment-purchasing/)
 - Sibling reference: [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/)

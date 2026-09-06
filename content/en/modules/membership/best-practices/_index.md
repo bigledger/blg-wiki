@@ -1,12 +1,10 @@
-[//]: # (---)
-
-[//]: # (title: "Best Practices")
-
-[//]: # (description: "Proven strategies and guidelines for designing, managing, and optimizing membership and loyalty programs")
-
-[//]: # (weight: 70)
-
-[//]: # (---)
+---
+aliases:
+- /modules-v2/membership/best-practices/
+title: "Best Practices"
+description: "Proven strategies and guidelines for designing, managing, and optimizing membership and loyalty programs"
+weight: 70
+---
 
 Successful membership and loyalty programs require more than just technical implementation. They demand strategic design, meticulous data management, robust security measures, and continuous optimization. This section provides comprehensive best practices drawn from industry leaders and successful BigLedger implementations across diverse industries.
 

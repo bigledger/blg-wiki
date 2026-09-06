@@ -340,7 +340,7 @@ Advanced AI capabilities through AIMatrix partnership:
 
 ### Core Modules
 - [Financial Accounting](/modules/financial-accounting) - Complete accounting solution
-- [CRM & Sales](/modules/crm) - Customer relationship management
+- [Digital CRM](/modules/crm-digital/) - Customer relationship management
 - [Inventory Management](/modules/inventory) - Stock and warehouse control
 
 ### Advanced Topics

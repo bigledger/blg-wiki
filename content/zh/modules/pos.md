@@ -1,5 +1,6 @@
 ---
 title: "销售终端系统 (POS)"
+draft: true  # unpublished 2026-09-07: its English original (content/en/modules/pos.md) was archived with the modules-tree consolidation — planning/specs/modules-tree-consolidation.md; retranslate from the rebuilt English module page
 description: "适用于零售和酒店业务的完整销售终端解决方案"
 weight: 20
 ---

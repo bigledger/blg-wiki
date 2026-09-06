@@ -212,4 +212,4 @@ no state of its own beyond the five settings above.
 
 ## Related documentation
 
-- [POS module](/modules-v2/pos/)
+- [POS module](/modules/pos/)

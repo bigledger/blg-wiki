@@ -15,7 +15,7 @@ weight: 50
 Budget control shouldn't be about saying "no" to departments—it should be about providing the visibility and tools to make smart spending decisions. The Budget Applet transforms budgeting from a restrictive annual exercise into an active, real-time management tool that prevents problems before they happen.
 
 {{< callout type="info" >}}
-**Core Component**: This applet is the heart of the [Budgetary Management Module](/modules/budgetary/), providing complete budget lifecycle management from initial planning through year-end reporting and analysis.
+**Core Component**: This applet is the heart of the [Budgetary Applet reference](/applets/finance/budgetary-applet/), providing complete budget lifecycle management from initial planning through year-end reporting and analysis.
 {{< /callout >}}
 
 ### Who Benefits from This Applet?
@@ -1132,7 +1132,7 @@ For detailed information on:
 - Step-by-step processes for each
 - Real-world examples and use cases
 
-Please see the corresponding sections in the **[Budgetary Management Module documentation](/modules/budgetary/#budget-virement-management)**.
+Please see the corresponding sections in the **[Virement and adjustment](/applets/finance/budgetary-applet/#virement-and-adjustment)** section of the Budgetary Applet reference.
 
 These features are comprehensively documented in the module-level documentation with extensive examples, workflows, approval matrices, and best practices.
 
@@ -1146,7 +1146,7 @@ For detailed information on:
 - Variance analysis frameworks
 - Best practices for regular monitoring
 
-Please see the **[Budget Reports section](/modules/budgetary/#budget-reports)** in the Budgetary Management Module documentation.
+Please see the **[Budget Report](/applets/finance/budgetary-applet/#budget-report)** section of the Budgetary Applet reference.
 
 The module documentation provides comprehensive coverage of reporting capabilities, including interpretation guidance, monitoring schedules, and effective budget narratives.
 
@@ -1160,7 +1160,7 @@ For detailed information on:
 - Utilization process after document finalization
 - Benefits of integrated budget control
 
-Please see the **[Budget Utilization and Validation section](/modules/budgetary/#budget-utilization-and-validation)** in the Budgetary Management Module documentation.
+Please see the **[Consumption by invoices](/applets/finance/budgetary-applet/#consumption-by-invoices)** section of the Budgetary Applet reference.
 
 This critical feature is thoroughly documented with examples of validation workflows, warning messages, and the benefits for different user roles.
 
@@ -1319,7 +1319,7 @@ For comprehensive guidance on budget planning methodologies including:
 - Advantages and challenges
 - Implementation recommendations
 
-See the **[Best Practices section](/modules/budgetary/#best-practices)** in the Budgetary Management Module documentation.
+See the **[Budgetary Applet reference](/applets/finance/budgetary-applet/)**.
 
 ### Budget Control & Governance
 
@@ -1329,7 +1329,7 @@ For detailed approval hierarchies, monitoring schedules, and control mechanisms:
 - Key metrics to track (burn rate, runway, variance, utilization)
 - Customization considerations for different organization sizes
 
-See the **[Budget Control and Governance section](/modules/budgetary/#budget-control-and-governance)** in the module documentation.
+See the **[Budgetary Applet reference](/applets/finance/budgetary-applet/)**.
 
 ### Performance Optimization
 
@@ -1339,7 +1339,7 @@ For strategies to maintain system performance as data grows:
 - Database optimization
 - Archive processes
 
-See the **[Performance Optimization section](/modules/budgetary/#performance-optimization)** in the module documentation.
+See the **[Budgetary Applet reference](/applets/finance/budgetary-applet/)**.
 
 ## Integration
 
@@ -1377,7 +1377,7 @@ The Budget Applet integrates seamlessly with other BigLedger modules:
 - Training and development budgets
 - Benefits and compensation planning
 
-For detailed integration information, see the **[Integration section](/modules/budgetary/#integration)** in the module documentation.
+For detailed integration information, see the **[Related applets](/applets/finance/budgetary-applet/#related-applets)** section of the Budgetary Applet reference.
 
 ### External Systems
 
@@ -1405,7 +1405,7 @@ Quick reference for typical problems and solutions:
 
 ### Error Messages
 
-For comprehensive error message reference with explanations and action steps, see the **[Troubleshooting section](/modules/budgetary/#troubleshooting)** in the module documentation.
+For comprehensive error message reference with explanations and action steps, see the **[Troubleshooting](/applets/finance/budgetary-applet/#troubleshooting)** section of the Budgetary Applet reference.
 
 ## Security & Access Control
 
@@ -1449,12 +1449,13 @@ The Budget Applet maintains comprehensive audit trails:
 - Category and item change tracking
 - Period lock/unlock activities
 
-For regulatory compliance features including public sector support, see the **[Regulatory Compliance section](/modules/budgetary/#regulatory-compliance)** in the module documentation.
+For regulatory compliance features including public sector support, see the **[Budgetary Applet reference](/applets/finance/budgetary-applet/)**.
 
 ## Related Documentation
 
 ### Module Documentation
-- **[Budgetary Management Module](/modules/budgetary/)** - Complete module overview with comprehensive feature details, workflows, and examples
+- **[Financial Accounting module](/modules/financial-accounting/)** - where budgetary control sits in the module map
+- **[Budgetary Applet reference](/applets/finance/budgetary-applet/)** - the sourced screen-by-screen reference
 - **[Financial Accounting Module](/modules/financial-accounting/)** - Integration with general ledger and financial reporting
 
 ### Guides

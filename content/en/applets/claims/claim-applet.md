@@ -85,7 +85,7 @@ The applet stops at *supervisor approval*. Finance review, sampling, on-hold han
 | Downstream | [Claim Cycle Applet](/applets/claims/claim-cycle-applet/) | Approved lines (`PENDING_DOC_REVIEW`) are swept into the month's claim cycle for finance review, on-hold, sampling and the Bank / PV Details / Cross-Billing reports. |
 | Side | AWS Textract (OCR) | Claim items flagged *Required Supporting Document Using OCR Attachment* send the receipt to Textract's expense analysis; the extracted fields feed the risk-score processor. Unrelated to the [OCR Cash Bill Applet](/applets/membership/ocr-cash-bill-applet/), which is a membership feature. |
 
-Module: [Claims Management](/modules-v2/claims/).
+Module: [Claims Management](/modules/claims/).
 
 ## Screens and menus
 
@@ -301,6 +301,6 @@ Read-only: one row per approval level (`bl_aat_claim_document_approval_sequence`
 
 ## Related documentation
 
-- [Claims Management module](/modules-v2/claims/)
+- [Claims Management module](/modules/claims/)
 - [Claim Cycle Applet](/applets/claims/claim-cycle-applet/)
-- [HR & Payroll module](/modules-v2/hr-payroll/)
+- [HR & Payroll module](/modules/hr-payroll/)

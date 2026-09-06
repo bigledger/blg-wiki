@@ -8,7 +8,7 @@ wiki:
   - content/en/applets/finance/financial-report-applet.md
   - content/en/guides/accounting-guides/financial-reporting.md
   - content/en/tutorials/month-end-closing.md
-  - content/en/modules-v2/financial-accounting/_index.md
+  - content/en/modules/financial-accounting/_index.md
 status: growing
 updated: 2026-09-05
 ---
@@ -53,5 +53,5 @@ The Financial Report applet closes a month per Set of Books (Month End Processin
 ## Wiki impact
 
 - `content/en/guides/accounting-guides/financial-reporting.md` — Step 2, Step 8 and the troubleshooting table describe three Processor buttons (COGS, General Ledger, Retained Earnings); the UI has one (PROCESS). Also says MEP "posts COGS + retained earnings + CD/BD"; it posts CD/BD + summaries only. "Regenerate on MEP does nothing" is wrong — PROCESS on the Processor tab *is* the regenerate.
-- `content/en/modules-v2/financial-accounting/_index.md` — lists a Cash Flow Statement, "Row Definitions" and "report templates" for this applet; none exist in code.
+- `content/en/modules/financial-accounting/_index.md` — lists a Cash Flow Statement, "Row Definitions" and "report templates" for this applet; none exist in code.
 - `content/en/applets/master-data/chart-of-account-applet.md` — should name the Report Section ↔ GL Category link, the fixed P&L section codes, `Inventory Closing Base On`, and the default GL codes COGS / STOCK_BALANCE / PURCHASE / PURCHASE_RETURN / PROFIT_LOSS / RETAINED_EARNING (+ COGS_* / STOCK_BALANCE_* per stock type) as what the Financial Report depends on.

@@ -245,5 +245,5 @@ Push notifications are not documents: nothing posts, no stock or GL is touched. 
 ## Related documentation
 
 - [CP Commerce Admin](/applets/ecommerce/cp-commerce-admin-applet/) — Notification, Topics, Website settings, permissions.
-- [E-Commerce module](/modules-v2/ecommerce/)
+- [E-Commerce module](/modules/ecommerce/)
 - [Capacitor Push Notifications plugin](https://capacitorjs.com/docs/apis/push-notifications) and [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging) — vendor documentation for the native side.

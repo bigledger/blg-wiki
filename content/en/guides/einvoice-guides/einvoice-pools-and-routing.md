@@ -18,7 +18,7 @@ GadgetSphere Sdn Bhd runs 22 consumer-electronics branches. The overwhelming maj
 **Nothing is submitted at the moment you press Save.** Finalising a document puts it in a queue; a background processor picks it up and sends it. Everything on this page happens after you have walked away from the screen.
 {{< /callout >}}
 
-This page assumes two ideas rather than explaining them: what a [consolidated e-invoice](/modules-v2/e-invoice/concepts/consolidated-e-invoice/) is, and how a [pool differs from a queue](/modules-v2/e-invoice/concepts/pools-and-queues/).
+This page assumes two ideas rather than explaining them: what a [consolidated e-invoice](/modules/e-invoice/concepts/consolidated-e-invoice/) is, and how a [pool differs from a queue](/modules/e-invoice/concepts/pools-and-queues/).
 
 ## Submission types
 
@@ -64,7 +64,7 @@ When a document is finalised, BigLedger checks its submission type, amount, and 
 
 ## What you can do in each pool
 
-The table above says which pool a document lands in; [Pools and queues](/modules-v2/e-invoice/concepts/pools-and-queues/) says why the three behave differently. What follows is what you can actually do once a document is in one.
+The table above says which pool a document lands in; [Pools and queues](/modules/e-invoice/concepts/pools-and-queues/) says why the three behave differently. What follows is what you can actually do once a document is in one.
 
 ### Batch Pool
 

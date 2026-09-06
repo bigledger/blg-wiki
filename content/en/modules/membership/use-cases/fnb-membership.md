@@ -1,4 +1,6 @@
 ---
+aliases:
+- /modules-v2/membership/use-cases/fnb-membership/
 title: "Food & Beverage Membership"
 description: "Multi-currency F&B loyalty program with stamps, points, and location-specific promotions"
 weight: 20

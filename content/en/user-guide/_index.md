@@ -159,7 +159,7 @@ Master your financial operations with integrated accounting and compliance featu
 ### Sales & Customer Operations
 Build strong customer relationships and optimize your sales processes:
 
-- **[CRM Module](/modules/crm/)** - 360-degree customer relationship management
+- **[Digital CRM Module](/modules/crm-digital/)** - Contact centre, engagements, events and customer analytics
 - **[Sales Dashboard](/business-operations/sales-dashboard/)** - Real-time sales analytics and insights
 - **[Order Management](/business-operations/order/)** - End-to-end order processing and fulfillment
 
@@ -167,15 +167,15 @@ Build strong customer relationships and optimize your sales processes:
 Optimize your inventory levels and streamline supply chain operations:
 
 - **[Inventory Management](/modules/inventory/)** - Multi-location stock control and tracking
-- **[Procurement](/modules/procurement/)** - Purchase orders and vendor relationship management
+- **[Purchasing](/modules/purchasing/)** - Requisitions, purchase orders and supplier invoices
 - **[Manufacturing](/modules/manufacturing/)** - Production planning and manufacturing control
 
 ### Advanced Features & Integration
 
 #### E-Commerce & Multi-Channel
 - **[E-Commerce Overview](/modules/ecommerce/)** - Multi-channel selling and online store management
-- **[EcomSync Platform](/modules/ecommerce/introduction-to-ecomsync/)** - Centralized sales channel synchronization
-- **[Shopify Integration](/modules/ecommerce/integration-with-shopify/)** - Seamless online store management
+- **[EcomSync](/applets/integrations/90-ecomsync-related-applets/)** - Marketplace synchronisation: which applet holds each step, and the jobs behind it
+- **[E-Commerce Module](/modules/ecommerce/)** - Online storefronts, marketplace channels and order injection
 
 #### AI & Automation
 - **[AI Intelligence](/ai-intelligence/)** - AI-powered insights and automation

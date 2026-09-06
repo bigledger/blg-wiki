@@ -67,4 +67,4 @@ sales side.
 
 - **New guide** — "Issuing a self-billed e-invoice" is the biggest missing user guide in this area: the guides folder never mentions self-billed except in a list of document formats.
 - `my-e-invoice-admin-applet.md` — add the numbering-collision note to Troubleshooting ("the same document number appears twice — this is a sales invoice and a self-billed purchase invoice, not a duplicate; check the document type before cancelling anything").
-- `modules-v2/e-invoice/_index.md` — the self-billed row of the four-document-types table is right in principle but says nothing about who supplies the classification code.
+- `modules/e-invoice/_index.md` — the self-billed row of the four-document-types table is right in principle but says nothing about who supplies the classification code.

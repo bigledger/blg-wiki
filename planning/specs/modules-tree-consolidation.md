@@ -1,6 +1,9 @@
 ---
-status: approved
+status: executed
 date: 2026-09-07
+executed: 2026-09-07
+worklog: ../worklog/2026-09-07-modules-tree.md
+answered: ../questions/answered/Q-0038-modules-vs-modules-v2.md
 decided_by: Vincent, 2026-09-06 ("keep the URL as /modules/")
 adr: ../decisions/0008-verify-or-unpublish.md
 audit: ../reviews/2026-09-06-modules-duplication-audit.md

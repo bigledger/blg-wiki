@@ -1681,7 +1681,7 @@ When standard sales workflow doesn't fit, consider these alternatives:
 **Questions or Issues?**
 - Consult your sales manager for policy questions
 - Contact IT support for system issues
-- Refer to [Sales Module Documentation](/modules/sales-crm/) for features
+- Refer to the [Sales & POS Module](/modules/pos/) for features
 - See [User Guide Daily Tasks](/user-guide/daily-tasks/) for step-by-step instructions
 {{< /callout >}}
 

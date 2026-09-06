@@ -1,4 +1,6 @@
 ---
+aliases:
+- /modules-v2/membership/core-concepts/points-currencies/
 title: "Points Currencies"
 description: "Multi-currency points systems, conversion mechanics, and flexible reward economics"
 weight: 22
@@ -38,6 +40,10 @@ Multiple points currencies enable business scenarios that would be difficult or 
 6. **Category Restrictions**: Food points only redeemable for dining, merchandise points for retail
 
 ## Single Currency vs Multi-Currency Programs
+
+> [!IMPORTANT]
+> **When to use Multiple Currencies?**
+> A single currency is great for simple programs. You should only introduce multiple currencies if you have a distinct business need, such as: separating promotional points (which expire quickly) from core loyalty points, or integrating points from external partners.
 
 ### Single Currency Model
 
@@ -462,6 +468,10 @@ Match expiry rules to currency purpose:
 **Partner Currency**: Partner-dictated expiry (match partner's policies)
 
 ## Financial Implications
+
+> [!WARNING]
+> **Points are a Financial Liability**
+> Every point issued that can be converted to value is a liability on your balance sheet. The Finance team must be deeply involved in establishing the value of a point and understanding how long they remain a liability before expiry (breakage).
 
 ### Liability Tracking
 

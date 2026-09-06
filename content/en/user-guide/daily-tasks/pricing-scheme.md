@@ -352,7 +352,7 @@ After mastering basic pricing schemes, explore:
 ## Related Resources
 
 - [Financial Management Overview](/modules/financial-accounting/) - Complete financial integration
-- [Sales Operations](/modules/crm/) - Customer relationship and pricing management
+- [Digital CRM Module](/modules/crm-digital/) - Customer relationship and pricing management
 - [E-Commerce Platforms](/modules/ecommerce/) - Online pricing and synchronization
 - [Business Analytics](/business-operations/dashboard/) - Pricing performance analysis
 

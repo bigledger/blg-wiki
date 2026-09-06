@@ -291,5 +291,5 @@ The app also reads `SHOW_INTERCOMPANY_MENU` and `SHOW_FILE_EXPORT_MENU`, which a
 ## Related documentation
 
 - [Returns and Exchanges Workflow](/guides/sales-guides/returns-exchanges-workflow/)
-- [Inventory module](/modules-v2/inventory/), [Financial Accounting module](/modules-v2/financial-accounting/), [E-Invoice module](/modules-v2/e-invoice/), [POS module](/modules-v2/pos/)
+- [Inventory module](/modules/inventory/), [Financial Accounting module](/modules/financial-accounting/), [E-Invoice module](/modules/e-invoice/), [POS module](/modules/pos/)
 - [Sales Workflow applets](/applets/sales-workflow/)

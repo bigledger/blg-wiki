@@ -19,9 +19,9 @@ GadgetSphere Sdn Bhd runs 22 consumer-electronics branches across Malaysia, plus
 
 Three ideas do all the work in this cycle. If any of them is new to you, read it first — two minutes each, and the rest of this page follows on its own.
 
-- **[Consolidated e-invoices](/modules-v2/e-invoice/concepts/consolidated-e-invoice/)** — how a month of counter receipts is reported in one document, and why a sale of RM 10,000 or more can never be one of them.
-- **[Pools and queues](/modules-v2/e-invoice/concepts/pools-and-queues/)** — which holding areas empty themselves and which wait for you. Steps 1 and 2 below are entirely about the ones that wait.
-- **[Validation and clearance](/modules-v2/e-invoice/concepts/validation-and-clearance/)** — what Submitted, Valid and Invalid actually mean, and why Submission History is not a status screen.
+- **[Consolidated e-invoices](/modules/e-invoice/concepts/consolidated-e-invoice/)** — how a month of counter receipts is reported in one document, and why a sale of RM 10,000 or more can never be one of them.
+- **[Pools and queues](/modules/e-invoice/concepts/pools-and-queues/)** — which holding areas empty themselves and which wait for you. Steps 1 and 2 below are entirely about the ones that wait.
+- **[Validation and clearance](/modules/e-invoice/concepts/validation-and-clearance/)** — what Submitted, Valid and Invalid actually mean, and why Submission History is not a status screen.
 
 The one you have to have straight before you start is the last: *Internal Submission → To IRB E-Invoice* carries the **live** LHDN status, and *Internal Submission → Submission History* does not. Work from the first one.
 

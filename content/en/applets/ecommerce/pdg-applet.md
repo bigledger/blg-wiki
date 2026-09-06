@@ -302,6 +302,6 @@ One workbook = one PDG for one *size–type* pair (the helper creates one `bl_in
 
 ## Related documentation
 
-- [Inventory module](/modules-v2/inventory/)
+- [Inventory module](/modules/inventory/)
 - [Organisation Applet](/applets/master-data/organisation-applet/) — Outlet Type / Outlet Size and Location Edit
 - [Doc Item Maintenance Applet](/applets/master-data/doc-item-maintenance-applet/) — Category Groups, Item Category mapping

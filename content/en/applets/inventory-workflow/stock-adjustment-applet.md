@@ -260,5 +260,5 @@ Amount = quantity × unit price. Documents dated in a `LOCK_TXN` or `LOCK_ALL` f
 
 ## Related documentation
 
-- [Inventory module](/modules-v2/inventory/) — [core concepts](/modules-v2/inventory/core-concepts/), [configuration](/modules-v2/inventory/configuration/), [best practices](/modules-v2/inventory/best-practices/).
+- [Inventory module](/modules/inventory/) — [core concepts](/modules/inventory/core-concepts/), [configuration](/modules/inventory/configuration/), [best practices](/modules/inventory/best-practices/).
 - [Inventory guides](/guides/inventory-guides/).

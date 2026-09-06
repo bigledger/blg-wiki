@@ -1,5 +1,6 @@
 ---
 title: "إدارة علاقات العملاء"
+draft: true  # unpublished 2026-09-07: its English original (content/en/modules/crm.md) was archived with the modules-tree consolidation — planning/specs/modules-tree-consolidation.md; retranslate from the rebuilt English module page
 description: "رؤية شاملة للعملاء مع إدارة شاملة لخط أنابيب المبيعات والعلاقات"
 weight: 30
 ---

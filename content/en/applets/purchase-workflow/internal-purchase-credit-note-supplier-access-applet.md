@@ -64,7 +64,7 @@ The applet is read-only by construction. It has no create screen, no save or del
 
 | Position | Document / applet | Why |
 |---|---|---|
-| Module | [Purchasing](/modules-v2/purchasing/), [Financial Accounting](/modules-v2/financial-accounting/) | Reduces what the buyer owes the supplier. |
+| Module | [Purchasing](/modules/purchasing/), [Financial Accounting](/modules/financial-accounting/) | Reduces what the buyer owes the supplier. |
 | The document | [Purchase Credit Note (Internal)](/applets/purchase-workflow/internal-purchase-credit-note-applet/) | Same rows. Creation, FINAL, VOID and contra all happen there. |
 | Upstream (access) | [Supplier](/applets/master-data/supplier-applet-1/) | The supplier's login must be linked to the supplier entity (`bl_fi_mst_entity_login_subject_link`, status `ACTIVE`). |
 | Usually raised from | [Purchase Return (Internal)](/applets/purchase-workflow/internal-purchase-return-applet/), [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/) | The Doc Link tab shows the documents the credit note was copied from and to. |
@@ -224,5 +224,5 @@ The backend does expose a supplier write path for generic documents (`PUT …/{d
 ## Related documentation
 
 - [Purchase Credit Note (Internal) applet](/applets/purchase-workflow/internal-purchase-credit-note-applet/)
-- [Purchasing module](/modules-v2/purchasing/)
+- [Purchasing module](/modules/purchasing/)
 - [Supplier applet](/applets/master-data/supplier-applet-1/)

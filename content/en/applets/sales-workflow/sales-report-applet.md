@@ -211,5 +211,5 @@ Not applicable. Reports never change documents, stock or the ledger. Amounts are
 
 ## Related documentation
 
-- [Sales & POS module](/modules-v2/pos/)
+- [Sales & POS module](/modules/pos/)
 - [Sales Workflow applets](/applets/sales-workflow/)

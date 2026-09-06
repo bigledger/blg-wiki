@@ -15,10 +15,10 @@ weight: 30
 ### وحدات تخطيط موارد المؤسسة الأساسية
 
 {{< cards >}}
-{{< card link="/ar/modules/financial-accounting/" title="المحاسبة المالية" icon="document-text" subtitle="نظام إدارة مالية ومحاسبة متكامل مع دعم العملات المتعددة" >}}
-{{< card link="/ar/modules/pos/" title="نقاط البيع" icon="shopping-cart" subtitle="حل نقاط بيع حديث لشركات التجزئة والضيافة" >}}
-{{< card link="/ar/modules/inventory/" title="إدارة المخزون" icon="cube" subtitle="تتبع المخزون في الوقت الفعلي وإدارة المستودعات" >}}
-{{< card link="/ar/modules/crm/" title="إدارة علاقات العملاء" icon="users" subtitle="رؤية شاملة للعملاء مع إدارة خط أنابيب المبيعات" >}}
+{{< card link="/modules/financial-accounting/" title="المحاسبة المالية" icon="document-text" subtitle="نظام إدارة مالية ومحاسبة متكامل مع دعم العملات المتعددة" >}}
+{{< card link="/modules/pos/" title="نقاط البيع" icon="shopping-cart" subtitle="حل نقاط بيع حديث لشركات التجزئة والضيافة" >}}
+{{< card link="/modules/inventory/" title="إدارة المخزون" icon="cube" subtitle="تتبع المخزون في الوقت الفعلي وإدارة المستودعات" >}}
+{{< card link="/modules/crm-digital/" title="إدارة علاقات العملاء" icon="users" subtitle="رؤية شاملة للعملاء مع إدارة خط أنابيب المبيعات" >}}
 {{< /cards >}}
 
 ## تكامل الوحدات
@@ -60,6 +60,6 @@ graph TB
 تحتاج مساعدة في اختيار الوحدات المناسبة لأعمالك؟ فريقنا هنا للمساعدة:
 
 - 📧 [الاتصال بالمبيعات](mailto:sales@bigledger.com)
-- 📚 [وثائق الوحدات](/docs/modules/)
+- 📚 [وثائق الوحدات](/modules/)
 - 🎥 [دروس الفيديو](/tutorials/)
 - 💬 [منتدى المجتمع](https://forum.bigledger.com)

@@ -1,4 +1,6 @@
 ---
+aliases:
+- /modules-v2/membership/use-cases/seasonal-campaigns/
 title: "Seasonal Campaigns and Promotions"
 description: "Time-limited campaigns, holiday promotions, temporary currencies, and event-based rewards"
 weight: 50

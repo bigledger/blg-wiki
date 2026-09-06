@@ -1,4 +1,6 @@
 ---
+aliases:
+- /modules-v2/membership/best-practices/program-design/
 title: "Program Design Best Practices"
 description: "Strategic principles and proven frameworks for designing effective loyalty programs that drive business results"
 weight: 10

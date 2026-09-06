@@ -1,4 +1,6 @@
 ---
+aliases:
+- /modules-v2/membership/core-concepts/points-expiry/
 title: "Points Expiry"
 description: "Points expiration rules, liability management, and engagement strategies"
 weight: 24

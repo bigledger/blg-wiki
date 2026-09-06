@@ -311,5 +311,5 @@ No inventory transaction and no COGS entry.
 ## Related documentation
 
 - [Credit Sales Workflow](/guides/sales-guides/credit-sales-workflow/)
-- [Financial Accounting module](/modules-v2/financial-accounting/), [E-Invoice module](/modules-v2/e-invoice/)
+- [Financial Accounting module](/modules/financial-accounting/), [E-Invoice module](/modules/e-invoice/)
 - [Sales Workflow applets](/applets/sales-workflow/)

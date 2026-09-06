@@ -272,5 +272,5 @@ The signums are fixed by `InternalCustomerConsignmentsOutDataConsistencyObject` 
 ## Related documentation
 
 - [Stock Management guide](/guides/inventory-guides/stock-management/)
-- [Inventory module](/modules-v2/inventory/)
-- [POS module › related applets](/modules-v2/pos/related-applets/)
+- [Inventory module](/modules/inventory/)
+- [POS module › related applets](/modules/pos/related-applets/)

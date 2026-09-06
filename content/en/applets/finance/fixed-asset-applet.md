@@ -593,7 +593,7 @@ finalising a purchase invoice creates no assets.
 
 ## Related documentation
 
-- [Financial Accounting module](/modules-v2/financial-accounting/)
+- [Financial Accounting module](/modules/financial-accounting/)
 - [Ledger and Journal](/applets/finance/ledger-and-journal-applet/)
 - [Chart of Account](/applets/master-data/chart-of-account-applet/)
 - [Financial Report](/applets/finance/financial-report-applet/)

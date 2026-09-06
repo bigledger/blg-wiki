@@ -42,7 +42,7 @@ toc: false
   {{< hextra/feature-card title="Close the books" subtitle="Journals, bank reconciliation, month-end and financial reports." link="/guides/accounting-guides/" icon="book-open" >}}
   {{< hextra/feature-card title="Submit e-Invoices" subtitle="LHDN MyInvois and PEPPOL: setup, submission, validation errors and fixes." link="/guides/einvoice-guides/" icon="document-text" >}}
   {{< hextra/feature-card title="Manage stock" subtitle="Stock balance, transfers between branches, stock take and adjustments." link="/guides/inventory-guides/" icon="cube" >}}
-  {{< hextra/feature-card title="Run the point of sale" subtitle="Terminals, cashier reports, settlement and end-of-day." link="/modules-v2/pos/" icon="cash" >}}
+  {{< hextra/feature-card title="Run the point of sale" subtitle="Terminals, cashier reports, settlement and end-of-day." link="/modules/pos/" icon="cash" >}}
 {{< /hextra/feature-grid >}}
 
 {{< section-title >}}Guides by role{{< /section-title >}}
@@ -56,7 +56,7 @@ toc: false
 
 <div class="hx:w-full">
 {{< cards cols="3" >}}
-  {{< card link="/modules-v2/" title="Modules" subtitle="What each module does and which applets it groups — Financial Accounting, Purchasing, POS, E-Invoice and more." icon="view-grid" >}}
+  {{< card link="/modules/" title="Modules" subtitle="What each module does and which applets it groups — Financial Accounting, Purchasing, POS, E-Invoice and more." icon="view-grid" >}}
   {{< card link="/applets/" title="Applets" subtitle="Field-by-field reference for every applet: screens, settings, permissions and GL postings." icon="puzzle" >}}
   {{< card link="/developers/" title="Developers" subtitle="REST API, SDKs, webhooks and MCP — connect systems and AI agents to BigLedger." icon="code" >}}
 {{< /cards >}}

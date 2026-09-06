@@ -1,4 +1,9 @@
-# GET Membership Points Transactions by Criteria
+---
+aliases:
+- /modules-v2/membership/api-reference/get-membership-points-transactions-by-criteria/
+title: "GET Membership Points Transactions by Criteria"
+description: "Membership API — GET Membership Points Transactions by Criteria: endpoint, headers, request body and a worked response."
+---
 
 ## Endpoint
 

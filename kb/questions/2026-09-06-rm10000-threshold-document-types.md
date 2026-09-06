@@ -32,7 +32,7 @@ refund note and sales return. A ≥RM 10,000 document of one of those types, car
 - If it is not correct, which types should join `ENFORCE_INDIVIDUAL_DOCS`, and what happens to
   documents already consolidated the other way?
 - Either way: what should the wiki say? Today
-  `content/en/modules-v2/e-invoice/concepts/consolidated-e-invoice.md` and
+  `content/en/modules/e-invoice/concepts/consolidated-e-invoice.md` and
   `content/en/guides/einvoice-guides/einvoice-pools-and-routing.md` describe the divert without
   naming the two types, which reads as broader than the code is.
 

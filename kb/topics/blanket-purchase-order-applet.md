@@ -46,5 +46,5 @@ A long-term purchase agreement with one supplier: validity window, items, agreed
 ## Wiki impact
 
 - Old page's Maximum Amount / spend cap, maximum quantity per line, Settlement tab, Department on create, "releases" as a feature, and the AI infographic (`static/images/blanket-purchase-order-applet/blanket-purchase-order-overview.png`, now unreferenced) are gone.
-- `modules-v2/purchasing/related-applets` and `guides/roles/procurement-manager.md` mention blanket POs — check they do not promise spend caps.
+- `modules/purchasing/related-applets` and `guides/roles/procurement-manager.md` mention blanket POs — check they do not promise spend caps.
 - PDN page updated this run for the gear (11 keys previously "no control" are gear-settable).

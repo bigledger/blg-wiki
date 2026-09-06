@@ -731,7 +731,7 @@ Expand your advanced pricing expertise:
 - [Pricing Schemes & Strategy Management](/user-guide/daily-tasks/pricing-scheme/) - Foundation pricing template system
 - [Price Book Management & Customer Pricing](/user-guide/daily-tasks/price-book/) - Core price list management and customer assignment
 - [Item Maintenance](/user-guide/basic-operations/item-maintenance/) - Individual item pricing and management
-- [Customer Management](/modules/crm/) - Customer relationship and pricing integration
+- [Digital CRM Module](/modules/crm-digital/) - Customer relationship and pricing integration
 - [POS Configuration](/modules/pos/) - Retail pricing implementation and integration
 - [E-Commerce Integration](/modules/ecommerce/) - Multi-channel pricing synchronization
 

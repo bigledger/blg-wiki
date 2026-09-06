@@ -17,9 +17,9 @@ GadgetSphere Sdn Bhd sells across 22 branches, so its customer list runs from wa
 
 ## The two kinds of failure
 
-An e-invoice passes [two checks, not one](/modules-v2/e-invoice/concepts/validation-and-clearance/) — BigLedger's own completeness check first, LHDN's content check second. Both produce the same complaint from a distance, "my e-invoice isn't at LHDN", and they need completely different fixes. So check the status before you touch anything:
+An e-invoice passes [two checks, not one](/modules/e-invoice/concepts/validation-and-clearance/) — BigLedger's own completeness check first, LHDN's content check second. Both produce the same complaint from a distance, "my e-invoice isn't at LHDN", and they need completely different fixes. So check the status before you touch anything:
 
-- **Held in a [pool](/modules-v2/e-invoice/concepts/pools-and-queues/)** — a mandatory field was missing, so the document was never sent. Nothing reached LHDN and nothing will until you complete it. [Pools & Submission Routing](/guides/einvoice-guides/einvoice-pools-and-routing/) says which pool and why.
+- **Held in a [pool](/modules/e-invoice/concepts/pools-and-queues/)** — a mandatory field was missing, so the document was never sent. Nothing reached LHDN and nothing will until you complete it. [Pools & Submission Routing](/guides/einvoice-guides/einvoice-pools-and-routing/) says which pool and why.
 - **Submitted, then marked Invalid** — everything mandatory was there, LHDN accepted the submission and rejected the content. There is an LHDN error code on the record, and that code is what tells you which of your records to correct.
 
 {{< figure src="/images/my-e-invoice-admin-applet/batch-pool-validation-error.png" alt="A pooled document with a Validation Error panel listing the counterparty fields that are missing" caption="A document held before submission: the Validation Error panel names every field that is missing. Nothing reached LHDN, and nothing will until these are filled in." >}}

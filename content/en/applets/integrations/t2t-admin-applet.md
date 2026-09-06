@@ -307,4 +307,4 @@ Adding and removing members writes ordinary team-membership rows.
 
 - [Doc Item Maintenance applet](/applets/master-data/doc-item-maintenance-applet/)
 - [Organization applet](/applets/master-data/organisation-applet/)
-- [Core module](/modules-v2/core/)
+- [Core module](/modules/core/)

@@ -369,4 +369,4 @@ It is one-way: nothing in the applet moves a document back to draft.
 
 ## Related documentation
 
-- [Sales & CRM module](/modules-v2/crm-digital/)
+- [Sales & CRM module](/modules/crm-digital/)

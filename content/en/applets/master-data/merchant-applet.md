@@ -394,4 +394,4 @@ It **reads** `bl_pgw_monthly_merchant_txn_summary_report_line` (`…/pgw/merchan
 
 - [Master Data applets](/applets/master-data/)
 - [Entity Maintenance](/applets/master-data/entity-applet/) — the shared entity model this applet edits
-- [E-Commerce module](/modules-v2/ecommerce/) and [E-Invoice module](/modules-v2/e-invoice/)
+- [E-Commerce module](/modules/ecommerce/) and [E-Invoice module](/modules/e-invoice/)

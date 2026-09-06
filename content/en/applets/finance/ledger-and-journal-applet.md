@@ -68,7 +68,7 @@ A short introduction:
 | Downstream | [Financial Report](/applets/finance/financial-report-applet/) | Reads the posted balances (after month-end processing) for Trial Balance, P&L and Balance Sheet |
 | Downstream | [Bank Reconciliation](/applets/finance/bank-reconciliation-applet/) | Uses the cashbook lines that accompany settlement journals |
 
-Module: [Financial Accounting](/modules-v2/financial-accounting/).
+Module: [Financial Accounting](/modules/financial-accounting/).
 
 ## Screens and menus
 
@@ -269,4 +269,4 @@ Balances shown in the Ledger, Sub Ledger and Financial Report applets are derive
 - [Journal entries guide](/guides/accounting-guides/journal-entries/)
 - [Chart of accounts setup](/guides/accounting-guides/chart-of-accounts-setup/)
 - [Financial reporting guide](/guides/accounting-guides/financial-reporting/)
-- [Financial Accounting module](/modules-v2/financial-accounting/)
+- [Financial Accounting module](/modules/financial-accounting/)

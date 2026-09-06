@@ -15,19 +15,18 @@ BigLedger 提供完整的集成式业务管理模块套件，旨在简化运营�
 ### 核心 ERP 模块
 
 {{< cards >}}
-{{< card link="/zh/modules/financial-accounting/" title="财务会计" icon="document-text" subtitle="具备多币种支持的完整财务管理和会计系统" >}}
-{{< card link="/zh/modules/pos/" title="销售终端系统" icon="shopping-cart" subtitle="适用于零售和酒店业务的现代POS解决方案" >}}
-{{< card link="/zh/modules/inventory/" title="库存管理" icon="cube" subtitle="实时库存跟踪和仓库管理" >}}
-{{< card link="/zh/modules/crm/" title="客户关系管理" icon="users" subtitle="360度客户视图与销售管道管理" >}}
+{{< card link="/modules/financial-accounting/" title="财务会计" icon="document-text" subtitle="具备多币种支持的完整财务管理和会计系统" >}}
+{{< card link="/modules/pos/" title="销售终端系统" icon="shopping-cart" subtitle="适用于零售和酒店业务的现代POS解决方案" >}}
+{{< card link="/modules/inventory/" title="库存管理" icon="cube" subtitle="实时库存跟踪和仓库管理" >}}
+{{< card link="/modules/crm-digital/" title="客户关系管理" icon="users" subtitle="360度客户视图与销售管道管理" >}}
 {{< /cards >}}
 
 ### 运营模块
 
 {{< cards >}}
-{{< card link="procurement" title="采购管理" icon="shopping-bag" subtitle="简化采购和供应商管理" >}}
-{{< card link="manufacturing" title="制造管理" icon="cog" subtitle="生产计划和车间控制" >}}
-{{< card link="hr" title="人力资源" icon="user-group" subtitle="完整的人力资源和薪资管理解决方案" >}}
-{{< card link="projects" title="项目管理" icon="folder-open" subtitle="项目规划、跟踪和资源分配" >}}
+{{< card link="/modules/purchasing/" title="采购管理" icon="shopping-bag" subtitle="简化采购和供应商管理" >}}
+{{< card link="/modules/manufacturing/" title="制造管理" icon="cog" subtitle="生产计划和车间控制" >}}
+{{< card link="/modules/hr-payroll/" title="人力资源" icon="user-group" subtitle="完整的人力资源和薪资管理解决方案" >}}
 {{< /cards >}}
 
 ## 模块集成
@@ -74,6 +73,6 @@ graph TB
 需要帮助为您的业务选择合适的模块？我们的团队随时为您提供帮助：
 
 - 📧 [联系销售](mailto:sales@bigledger.com)
-- 📚 [模块文档](/docs/modules/)
+- 📚 [模块文档](/modules/)
 - 🎥 [视频教程](/tutorials/)
 - 💬 [社区论坛](https://forum.bigledger.com)

@@ -1,130 +1,91 @@
 ---
+aliases:
+- /modules/membership/getting-started/
+- /modules/membership/integration/
+- /modules-v2/membership/
 title: "Membership Module"
-description: "Comprehensive loyalty and membership management system with flexible points programs, tiered memberships, and reward mechanisms"
-weight: 80
-bookCollapseSection: false
+description: "Customer loyalty, tiers, points, vouchers, and member engagement integrated with POS, sales, e-commerce, and finance."
+weight: 45
 ---
 
-The Membership Module in BigLedger provides a complete loyalty and membership management system designed for businesses that want to build lasting customer relationships through structured reward programs. This module supports sophisticated loyalty mechanics including multiple points currencies, flexible membership tiers, automated points expiry, and diverse reward redemption options.
+The **Membership Module** enables businesses to identify customers, reward repeat behavior, apply member-specific benefits, and manage loyalty liabilities in a controlled, auditable way.
 
-## What is the Membership Module?
+## Architecture & Data Flow
 
-The Membership Module enables businesses to create and manage customer loyalty programs with enterprise-grade features. Unlike simple point-tracking systems, this module provides a comprehensive framework for:
+Membership sits between your customer master data in Core and your transaction channels (POS, Sales Workflow, E-Commerce). It does not create physical stock or post directly to GL by itself — it attaches a reward layer on top of your existing business processes.
 
-- **Multi-membership management**: One customer can hold multiple memberships simultaneously
-- **Flexible points systems**: Support for multiple points currencies with conversion mechanics
-- **Tiered progression**: Member classes with automatic tier upgrades based on business rules
-- **Diverse reward mechanisms**: Three distinct redemption pathways (Pricing Schemes, Pricebooks, Vouchers)
-- **Points lifecycle management**: Configurable expiry rules for liability management
+| Architecture Layer | System Component | Primary Role in Loyalty Operations |
+|-------------------|------------------|------------------------------------|
+| **Core Master Data** | Customer & Pricebooks | Customer master profiles, shipping addresses, and member tier pricebooks. |
+| **Membership Engine** | [Membership Admin Applet](/applets/membership/membership-admin-applet/) | Central management of member classes, custom tags, points currencies, and conversion rates. |
+| **Retail Checkout** | [POS General Applet](/applets/sales-workflow/pos-general-applet/) | Fast-paced counter member lookup, automated point accruals, and instant voucher redemptions. |
+| **Campaign Vouchers** | [Voucher Management Applet](/applets/membership/voucher-management-applet/) | Promotional ticket serial generation, discount campaigns, and redemption validation logs. |
+| **Financial Accounting** | General Ledger Integration | Real-time tracking of unredeemed points monetary liabilities and deferred revenue allocations. |
 
-## Key Capabilities
+---
 
-### Customer-Centric Design
+## Core Membership Applets
 
-The module recognizes that customers may participate in multiple programs or hold different membership types. For example, a single customer might have:
-- A standard loyalty membership earning general points
-- A premium subscription with exclusive benefits
-- A seasonal program membership with time-limited rewards
+| Applet | What it does |
+|--------|--------------|
+| [Membership Admin Applet](/applets/membership/membership-admin-applet/) | Central control hub — manage profiles, tier classes, labels, point currencies, conversion rates, manual adjustments, and reports. |
+| [Voucher Management Applet](/applets/membership/voucher-management-applet/) | Campaign management — discount vouchers, serial ticket tracking, scanned redemption events, and recurring reward cycles. |
+| [OCR Cash Bill Applet](/applets/membership/ocr-cash-bill-applet/) | Receipt claims — AI-assisted scanning and automated point posting for offline receipt submissions. |
 
-### Enterprise Points Management
+---
 
-Support for multiple points currencies allows sophisticated loyalty economics:
-- Separate currencies for different product categories
-- Partner program integration with currency conversion
-- Points-to-points and points-to-cash redemption
-- Automated expiry rules for financial liability control
+## Three Concepts Every Team Must Understand
 
-### Flexible Tier Structures
+Confusing these three outcomes causes most operational issues at checkout:
 
-Member classes provide the foundation for tiered programs with:
-- Automatic progression based on spending or points accumulation
-- Tier-specific pricing and benefits
-- Member labels for advanced segmentation
-- Real-time tier status tracking
+| Concept | System Action | Configured By |
+|---------|---------------|---------------|
+| **Member Pricing** | Item unit price changes automatically at checkout | Marketing via Pricebook setup |
+| **Points Earning** | Member's balance increases **after** sale completion | Marketing via earning rules |
+| **Points Redemption** | Member's existing points balance reduces the bill | Member request at checkout |
 
-## Core Components
+---
 
-The Membership Module integrates with several key applets:
+## Quick Implementation Guide (5-Step Launch)
 
-- **[Membership Program Applet](/applets/membership-program/)**: Central configuration for program rules
-- **[Membership Admin Console](/applets/membership/membership-admin-applet/)**: Operational management interface
-- **[Membership Points Currency](/applets/membership-points-currency/)**: Points currency configuration
-- **[Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/)**: Member-specific pricing through FI-ITEM
-- **Pricebook Applet**: Tier-based product pricing
-- **Voucher Maintenance**: Reward voucher creation and redemption
+Follow these steps to get your first loyalty program running smoothly:
 
-## Common Use Cases
+### Step 1: Create One Points Currency
+In [Membership Admin Applet](/applets/membership/membership-admin-applet/#points-currency-management), create a single starter currency (e.g. Code: `PTS`, Name: `Reward Points`). Keep it active and simple.
 
-### Retail Loyalty Programs
+### Step 2: Set Up Tiers & Labels
+Define one default member class (e.g., `STANDARD`) and one label for testing (e.g., `NEWSLETTER`).
+> [!TIP]
+> Keep the first launch simple. Complex multi-tier structures and point expiration rules can be added once counter operations are stable.
 
-Multi-tier loyalty with points earning on purchases, birthday bonuses, and tier-based discounts. Members progress through Bronze, Silver, Gold, and Platinum tiers based on annual spending.
+### Step 3: Configure Conversion Rate
+Set a simple points-to-money rule (e.g., 100 points = RM 1.00) in **PTS to CCY Config**.
+> [!WARNING]
+> If store staff cannot explain the redemption rule in one sentence, it is too complex for a first rollout.
 
-### Subscription-Based Memberships
+### Step 4: Test Counter Operations
+Open the [POS General Applet](/applets/sales-workflow/pos-general-applet/), identify a test member, process a sale, and verify points post to the transaction history.
 
-Monthly or annual memberships with fixed benefits, exclusive pricing, and points earning for additional rewards beyond the base subscription value.
+### Step 5: Establish Support & Reversal Procedures
+Train support teams to handle adjustments in [Membership Admin Applet](/applets/membership/membership-admin-applet/). Reversals should always use opposite-value entries (e.g. `-50` points) to maintain a complete audit trail.
 
-### Partner Ecosystems
+---
 
-Network of businesses sharing a common loyalty currency, with points transferable between partners and centralized member management.
+## Module Learning Roadmap
 
-### Service Industry Programs
+Follow the documentation in this sequence to design and deploy an enterprise loyalty program:
 
-Professional services loyalty with points earned on billable hours, redeemable for discounted services, priority scheduling, or partner benefits.
+1. **[Core Concepts](core-concepts/)** *(Next Step)* — Understand the multi-dimensional architecture, customer vs. member models, and redemption paths.
+2. **[Configuration](configuration/)** — Step-by-step setup guides for classes, points, conversion rates, and vouchers.
+3. **[Use Cases](use-cases/)** — Real-world reference architectures for retail and F&B programs.
+4. **[API Reference](api-reference/)** — Direct reference link to official developer membership APIs.
+5. **[Best Practices](best-practices/)** — Operational recommendations for tier retention and points expiration rules.
+6. **[Reports & Analytics](reports/)** — Scenario guide for choosing the best loyalty and points liability reports.
+7. **[Related Applets](related-applets/)** — Complete guide to native applet dependencies across the BigLedger ecosystem.
 
-## Integration Points
+---
 
-The Membership Module integrates seamlessly with:
-
-- **Sales & CRM Module**: Automatic points earning on transactions
-- **POS Module**: Real-time points redemption at checkout
-- **E-Commerce Module**: Online account management and points tracking
-- **Financial Accounting**: Points liability tracking and redemption expense recording
-
-## Getting Started
-
-To implement a membership program in BigLedger:
-
-1. **Configure Member Classes**: Define your tier structure and progression rules
-2. **Set Up Points Currencies**: Create currency types aligned with your program economics
-3. **Define Earning Rules**: Establish how customers accumulate points
-4. **Configure Rewards**: Set up pricing schemes, pricebooks, or vouchers for redemption
-5. **Implement Expiry Policies**: Configure points expiration for liability management
-6. **Test Customer Journeys**: Validate enrollment, earning, and redemption flows
-
-## Section Contents
-
-Explore the detailed documentation organized into these sections:
-
-{{< cards >}}
-  {{< card link="/modules/membership/core-concepts/" title="Core Concepts" subtitle="Understand the architectural principles and key terminology of the Membership Module" >}}
-  {{< card link="setup-configuration" title="Setup & Configuration" subtitle="Step-by-step guides for implementing and configuring membership programs" >}}
-  {{< card link="operations" title="Operations" subtitle="Day-to-day management of memberships, points, and member interactions" >}}
-  {{< card link="/modules/membership/use-cases/" title="Use Cases & Examples" subtitle="Real-world implementation scenarios across different industries" >}}
-{{< /cards >}}
-
-## Best Practices
-
-### Program Design
-
-- Start with a simple tier structure and add complexity based on customer engagement
-- Ensure earning rates are generous enough to drive behavior change
-- Set redemption thresholds that balance attainability with program value
-- Design expiry policies that encourage engagement without frustrating customers
-
-### Technical Implementation
-
-- Configure points currencies before creating member classes
-- Test all redemption mechanisms thoroughly before launch
-- Implement proper financial controls for points liability tracking
-- Set up automated reports for program performance monitoring
-
-### Customer Experience
-
-- Communicate tier benefits clearly to drive aspiration
-- Provide transparent points tracking and balance visibility
-- Send automated notifications for tier changes and points expiry
-- Make redemption options diverse and valuable to different customer segments
-
-## Support and Resources
-
-For implementation assistance and advanced configuration guidance, refer to the detailed documentation in each section or contact BigLedger support.
+{{< callout type="info" >}}
+**Ready to dive deeper into system architecture?**  
+Proceed to **[Core Concepts →](core-concepts/)** to understand how BigLedger structures member identity and reward economics.
+{{< /callout >}}

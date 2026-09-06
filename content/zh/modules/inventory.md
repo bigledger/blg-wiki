@@ -1,5 +1,6 @@
 ---
 title: "库存管理"
+draft: true  # unpublished 2026-09-07: its English original (content/en/modules/inventory.md) was archived with the modules-tree consolidation — planning/specs/modules-tree-consolidation.md; retranslate from the rebuilt English module page
 description: "实时库存跟踪、仓库管理和供应链优化"
 weight: 40
 ---

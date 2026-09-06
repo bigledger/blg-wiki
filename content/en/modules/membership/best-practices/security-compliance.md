@@ -1,4 +1,6 @@
 ---
+aliases:
+- /modules-v2/membership/best-practices/security-compliance/
 title: "Security and Compliance"
 description: "Account security, fraud prevention, privacy compliance, and program integrity protection"
 weight: 30

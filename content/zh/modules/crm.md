@@ -1,5 +1,6 @@
 ---
 title: "客户关系管理 (CRM)"
+draft: true  # unpublished 2026-09-07: its English original (content/en/modules/crm.md) was archived with the modules-tree consolidation — planning/specs/modules-tree-consolidation.md; retranslate from the rebuilt English module page
 description: "360度客户视图，完整的销售管道和关系管理"
 weight: 30
 ---

@@ -114,7 +114,7 @@ Read the [Lifecycle](#lifecycle-and-effects) section before relying on the accou
 
 ## Where it fits
 
-Modules: [Purchasing](/modules-v2/purchasing/), [Financial Accounting](/modules-v2/financial-accounting/), [E-Invoice](/modules-v2/e-invoice/).
+Modules: [Purchasing](/modules/purchasing/), [Financial Accounting](/modules/financial-accounting/), [E-Invoice](/modules/e-invoice/).
 
 | Direction | Document / applet | Relationship |
 |---|---|---|
@@ -374,4 +374,4 @@ What FINAL does once the checks pass: applies `date_txn_logic` (L372–L382), se
 ## Related documentation
 
 - [MyInvois setup](/guides/einvoice-guides/myinvois-setup/) and [e-Invoice validation](/guides/einvoice-guides/einvoice-validation/) — the refund-note rules LHDN applies (original document reference, self-billed types).
-- [Purchasing module](/modules-v2/purchasing/), [Financial Accounting module](/modules-v2/financial-accounting/), [E-Invoice module](/modules-v2/e-invoice/).
+- [Purchasing module](/modules/purchasing/), [Financial Accounting module](/modules/financial-accounting/), [E-Invoice module](/modules/e-invoice/).

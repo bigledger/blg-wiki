@@ -1,4 +1,6 @@
 ---
+aliases:
+- /modules-v2/membership/configuration/member-setup/
 title: "Member Setup"
 description: "Creating and organizing member records, including classes, labels, and bulk import"
 weight: 10

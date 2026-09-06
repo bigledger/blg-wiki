@@ -406,4 +406,4 @@ Each discrepancy line drills into the documents behind it — the generic-docume
 - [MyInvois Setup Guide](/guides/einvoice-guides/myinvois-setup/) — company registration, intermediary authorisation and first submission
 - [The Month-End E-Invoice Cycle](/guides/einvoice-guides/einvoice-month-end/) — the 1st-to-7th routine: pools, exports, the Invalid list and the monthly tally
 - [Cancelling and Correcting a Validated E-Invoice](/guides/einvoice-guides/einvoice-cancel-and-correct/) — the 72-hour window, the rejection-request workflow and the credit-note path
-- [E-Invoice module](/modules-v2/e-invoice/) — module overview and related applets
+- [E-Invoice module](/modules/e-invoice/) — module overview and related applets

@@ -116,7 +116,7 @@ The applet is a single-document applet: one listing with bulk FINAL / VOID / pri
 | Downstream | [Stock Balance](/applets/inventory-workflow/stock-balance-applet/), [Stock Report](/applets/inventory-workflow/stock-report-applet/) | Show the quantity arriving at the location and its effect on moving-average cost |
 | Downstream | [Creditor Report](/applets/finance/creditor-report-applet/) | Lists the GRN among supplier-side documents (ARAP columns on the listing) |
 
-Modules: [Purchasing](/modules-v2/purchasing/), [Inventory](/modules-v2/inventory/).
+Modules: [Purchasing](/modules/purchasing/), [Inventory](/modules/inventory/).
 
 ## Screens and menus
 
@@ -342,4 +342,4 @@ Known housekeeping: the applet is on Angular 14 (migration issue closed by the t
 ## Related documentation
 
 - [Consignment Purchasing guide](/guides/purchasing-guides/consignment-purchasing/) — the end-to-end process the GRN belongs to.
-- [Purchasing module](/modules-v2/purchasing/) and [Inventory module](/modules-v2/inventory/).
+- [Purchasing module](/modules/purchasing/) and [Inventory module](/modules/inventory/).

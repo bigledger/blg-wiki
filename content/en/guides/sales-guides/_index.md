@@ -287,7 +287,7 @@ Sales workflows integrate with multiple BigLedger modules:
 - [Sales Payment Collection](/user-guide/daily-tasks/sales-payment-collection/)
 
 ### Module Documentation
-- [Sales & CRM Module](/modules/sales-crm/)
+- [Sales & POS Module](/modules/pos/) · [Digital CRM Module](/modules/crm-digital/)
 - [Inventory Management](/modules/inventory/)
 - [Financial Accounting](/modules/financial-accounting/)
 

@@ -15,10 +15,10 @@ Seni bina modular kami membolehkan anda memilih dan melaksanakan hanya fungsi ya
 ### Modul ERP Teras
 
 {{< cards >}}
-{{< card link="/ms/modules/financial-accounting/" title="Perakaunan Kewangan" icon="document-text" subtitle="Sistem pengurusan kewangan dan perakaunan lengkap dengan sokongan multi-mata wang" >}}
-{{< card link="/ms/modules/pos/" title="Tempat Jualan" icon="shopping-cart" subtitle="Penyelesaian POS moden untuk perniagaan runcit dan hospitaliti" >}}
-{{< card link="/ms/modules/inventory/" title="Pengurusan Inventori" icon="cube" subtitle="Penjejakan inventori masa nyata dan pengurusan gudang" >}}
-{{< card link="/ms/modules/crm/" title="Pengurusan Hubungan Pelanggan" icon="users" subtitle="Pandangan 360 darjah pelanggan dengan pengurusan pipeline jualan" >}}
+{{< card link="/modules/financial-accounting/" title="Perakaunan Kewangan" icon="document-text" subtitle="Sistem pengurusan kewangan dan perakaunan lengkap dengan sokongan multi-mata wang" >}}
+{{< card link="/modules/pos/" title="Tempat Jualan" icon="shopping-cart" subtitle="Penyelesaian POS moden untuk perniagaan runcit dan hospitaliti" >}}
+{{< card link="/modules/inventory/" title="Pengurusan Inventori" icon="cube" subtitle="Penjejakan inventori masa nyata dan pengurusan gudang" >}}
+{{< card link="/modules/crm-digital/" title="Pengurusan Hubungan Pelanggan" icon="users" subtitle="Pandangan 360 darjah pelanggan dengan pengurusan pipeline jualan" >}}
 {{< /cards >}}
 
 ## Integrasi Modul
@@ -59,6 +59,6 @@ graph TB
 Memerlukan bantuan untuk memilih modul yang sesuai untuk perniagaan anda? Pasukan kami sedia membantu:
 
 - 📧 [Hubungi Jualan](mailto:sales@bigledger.com)
-- 📚 [Dokumentasi Modul](/docs/modules/)
+- 📚 [Dokumentasi Modul](/modules/)
 - 🎥 [Tutorial Video](/tutorials/)
 - 💬 [Forum Komuniti](https://forum.bigledger.com)

@@ -1,4 +1,9 @@
-# PUT Update Member
+---
+aliases:
+- /modules-v2/membership/api-reference/put-update-member/
+title: "PUT Update Member"
+description: "Membership API — PUT Update Member: endpoint, headers, request body and a worked response."
+---
 
 ## Endpoint
 

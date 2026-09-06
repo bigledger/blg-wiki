@@ -249,5 +249,5 @@ Not applicable. Records are ACTIVE / INACTIVE (members can additionally be suspe
 
 ## Related documentation
 
-- [Membership module](/modules-v2/membership/)
+- [Membership module](/modules/membership/)
 - [Membership applets](/applets/membership/)

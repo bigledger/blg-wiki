@@ -250,5 +250,5 @@ Posting proof block: not applicable — the applet has no server document type, 
 ## Related documentation
 
 - [Chart of Accounts setup guide](/guides/accounting-guides/chart-of-accounts-setup/) — where the Forex Gain / Forex Loss default accounts are assigned.
-- [Financial Accounting module](/modules-v2/financial-accounting/) and [Purchasing module](/modules-v2/purchasing/).
+- [Financial Accounting module](/modules/financial-accounting/) and [Purchasing module](/modules/purchasing/).
 - [Applets and Workflows catalogue](/applets-workflows/#-forex-applets).

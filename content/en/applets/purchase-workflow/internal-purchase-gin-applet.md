@@ -111,7 +111,7 @@ Read this before anything else: in the backend the Purchase GIN is a **zero-move
 
 ## Where it fits
 
-Module: [Purchasing](/modules-v2/purchasing/). The GIN sits between receiving and settlement, but it moves neither stock nor money.
+Module: [Purchasing](/modules/purchasing/). The GIN sits between receiving and settlement, but it moves neither stock nor money.
 
 | Direction | Document | Relationship to the Purchase GIN |
 |---|---|---|
@@ -309,6 +309,6 @@ What FINAL actually does (`GenericDocumentService.updatePostingStatus`, FINAL br
 
 ## Related documentation
 
-- [Purchasing module](/modules-v2/purchasing/)
+- [Purchasing module](/modules/purchasing/)
 - [Purchase Return (Internal)](/applets/purchase-workflow/internal-purchase-return-applet/) — for the document that actually moves stock and debits the supplier
 - [Standard procurement workflow](/guides/purchasing-guides/standard-procurement-workflow/) — where GRN, invoice and return sit; the GIN is an optional dispatch record alongside it

@@ -123,7 +123,7 @@ It is opened by purchasing and inventory planners. Upstream are the item master 
 
 | | Applet / process | Why |
 |---|---|---|
-| Module | [Inventory](/modules-v2/inventory/), [Purchasing](/modules-v2/purchasing/) | Stock-driven purchase and transfer generation |
+| Module | [Inventory](/modules/inventory/), [Purchasing](/modules/purchasing/) | Stock-driven purchase and transfer generation |
 | Upstream | [Inventory Item Maintenance](/applets/master-data/inv-item-maintenance-applet/) | Per-location **minimum / maximum quantity** on the location stock balance row — the only numbers the reorder formula uses |
 | Upstream | [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) → Entity Pricing | Supplier link per item: **supplier priority**, purchase unit price, min / max order quantity, lead time |
 | Upstream | [Supplier](/applets/master-data/supplier-applet-1/) | The supplier must be an active entity of type supplier, otherwise its pricing link is ignored |
@@ -362,7 +362,7 @@ Templates, events and runs have only `ACTIVE` / `INACTIVE` statuses; there is no
 
 ## Related documentation
 
-- [Inventory module](/modules-v2/inventory/) · [Purchasing module](/modules-v2/purchasing/)
+- [Inventory module](/modules/inventory/) · [Purchasing module](/modules/purchasing/)
 - [Stock Balance overview](/applets/inventory-workflow/related-applets-stock-balance/) — where the min / max levels live and how balances are maintained
 - [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) — what happens to a generated PO
 - [Stock Transfer](/applets/inventory-workflow/stock-transfer-applet/) — what a FINAL outbound transfer does to stock

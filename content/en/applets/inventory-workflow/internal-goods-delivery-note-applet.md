@@ -118,7 +118,7 @@ The applet was cloned from the Sales Credit Note applet. That is why the create/
 | Downstream | — | No document type in the backend's connector lists consumes a Goods Delivery Note; nothing knocks it off. |
 | Master data | [Customer Maintenance](/applets/master-data/customer-maintenance-applet/), [Employee](/applets/master-data/employee-applet/), [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/), [Organisation](/applets/master-data/organisation-applet/), [Membership Admin](/applets/membership/membership-admin-applet/) | Customer (Account tab), sales agent and member card (Main Details), items (Lines), company / branch / location (Main Details). |
 
-Module: [Inventory](/modules-v2/inventory/).
+Module: [Inventory](/modules/inventory/).
 
 ## Screens and menus
 
@@ -316,6 +316,6 @@ The applet repository's own issues (#1 deployment-script clean-up, #3 import err
 
 ## Related documentation
 
-- [Inventory module](/modules-v2/inventory/)
+- [Inventory module](/modules/inventory/)
 - [Standard sales workflow](/guides/sales-guides/standard-sales-workflow/) and [Partial delivery workflow](/guides/sales-guides/partial-delivery-workflow/) — where delivery documents sit in the sales flow (these guides do not yet cover the Goods Delivery Note itself).
 - [Sales Order (Internal)](/applets/sales-workflow/internal-sales-order-applet/), [Outbound Delivery Order (Internal)](/applets/sales-workflow/internal-outbound-delivery-order-applet/), [Sales GIN (Stock Out)](/applets/sales-workflow/internal-sales-gin-stock-out-applet/)

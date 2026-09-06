@@ -137,7 +137,7 @@ Pick one pair per company and configure the Knock Off Configuration accordingly;
 
 ## Where it fits
 
-Modules: [Purchasing](/modules-v2/purchasing/) and inventory.
+Modules: [Purchasing](/modules/purchasing/) and inventory.
 
 | Direction | Document / applet | Relationship |
 |---|---|---|
@@ -363,7 +363,7 @@ What FINAL actually does (`GenericDocumentService.updatePostingStatus`, FINAL br
 
 ## Related documentation
 
-- [Purchasing module](/modules-v2/purchasing/)
+- [Purchasing module](/modules/purchasing/)
 - [Purchase Invoice No Stock In (Internal)](/applets/purchase-workflow/internal-purchase-invoice-no-stock-in-applet/) — the invoice leg of this pair
 - [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/) — the non-posting alternative
 - [Standard procurement workflow](/guides/purchasing-guides/standard-procurement-workflow/) — where receiving sits in the PO → GRN → invoice flow

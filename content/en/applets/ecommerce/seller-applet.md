@@ -309,6 +309,6 @@ Posted by the generic-document engine exactly as documented on [Internal Purchas
 
 ## Related documentation
 
-- [E-Commerce module](/modules-v2/ecommerce/) — where the marketplace and storefront applets sit.
+- [E-Commerce module](/modules/ecommerce/) — where the marketplace and storefront applets sit.
 - [Merchant Applet](/applets/master-data/merchant-applet/) — seller entities and login links.
 - [Internal Purchase Invoice](/applets/finance/internal-purchase-invoice-applet/) and [Internal Payment Voucher](/applets/finance/internal-payment-voucher-applet/) — full field and posting reference for the settlement documents.

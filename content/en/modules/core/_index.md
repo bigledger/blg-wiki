@@ -1,279 +1,233 @@
 ---
+aliases:
+- /modules-v2/core/
 title: "Core Module"
-description: "Essential applets that form the foundation of BigLedger ERP system"
+description: "Foundation master data and system configuration applets required by every other BigLedger module."
 weight: 10
 ---
 
-The Core Module contains fundamental applets that are required by all other modules in BigLedger. These applets provide the basic infrastructure and master data management capabilities that the entire system depends on.
+## 1. Module Overview
 
-## Overview
+The **Core Module** is the foundation of the entire BigLedger ecosystem. It contains the master data and configuration applets that every other module depends on — organization structure, chart of accounts, customers, suppliers, employees, products, pricing, tax, and system administration.
 
-The Core Module is the foundation of BigLedger ERP, providing:
-- **Master Data Management** - Centralized management of critical business data
-- **System Configuration** - Essential settings and configurations
-- **Basic Operations** - Fundamental business operations
-- **Data Integration** - Shared data across all modules
+**No other module can function without Core. It must be implemented first.**
 
-{{< callout type="info" >}}
-**Important**: Core Module applets are prerequisites for all other modules. They must be properly configured before implementing other business modules.
-{{< /callout >}}
+**Business Value:**
+- Single source of truth for all master data across the organization
+- Centralized configuration eliminates duplication and inconsistency
+- Role-based access via Tenant Admin enforces security from day one
+- Visual workflow design gives every document type its own status track, with role-filtered transitions
 
-## Core Applets
+---
 
-### 1. Chart of Accounts Applet
-**Purpose**: Define and manage the complete chart of accounts structure
-- Account categories and types
-- Account hierarchies
-- Financial statement mapping
-- Multi-currency support
+## 2. Key Concepts & Terminology
 
-**Used by**: All financial transactions across every module
+| Term | Definition |
+|------|-----------|
+| **Tenant** | A self-contained BigLedger account representing one business entity. |
+| **Organisation** | The hierarchical structure defining the company, its branches, and locations. |
+| **Chart of Accounts (COA)** | The master list of all financial accounts used for recording transactions. |
+| **Cashbook** | A register representing a bank account, cash drawer, or payment method. |
+| **Pricebook** | A curated price list assigned to specific customer groups, tiers, or channels. |
+| **Inventory Item** | A product or service record in the item master (SKU, pricing, tax, stock settings). |
+| **Doc Item** | Document-level item configuration controlling how items behave on transactional documents. |
+| **Workflow Design** | A catalogue of statuses and transitions that documents can carry, filtered by role. It is a status track, not an approval engine — approvals are configured per applet, see [Document Approvals](/guides/document-approvals/). |
 
-### 2. Tenant Admin Applet
-**Purpose**: System-wide administration and configuration
-- User management and permissions
-- System settings
-- Security configuration
-- Audit settings
+---
 
-**Used by**: System administrators for overall system management
+## 3. Applet Dependency Map
 
-### 3. Organization Applet
-**Purpose**: Define organizational structure
-- Company setup
-- Branch configuration
-- Department structure
-- Cost center management
+Core's applets stack into four layers. Each layer depends on the one above it — configure top-down during implementation.
 
-**Used by**: All modules for organizational hierarchy
+Data flows downward — every layer below depends on what is configured above.
 
-### 4. Cashbook Applet
-**Purpose**: Cash and bank account management
-- Cash account setup
-- Bank account configuration
-- Payment methods
-- Cash flow tracking
+---
 
-**Used by**: All modules handling financial transactions
+## 4. The Applet Layers Explained
 
-### 5. Document Item Maintenance Applet
-**Purpose**: Manage document-based items and services
-- Service items
-- Non-inventory items
-- Document templates
-- Billing items
+### Layer 1 — Organisation Shell
 
-**Used by**: Service-based operations, professional services
+The skeleton of *what exists* in your business and *who can access it*.
 
-### 6. Tax Configuration Applet
-**Purpose**: Complete tax setup and management
-- GST/SST configuration
-- Tax codes and rates
-- Tax groups
-- Compliance rules
+| Applet | Purpose |
+|--------|---------|
+| [Organisation Applet](/applets/master-data/organisation-applet/) | Define the company hierarchy — entity, branches, locations, departments. |
+| [Tenant Admin Applet](/applets/external-tenant-admin/tenant-admin-applet/) | Manage users, roles, permissions, and system-wide configuration. |
 
-**Used by**: All modules generating taxable transactions
+### Layer 2 — Financial Foundation
 
-### 6a. Tax Config Applet
-**Purpose**: Advanced tax configuration and system-wide settings
-- Complex tax rule definitions
-- GL account mapping for taxes
-- Effective date management
-- Regulatory compliance integration
+How money is classified, stored, and taxed. Required before any financial transaction can post.
 
-**Used by**: Finance administrators and compliance officers
+| Applet | Purpose |
+|--------|---------|
+| [Chart of Accounts Applet](/applets/master-data/chart-of-account-applet/) | Build the hierarchical account structure for all financial transactions. |
+| [Cashbook Applet](/applets/master-data/cashbook-applet/) | Set up bank accounts, petty cash, and payment method registers. |
+| [Tax Configuration Applet](/applets/master-data/tax-configuration-applet/) | Define tax codes, rates, and rules for sales and purchase transactions. |
 
-### 6b. SST Applet
-**Purpose**: Malaysian SST reporting and compliance
-- SST-02 form generation
-- Taxable period management
-- Transaction-level tax audits
+### Layer 3 — Master Entities
 
-**Used by**: Malaysian tax compliance teams
+Who you do business with.
 
-### 7. Inventory Item Maintenance Applet
-**Purpose**: Product and inventory master data
-- Product creation
-- Item categories
-- Units of measure
-- Stock settings
+| Applet | Purpose |
+|--------|---------|
+| [Customer Maintenance Applet](/applets/master-data/customer-maintenance-applet/) | Create customer master records with credit terms and contacts. |
+| [Supplier Maintenance Applet](/applets/master-data/supplier-applet-1/) | Manage supplier/vendor master records with payment terms and banking. |
+| [Employee Maintenance Applet](/applets/master-data/employee-applet/) | Manage employee profiles and department assignments. |
 
-**Used by**: All inventory-related modules
+### Layer 4 — Product & Pricing
 
-### 8. Customer Maintenance Applet
-**Purpose**: Customer master data management
-- Customer profiles
-- Credit limits
-- Payment terms
-- Customer categories
+What you sell and at what price. Items flow from master record to document behavior to price list.
 
-**Used by**: Sales, CRM, AR, and customer-facing modules
+| Applet | Purpose |
+|--------|---------|
+| [Inventory Item Maintenance Applet](/applets/master-data/inv-item-maintenance-applet/) | Maintain the item master catalogue — SKUs, descriptions, classifications. |
+| [Doc Item Maintenance Applet](/applets/master-data/doc-item-maintenance-applet/) | Configure document-level item behavior — tax mapping, UOM, discount rules. |
+| [Pricebook Applet](/applets/master-data/pricebook-applet/) | Create segmented price lists per customer tier or channel. |
+| [Shipping Pricebook Applet](/applets/master-data/shipping-pricebook-applet/) | Define shipping and delivery rate cards. |
 
-### 9. Supplier Maintenance Applet
-**Purpose**: Vendor/supplier master data
-- Supplier profiles
-- Payment terms
-- Purchase agreements
-- Supplier categories
+---
 
-**Used by**: Purchasing, AP, and procurement modules
+## 5. Who Uses This Module?
 
-### 10. Employee Maintenance Applet
-**Purpose**: Employee master records
-- Employee profiles
-- Department assignments
-- Roles and permissions
-- Compensation data
+Six roles use the Core Module — each owns a specific layer of master data.
 
-**Used by**: HR, Payroll, and employee-related modules
+| Role | Owns |
+|------|------|
+| **System Administrator** | Tenant configuration, users, workflows |
+| **Finance Controller** | Financial foundation (COA, Cashbook, Tax) |
+| **Sales Administrator** | Customer records and pricing tiers |
+| **Purchasing Administrator** | Supplier records and payment terms |
+| **HR Administrator** | Employee records |
+| **Product Manager** | Item catalogue, doc item behavior, pricebooks |
 
-## Dependencies
+---
 
-### Module Dependencies
-All BigLedger modules depend on Core Module applets:
+## 6. Role-Based User Journeys
 
-| Module | Core Dependencies |
-|--------|------------------|
-| **Financial Accounting** | Chart of Accounts, Tax Configuration, Cashbook |
-| **Sales & CRM** | Customer Maintenance, Tax Configuration, Doc Item |
-| **Purchasing** | Supplier Maintenance, Tax Configuration |
-| **Inventory** | Inv Item Maintenance, Organization |
-| **HR & Payroll** | Employee Maintenance, Organization |
-| **POS** | Customer, Inv Item, Cashbook, Tax |
-| **E-Commerce** | Customer, Inv Item, Tax, Organization |
+### Journey: System Administrator (Day-One Setup)
 
-### Setup Sequence
-Recommended configuration order:
+```
+[Tenant Admin] ──▶ [Organisation] ──▶ [Group Maintenance] ──▶ [Workflow Design]
+```
 
-1. **Organization Setup**
-   - Company details
-   - Branch structure
-   - Departments
+1. Open [Tenant Admin Applet](/applets/external-tenant-admin/tenant-admin-applet/) and create the System Administrator account.
+2. Move to [Organisation Applet](/applets/master-data/organisation-applet/) — create the company entity, branches, and locations.
+3. Use [Group Maintenance Applet](/applets/master-data/group-maintenance-V2-applet/) to define role groups (Finance, Sales, Procurement, etc.).
+4. Optionally configure document status tracks in [Workflow Design Applet](/applets/master-data/workflow-design-applet/). If you want purchase requisitions or purchase orders signed off, that is a separate, optional setup — see [Document Approvals](/guides/document-approvals/).
 
-2. **Financial Foundation**
-   - Chart of Accounts
-   - Tax Configuration
-   - Cashbook setup
+### Journey: Finance Controller (Financial Skeleton)
 
-3. **Master Data**
-   - Customers
-   - Suppliers
-   - Employees
-   - Items (Inventory/Document)
+```
+[Chart of Accounts] ──▶ [Tax Configuration] ──▶ [Cashbook]
+```
 
-4. **System Configuration**
-   - Tenant Admin settings
-   - User permissions
-   - Workflow rules
+1. Import or build the account tree in [Chart of Accounts Applet](/applets/master-data/chart-of-account-applet/).
+2. Set up tax codes and rates in [Tax Configuration Applet](/applets/master-data/tax-configuration-applet/).
+3. Register every bank account and petty cash fund in [Cashbook Applet](/applets/master-data/cashbook-applet/).
 
-## Configuration Best Practices
+### Journey: Sales Administrator (Customer Onboarding)
 
-### Initial Setup
-1. **Plan your structure** before configuration
-2. **Use consistent coding** across all master data
-3. **Set up test data** before going live
-4. **Document configurations** for reference
+```
+[Customer Maintenance] ──▶ Credit terms ──▶ [Pricebook] ──▶ Ready for Sales Module
+```
+
+1. Create the customer in [Customer Maintenance Applet](/applets/master-data/customer-maintenance-applet/).
+2. Set credit limit and payment terms (Net 30, etc.).
+3. Assign the customer to the right tier in [Pricebook Applet](/applets/master-data/pricebook-applet/).
+
+### Journey: Purchasing Administrator (Vendor Onboarding)
+
+```
+[Supplier Maintenance] ──▶ Payment terms ──▶ Banking ──▶ Ready for Purchasing Module
+```
+
+1. Create the supplier in [Supplier Maintenance Applet](/applets/master-data/supplier-applet-1/).
+2. Set payment terms and banking details.
+
+### Journey: Product Manager (New Product Launch)
+
+```
+[Inv Item Maintenance] ──▶ [Doc Item Maintenance] ──▶ [Pricebook] ──▶ Tax mapping
+```
+
+1. Create the SKU in [Inventory Item Maintenance Applet](/applets/master-data/inv-item-maintenance-applet/).
+2. Configure document behavior in [Doc Item Maintenance Applet](/applets/master-data/doc-item-maintenance-applet/) — tax category, UOM, discount rules.
+3. Add prices in the relevant tiers in [Pricebook Applet](/applets/master-data/pricebook-applet/).
+4. Confirm tax mapping in [Tax Configuration Applet](/applets/master-data/tax-configuration-applet/).
+
+### Journey: HR Administrator
+
+```
+[Employee Maintenance] ──▶ Hands off to HR-Payroll Module
+```
+
+Create and maintain employee profiles in [Employee Maintenance Applet](/applets/master-data/employee-applet/). Downstream HR processes (payroll, claims) consume these records.
+
+---
+
+## 7. Cross-Module Touchpoints
+
+| Direction | What Flows |
+|-----------|-----------|
+| **Receives from** | Nothing — Core is the root of every implementation. |
+| **Sends to** | Finance (COA, Cashbook, Tax), Sales (Customers, Pricebooks), Purchasing (Suppliers), Inventory (Items), HR-Payroll (Employees), POS, E-Commerce, Claims, Manufacturing — **every module**. |
+
+---
+
+## 8. Prerequisites & Setup
+
+Core has **no external prerequisites** — it is module #1 in every BigLedger implementation.
+
+### Recommended Setup Sequence
+
+1. **Organisation Shell** — company, branches, locations, Tenant Admin user
+2. **Financial Foundation** — COA, Tax Codes, Cashbooks
+3. **Master Entities** — Customers, Suppliers, Employees
+4. **Product & Pricing** — Items, Doc Item rules, Pricebooks
+5. **Automation Glue** — Workflows, Permission Groups
+
+### Implementation Checklist
+
+- [ ] Create the company entity in the Organisation Applet
+- [ ] Define at least one branch and one location
+- [ ] Import or build the Chart of Accounts
+- [ ] Configure all applicable tax codes
+- [ ] Create at least one Cashbook
+- [ ] Create the System Administrator in Tenant Admin
+- [ ] Set up initial user roles and permission groups
+- [ ] Import or create customer master records
+- [ ] Import or create supplier master records
+- [ ] Import or create the item catalogue
+- [ ] Set up at least one Pricebook
 
 ### Naming Conventions
-- **Accounts**: Use structured numbering (1000-1999 Assets, 2000-2999 Liabilities)
-- **Items**: Category-based codes (ELEC-001, FURN-001)
-- **Customers/Suppliers**: Systematic codes (CUS-001, SUP-001)
-- **Employees**: Department-based (HR-001, FIN-001)
+
+- **Accounts (COA):** structured numbering — `1000-1999` Assets, `2000-2999` Liabilities, `3000-3999` Equity
+- **Items:** category-based codes — `ELEC-001`, `FURN-001`
+- **Customers / Suppliers:** systematic codes — `CUS-001`, `SUP-001`
+- **Employees:** department-prefixed — `HR-001`, `FIN-001`
 
 ### Data Integrity
-- Enable **audit trails** from the start
-- Control master data changes with **roles and permissions** — there is no approval workflow for master data
-- Regular **data validation** checks
-- Implement **change control** procedures
 
-## Integration Points
+- Enable Audit Trails in Tenant Admin from day one
+- Control who may change critical master data (credit limits, new suppliers) through roles and permissions — BigLedger has no approval workflow for master data changes
+- Plan naming schemes *before* configuring — retroactive renames are painful
 
-### Cross-Module Data Flow
+---
 
-```
-Core Module (Master Data)
-    ↓
-┌─────────────┬──────────────┬──────────────┬──────────────┐
-│  Financial  │   Sales      │  Inventory   │     HR       │
-│  Accounting │   & CRM      │  & Warehouse │  & Payroll   │
-└─────────────┴──────────────┴──────────────┴──────────────┘
-    ↓              ↓              ↓              ↓
-         Transactional Data (Orders, Invoices, etc.)
-```
+## 9. FAQs & Troubleshooting
 
-### API Integration
-Core Module applets provide APIs for:
-- Master data synchronization
-- Real-time validation
-- Data export/import
-- Third-party integration
+**Q: Can I change the Chart of Accounts structure after going live?**
+A: You can add new accounts at any time. Renaming or deleting accounts that already have posted transactions is restricted. Plan your COA carefully during initial setup.
 
-## Common Use Cases
+**Q: How many branches and locations can I have?**
+A: There is no hard limit. BigLedger supports multi-branch, multi-location setups of any scale.
 
-### Multi-Branch Operations
-- Centralized chart of accounts
-- Branch-specific cashbooks
-- Consolidated reporting
-- Inter-branch transactions
+**Q: A new employee was added but they can't log in. What's wrong?**
+A: [Employee Maintenance Applet](/applets/master-data/employee-applet/) holds HR data. Login access is managed separately in [Tenant Admin Applet](/applets/external-tenant-admin/tenant-admin-applet/). Create the user there with the correct role assignments.
 
-### Multi-Currency Business
-- Currency configuration in Organization
-- Exchange rates in Financial settings
-- Multi-currency in Customer/Supplier
-- Currency-specific pricing
+**Q: How do I set different prices for different customer groups?**
+A: Create multiple pricebooks (Retail, Wholesale, VIP) in [Pricebook Applet](/applets/master-data/pricebook-applet/) and assign customers to the correct one in their customer record.
 
-### Compliance Requirements
-- GST/SST setup in Tax Configuration
-- Audit trails in Tenant Admin
-- Statutory reports from Chart of Accounts
-- Compliance validations
-
-## Troubleshooting
-
-### Common Issues
-
-**Cannot create transactions**
-- Verify Chart of Accounts is complete
-- Check Tax Configuration
-- Ensure Cashbook is set up
-
-**Master data not appearing**
-- Check Organization structure
-- Verify user permissions
-- Confirm data status (Active/Inactive)
-
-**Integration failures**
-- Validate master data completeness
-- Check field mappings
-- Review API permissions
-
-## Related Documentation
-
-### Setup Guides
-- [Organization Setup Guide](/applets/organization-applet/)
-- [Chart of Accounts Configuration](/guides/accounting-guides/chart-of-accounts-setup/)
-- [Tax Configuration Guide](/applets/tax-configuration-applet/)
-- [Tax Config Guide](/applets/tax-config-applet/)
-- [SST Guide](/applets/sst-applet/)
-
-### Module Documentation
-- [Financial Accounting Module](/modules/financial-accounting/)
-- [Inventory Module](/modules/inventory/)
-- [Sales & CRM Module](/modules/crm/)
-
-### Advanced Topics
-- [API Integration](/developers/api-reference/)
-- [Data Migration](/guides/)
-
-## Next Steps
-
-After configuring Core Module applets:
-
-1. **Set up Financial Accounting** for financial operations
-2. **Configure Sales/Purchasing** for trading operations
-3. **Implement Inventory** for stock management
-4. **Add specialized modules** based on business needs
-
-{{< callout type="tip" >}}
-**Pro Tip**: Take time to properly configure Core Module applets. This foundation determines the efficiency and scalability of your entire BigLedger implementation.
-{{< /callout >}}
+**Q: Can one item have different tax treatments in different branches?**
+A: Yes. Tax codes are configurable at the document item level and can be overridden per branch through [Doc Item Maintenance Applet](/applets/master-data/doc-item-maintenance-applet/).

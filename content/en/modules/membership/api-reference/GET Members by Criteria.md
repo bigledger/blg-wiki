@@ -1,4 +1,9 @@
-# GET Members by Criteria
+---
+aliases:
+- /modules-v2/membership/api-reference/get-members-by-criteria/
+title: "GET Members by Criteria"
+description: "Membership API — GET Members by Criteria: endpoint, headers, request body and a worked response."
+---
 
 ## Endpoint
 

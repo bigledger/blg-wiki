@@ -26,7 +26,7 @@ Almost every e-invoicing question turns out to be a question about this picture.
 
 ## Get started
 
-New to e-invoicing? Three terms do most of the work across every guide here, and each is explained once on its own short page: [consolidated e-invoices](/modules-v2/e-invoice/concepts/consolidated-e-invoice/) · [pools and queues](/modules-v2/e-invoice/concepts/pools-and-queues/) · [validation and clearance](/modules-v2/e-invoice/concepts/validation-and-clearance/). Two minutes each, and the guides below stop needing to define anything.
+New to e-invoicing? Three terms do most of the work across every guide here, and each is explained once on its own short page: [consolidated e-invoices](/modules/e-invoice/concepts/consolidated-e-invoice/) · [pools and queues](/modules/e-invoice/concepts/pools-and-queues/) · [validation and clearance](/modules/e-invoice/concepts/validation-and-clearance/). Two minutes each, and the guides below stop needing to define anything.
 
 Then read these three, in this order.
 
@@ -68,7 +68,7 @@ That is the whole daily loop, and it is entirely about the documents **you** iss
 
 ## Every week
 
-Two of the [three pools](/modules-v2/e-invoice/concepts/pools-and-queues/) never empty themselves and neither raises an alert, so nothing tells you they are filling up.
+Two of the [three pools](/modules/e-invoice/concepts/pools-and-queues/) never empty themselves and neither raises an alert, so nothing tells you they are filling up.
 
 - Open the **Individual Pool** and the **Single General Pool**. Every row is a sale you have not reported. Chase the buyer's details or move it somewhere it can still be reported.
 - Filter the **Batch Pool** for rows marked *processed / failed*. Those are stranded: the monthly consolidation only sweeps *unprocessed* rows.
@@ -116,7 +116,7 @@ The issues that come up most often, and what to do about each:
 Three places tell you where you stand, and they do not say the same thing:
 
 - **Internal Submission → To IRB E-Invoice** — one row per e-invoice with the **live** LHDN status (Valid, Invalid, Submitted, IN_QUEUE). Export this one when you need a work list.
-- **Internal Submission → Submission History** — an archive of what each submission looked like **at the moment it was sent**. It is [not the current status](/modules-v2/e-invoice/concepts/validation-and-clearance/), so never filter your Invalid list from here.
+- **Internal Submission → Submission History** — an archive of what each submission looked like **at the moment it was sent**. It is [not the current status](/modules/e-invoice/concepts/validation-and-clearance/), so never filter your Invalid list from here.
 - **Monthly Report → Discrepancies Report** — compares the documents you finalised against the e-invoices on record, per company and period. This is your self-service reconciliation.
 
 **Compliance habits worth building:**
@@ -135,4 +135,4 @@ Three places tell you where you stand, and they do not say the same thing:
 - **[My PEPPOL Admin Applet](/applets/e-invoice/mypeppol-admin-applet/)** — PEPPOL queues and configuration
 - **[Sales Invoice Applet](/applets/sales-workflow/internal-sales-invoice-applet/)** — where a sales e-invoice starts
 - **[Purchase Invoice Applet](/applets/finance/internal-purchase-invoice-applet/)** — the purchase side of the same pipeline
-- **[E-Invoice & PEPPOL module](/modules-v2/e-invoice/)** — the architecture view: who does what, which applets are involved, and the go-live checklist
+- **[E-Invoice & PEPPOL module](/modules/e-invoice/)** — the architecture view: who does what, which applets are involved, and the go-live checklist

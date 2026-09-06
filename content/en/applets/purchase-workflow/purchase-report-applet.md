@@ -52,7 +52,7 @@ It is read-only. Purchase orders, GRNs and draft invoices do not appear in it â€
 
 | Position | Document / applet | Why |
 |---|---|---|
-| Module | [Purchasing](/modules-v2/purchasing/), [Inventory](/modules-v2/inventory/) | Purchase analysis; stock balance per location is joined in. |
+| Module | [Purchasing](/modules/purchasing/), [Inventory](/modules/inventory/) | Purchase analysis; stock balance per location is joined in. |
 | Source documents | [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/), [Purchase Invoice No Stock In (Internal)](/applets/purchase-workflow/internal-purchase-invoice-no-stock-in-applet/), [Purchase Return (Internal)](/applets/purchase-workflow/internal-purchase-return-applet/) | The only document types the queries read (`posting_status = FINAL`, base-currency shadows excluded). Returns carry a negative quantity signum and reduce the totals. |
 | Linked references | [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/), [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) | The *GRN No* column comes from the invoice's document links to GRNs; *PO No* from the GRN's links to purchase orders. |
 | Settlement | [Payment Voucher (Internal)](/applets/finance/internal-payment-voucher-applet/), [Purchase Debit Note (Internal)](/applets/purchase-workflow/internal-purchase-debit-note-applet/) | The backend's purchase-report service also serves invoice settlement detail (payment vouchers and debit notes against an invoice) used by the payables reports. |
@@ -161,5 +161,5 @@ The applet has no create or edit forms. The search fields and the columns of bot
 
 ## Related documentation
 
-- [Purchasing module](/modules-v2/purchasing/) and its [related applets](/modules-v2/purchasing/related-applets/)
+- [Purchasing module](/modules/purchasing/) and its [related applets](/modules/purchasing/related-applets/)
 - [Standard procurement workflow](/guides/purchasing-guides/standard-procurement-workflow/)

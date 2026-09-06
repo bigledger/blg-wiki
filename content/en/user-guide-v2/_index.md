@@ -182,7 +182,7 @@ main:has(.bl-hub) > h1 {display:none!important}
   <div class="bl-path">
     <p class="bl-path-role">💰 Finance / accounting</p>
     <ul class="bl-path-steps">
-      <li><a href="/modules/accounting">Accounting module</a></li>
+      <li><a href="/modules/financial-accounting/">Financial Accounting module</a></li>
       <li><a href="/modules/e-invoice">E-Invoice module</a></li>
       <li><a href="/user-guide/reports-analytics-v2">Financial reports</a></li>
     </ul>

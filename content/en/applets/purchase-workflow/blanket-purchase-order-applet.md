@@ -84,7 +84,7 @@ A Blanket Purchase Order carries no money movement: its backend document type (`
 
 | Position | Document / applet | Why |
 |---|---|---|
-| Module | [Purchasing](/modules-v2/purchasing/) | Front end of the procurement chain for recurring purchases. |
+| Module | [Purchasing](/modules/purchasing/) | Front end of the procurement chain for recurring purchases. |
 | Upstream | [Supplier](/applets/master-data/supplier-applet-1/), [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/), [Pricebook](/applets/master-data/pricebook-applet/) | The agreement names one supplier entity and a set of items with agreed unit prices; pricing schemes seed the line prices. |
 | Downstream | [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) | The only consumer. Its create screen's **KO For → Blanket Purchase Order** tab lists open blanket-order lines (line open queue, pair `INTERNAL_BLANKET_PURCHASE_ORDER → INTERNAL_PURCHASE_ORDER`) and copies them into the PO. |
 | Downstream (drill-down) | [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/) | The backend report follows each drawn-down PO line to its GRN quantities (`BlanketPurchaseOrderReportUow`). |
@@ -360,5 +360,5 @@ Voiding an agreement does not touch the Purchase Orders already created from it;
 
 ## Related documentation
 
-- [Purchasing module](/modules-v2/purchasing/) and its [related applets](/modules-v2/purchasing/related-applets/)
+- [Purchasing module](/modules/purchasing/) and its [related applets](/modules/purchasing/related-applets/)
 - [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) — the knock-off side of the release step

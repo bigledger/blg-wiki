@@ -70,7 +70,7 @@ It cannot edit the order itself: there is no create form for the document, no sa
 
 | Position | Document / applet | Why |
 |---|---|---|
-| Module | [Purchasing](/modules-v2/purchasing/) | The order itself. |
+| Module | [Purchasing](/modules/purchasing/) | The order itself. |
 | The document | [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) | Same rows; the buyer creates and finalises there. |
 | Upstream (access) | [Supplier](/applets/master-data/supplier-applet-1/) | The login must be linked to the supplier entity (`bl_fi_mst_entity_login_subject_link`, `ACTIVE`). |
 | Upstream (agreement) | [Blanket Purchase Order Supplier Access](/applets/purchase-workflow/blanket-purchase-order-applet-supplier-access-applet/) | Where the order was drawn down from an agreement, if one exists. |
@@ -217,5 +217,5 @@ What this applet writes:
 ## Related documentation
 
 - [Purchase Order (Internal) applet](/applets/purchase-workflow/internal-purchase-order-applet/)
-- [Purchasing module](/modules-v2/purchasing/)
+- [Purchasing module](/modules/purchasing/)
 - [Supplier applet](/applets/master-data/supplier-applet-1/)

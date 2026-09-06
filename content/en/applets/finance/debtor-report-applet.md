@@ -327,5 +327,5 @@ The Aging Report sends `arap_types = AR_TRADE, AR_OTHER, AR_MERCHANT` (no `AR_EM
 ## Related documentation
 
 - [Reports & Analytics](/user-guide/reports-analytics/) — where this applet sits among the finance reports.
-- [Financial Accounting module](/modules-v2/financial-accounting/) and [Digital CRM module](/modules-v2/crm-digital/).
+- [Financial Accounting module](/modules/financial-accounting/) and [Digital CRM module](/modules/crm-digital/).
 - [Creditor Report Applet](/applets/finance/creditor-report-applet/) and [Debtor and Creditor Report](/applets/finance/debtor-and-creditor-report-applet/) — the sibling reference pages.

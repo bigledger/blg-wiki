@@ -324,5 +324,5 @@ Option values: Price Source `NA`, `qty_base` (Base Quantity), `amount_std` (Stan
 ## Related documentation
 
 - [Standard sales workflow](/guides/sales-guides/standard-sales-workflow/) — where pricing is applied in the sales cycle.
-- [Pricebook configuration for membership tiers](/modules-v2/membership/configuration/rewards-setup/pricebook-configuration/) — using Member Class rules for tier pricing.
-- [POS module](/modules-v2/pos/) and [Core module](/modules-v2/core/).
+- [Pricebook configuration for membership tiers](/modules/membership/configuration/rewards-setup/pricebook-configuration/) — using Member Class rules for tier pricing.
+- [POS module](/modules/pos/) and [Core module](/modules/core/).

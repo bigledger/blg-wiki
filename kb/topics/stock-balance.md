@@ -64,5 +64,5 @@ The quantity on hand for one inventory item at one location (and per company): t
 
 - content/en/applets/inventory-workflow/stock-balance-applet.md (lane 4, done run 21/22) — rewritten to the standard from the facts above; the run-19 note that it reads `stock-balance/backoffice-ep` was wrong (it reads `inv/stock-availability`).
 - content/en/applets/inventory-workflow/stock-report-applet.md (lane 4, done) — add the HBAL-snapshot vs ledger-sum distinction to Troubleshooting (gt#4807).
-- content/en/modules-v2/inventory/_index.md — "Stock Balance & Valuation Engine" row should link the index page; the checklist item "opening stock balances uploaded" should point at Stock Adjustment (no upload exists in the Stock Balance applet).
+- content/en/modules/inventory/_index.md — "Stock Balance & Valuation Engine" row should link the index page; the checklist item "opening stock balances uploaded" should point at Stock Adjustment (no upload exists in the Stock Balance applet).
 - Sales/purchase document pages (lanes 1/3): the "does not move stock" list (credit/debit notes, plain GRN/GIN, No Stock In/Out) is now stated on the index page; their pages should agree.

@@ -128,7 +128,7 @@ In the standard BigLedger purchase flow the **invoice is the document that moves
 | Downstream | [Ledger And Journal](/applets/finance/ledger-and-journal-applet/) | Shows the journal FINAL creates |
 | Sibling | [Purchase Invoice Supplier Access (Internal)](/applets/purchase-workflow/internal-purchase-invoice-supplier-access-applet/) | The supplier-facing view of the same documents |
 
-Modules: [Financial Accounting](/modules-v2/financial-accounting/) and [Purchasing](/modules-v2/purchasing/).
+Modules: [Financial Accounting](/modules/financial-accounting/) and [Purchasing](/modules/purchasing/).
 
 ## Screens and menus
 
@@ -524,7 +524,7 @@ The **Posting** tab shows five statuses (Journal, Inventory, Membership Points, 
 - [Direct invoice workflow](/guides/purchasing-guides/direct-invoice-workflow/) — invoicing without a GRN
 - [Invoice-first workflow](/guides/purchasing-guides/invoice-first-workflow/)
 - [Malaysia e-Invoice guide](/guides/einvoice-guides/malaysia-e-invoice-guide/) — self-billed submissions
-- [Financial Accounting module](/modules-v2/financial-accounting/) and [Purchasing module](/modules-v2/purchasing/)
+- [Financial Accounting module](/modules/financial-accounting/) and [Purchasing module](/modules/purchasing/)
 
 ### Video overview
 

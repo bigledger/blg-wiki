@@ -53,7 +53,7 @@ The receiving document that books goods into stock the moment they arrive: quant
 
 ## Wiki impact
 
-- `content/en/modules-v2/purchasing/_index.md` line 44 says the GRN posts "Stock Increased" and "Goods Received Not Invoiced" — true only for this applet, not for the plain GRN. F-0038 already covers the guide side.
+- `content/en/modules/purchasing/_index.md` line 44 says the GRN posts "Stock Increased" and "Goods Received Not Invoiced" — true only for this applet, not for the plain GRN. F-0038 already covers the guide side.
 - `content/en/applets/finance/internal-purchase-invoice-applet.md` (lane 2) is consistent (line 114).
 - `content/en/applets/purchase-workflow/internal-purchase-grn-applet.md` (run 1) should drop its "GIN reduces stock" sentence (METHOD §14) — queued for this lane.
 - (run 13) Add the tax-residual note to the "Tax codes" prerequisite and a Troubleshooting row "accrual accounts never net to zero"; the PI No Stock In page now carries the full explanation.

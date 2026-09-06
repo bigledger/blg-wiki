@@ -81,7 +81,7 @@ Central hub for all customer conversations with features like:
 - Sales opportunity tracking
 - Customer service ticket management
 
-[Learn more about CRM Module →](/modules/crm)
+[Learn more about the Digital CRM Module →](/modules/crm-digital/)
 
 ### Sales & Order Management
 - Quote generation within chat
@@ -216,7 +216,7 @@ UCC is available as an add-on module with flexible pricing:
 ## Related Resources
 
 - [UCC Applet Details](/applets/unified-contact-center-ucc-applet)
-- [CRM Module Integration](/modules/crm)
+- [Digital CRM Module](/modules/crm-digital/)
 - [E-Commerce Integration](/modules/ecommerce)
 - [API Documentation](/developers/api-reference)
 

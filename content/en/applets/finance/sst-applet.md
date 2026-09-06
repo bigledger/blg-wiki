@@ -414,7 +414,7 @@ The first two read live documents. The SST-02 reads the frozen snapshot. **They 
 
 ## Related documentation
 
-- [Financial Accounting module](/modules-v2/financial-accounting/) — where SST filing sits in the period-end close.
+- [Financial Accounting module](/modules/financial-accounting/) — where SST filing sits in the period-end close.
 - [Tax Configuration applet](/applets/master-data/tax-configuration-applet/) — the tax-code reference, including the divergence between the two maintenance screens.
 - [Organization applet](/applets/master-data/organisation-applet/) — company SST registration and fiscal-year setup.
 </content>

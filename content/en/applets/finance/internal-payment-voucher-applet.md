@@ -73,7 +73,7 @@ The **Payment Voucher (Internal)** applet records money going out: paying a supp
 | Mirror | [Receipt Voucher (Internal)](/applets/finance/internal-receipt-voucher-applet/) | The same document for money coming in |
 | Sibling | Reimbursement Payment Voucher (Internal) | A separate applet for staff claims (no wiki page yet) |
 
-Modules: [Financial Accounting](/modules-v2/financial-accounting/) and [Purchasing](/modules-v2/purchasing/).
+Modules: [Financial Accounting](/modules/financial-accounting/) and [Purchasing](/modules/purchasing/).
 
 ## Screens and menus
 
@@ -337,4 +337,4 @@ Changing a finalised payment line whose cashbook line is already reconciled is r
 
 - [Standard procurement workflow](/guides/purchasing-guides/standard-procurement-workflow/) — where the payment closes the loop
 - [Bank reconciliation guide](/guides/accounting-guides/bank-reconciliation-guide/)
-- [Financial Accounting module](/modules-v2/financial-accounting/) and [Purchasing module](/modules-v2/purchasing/)
+- [Financial Accounting module](/modules/financial-accounting/) and [Purchasing module](/modules/purchasing/)

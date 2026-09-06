@@ -223,5 +223,5 @@ The response also carries `qty_reserved`, `qty_adjustment` (open-document quanti
 ## Related documentation
 
 - [Related Applets - Stock Balance](/applets/inventory-workflow/related-applets-stock-balance/) — the index of everything that writes to and reads from the balance
-- [Inventory module](/modules-v2/inventory/) — where the applet sits among the inventory applets
+- [Inventory module](/modules/inventory/) — where the applet sits among the inventory applets
 - [Stock Availability](/applets/inventory-workflow/stock-availability-applet/) and [Stock Report](/applets/inventory-workflow/stock-report-applet/) — the two sibling enquiry screens

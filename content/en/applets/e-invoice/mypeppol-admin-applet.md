@@ -192,4 +192,4 @@ This applet writes the Peppol queue and document tables and the registration rec
 ## Related documentation
 
 - [PEPPOL Configuration Guide](/guides/einvoice-guides/peppol-configuration/)
-- [E-Invoice module](/modules-v2/e-invoice/)
+- [E-Invoice module](/modules/e-invoice/)

@@ -91,7 +91,7 @@ flowchart TD
 
 | Position | Document / applet | Why |
 |---|---|---|
-| Module | [Purchasing](/modules-v2/purchasing/), [Inventory](/modules-v2/inventory/) | Procurement document; replenishment reads stock balances. |
+| Module | [Purchasing](/modules/purchasing/), [Inventory](/modules/inventory/) | Procurement document; replenishment reads stock balances. |
 | Upstream | [Purchase Requisition (Internal)](/applets/purchase-workflow/internal-purchase-requisition-applet/), [Purchase Quotation (Internal)](/applets/purchase-workflow/internal-purchase-quotation-applet/), [Blanket Purchase Order](/applets/purchase-workflow/blanket-purchase-order-applet/), another Purchase Order | **Search Document** (edit) and **KO For** (create) pull lines from these. A PR → PO conversion can be made mandatory in *Approval Monitor*. |
 | Downstream | [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/), [Purchase GRN Stock In (Internal)](/applets/purchase-workflow/internal-purchase-grn-stock-in-applet/), [Supplier Delivery Order](/applets/purchase-workflow/supplier-delivery-order-applet/) | Receipt documents knock off PO lines from the open queue; **PO Line with GRN KO** reports the match. |
 | Downstream | [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/), [Purchase Invoice No Stock In (Internal)](/applets/purchase-workflow/internal-purchase-invoice-no-stock-in-applet/) | Invoices knock off PO lines; **PO Line with PI KO** reports it. |
@@ -361,7 +361,7 @@ Client-side permissions seeded for this applet (`internalPurchaseOrderApplet`), 
 
 ## Related documentation
 
-- [Purchasing module](/modules-v2/purchasing/) and its [related applets](/modules-v2/purchasing/related-applets/)
+- [Purchasing module](/modules/purchasing/) and its [related applets](/modules/purchasing/related-applets/)
 - [Standard procurement workflow](/guides/purchasing-guides/standard-procurement-workflow/), [Direct GRN workflow](/guides/purchasing-guides/direct-grn-workflow/), [Invoice-first workflow](/guides/purchasing-guides/invoice-first-workflow/)
 - Settings walkthrough video:
 

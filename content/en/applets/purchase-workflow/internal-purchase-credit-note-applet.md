@@ -72,7 +72,7 @@ The document carries amounts only; quantity signum is 0, so stock never moves. I
 
 | Position | Document / applet | Why |
 |---|---|---|
-| Module | [Purchasing](/modules-v2/purchasing/), [Financial Accounting](/modules-v2/financial-accounting/), [E-Invoice](/modules-v2/e-invoice/) | Posts to the General Ledger; `INTERNAL_PURCHASE_CREDIT_NOTE` is in the platform's e-Invoice purchase-document set. |
+| Module | [Purchasing](/modules/purchasing/), [Financial Accounting](/modules/financial-accounting/), [E-Invoice](/modules/e-invoice/) | Posts to the General Ledger; `INTERNAL_PURCHASE_CREDIT_NOTE` is in the platform's e-Invoice purchase-document set. |
 | Upstream (knock-off) | [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/), [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/), [Supplier Delivery Order](/applets/purchase-workflow/supplier-delivery-order-applet/) | The create screen's **KO For** tab imports open lines from these three document types (`INTERNAL_PURCHASE_ORDER`, `INTERNAL_PURCHASE_GOODS_RECEIVED_NOTE`, `INTERNAL_OUTBOUND_DELIVERY_ORDER`). |
 | Upstream (reference) | [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/) | The invoice the credit note relates to; link it on **Doc Link**. There is no *Search Document* tab in this applet. |
 | Upstream (intercompany) | [Sales Credit Note (Internal)](/applets/sales-workflow/internal-sales-credit-note-applet/) | Intercompany processing pairs the seller's Sales Credit Note with a Purchase Credit Note in the buying company (amount signum −1, quantity signum 0). |
@@ -399,6 +399,6 @@ Stock: none (quantity signum 0).
 
 ## Related documentation
 
-- [Purchasing module](/modules-v2/purchasing/) and its [related applets](/modules-v2/purchasing/related-applets/)
+- [Purchasing module](/modules/purchasing/) and its [related applets](/modules/purchasing/related-applets/)
 - [MyInvois setup](/guides/einvoice-guides/myinvois-setup/) and [e-Invoice validation](/guides/einvoice-guides/einvoice-validation/)
 - [Purchase Debit Note (Internal)](/applets/purchase-workflow/internal-purchase-debit-note-applet/) — the companion reference page

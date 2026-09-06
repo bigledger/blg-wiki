@@ -255,6 +255,6 @@ This applet reads and updates; it never finalises or posts. The only writes are:
 
 ## Related documentation
 
-- [Inventory module](/modules-v2/inventory/)
+- [Inventory module](/modules/inventory/)
 - [Delivery Order (Internal)](/applets/sales-workflow/internal-delivery-order-applet/)
 - [Delivery & Installation applet](/applets/delivery-installation/delivery-installation-applet/)

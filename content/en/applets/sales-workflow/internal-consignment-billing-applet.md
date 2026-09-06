@@ -437,4 +437,4 @@ the rest stays as consignment stock against consignment liability until it is bi
 ## Related documentation
 
 - [Consignment purchasing guide](/guides/purchasing-guides/consignment-purchasing/) — the end-to-end consignment process in user-guide voice.
-- [Purchasing module](/modules-v2/purchasing/) and [Financial Accounting module](/modules-v2/financial-accounting/).
+- [Purchasing module](/modules/purchasing/) and [Financial Accounting module](/modules/financial-accounting/).

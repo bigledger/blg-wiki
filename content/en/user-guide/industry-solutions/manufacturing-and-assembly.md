@@ -78,6 +78,6 @@ main > br { display: none !important; }
 
 | Operational Area | Required Applets | Key Capabilities |
 | :--- | :--- | :--- |
-| **Production Planning & BOM** | [Manufacturing Module](/modules-v2/manufacturing/) | Multi-stage BOM definition, raw material requirement planning, and job order release |
-| **Material Issuance & Store** | [Inventory Module](/modules-v2/inventory/) | Shop floor raw material issuance, WIP stock tracking, and scrap recording |
-| **Costing & Financial GL** | [Financial Accounting](/modules-v2/financial-accounting/) | Auto GL posting for WIP asset movement, labor expense absorption, and finished goods inventory receipt |
+| **Production Planning & BOM** | [Manufacturing Module](/modules/manufacturing/) | Multi-stage BOM definition, raw material requirement planning, and job order release |
+| **Material Issuance & Store** | [Inventory Module](/modules/inventory/) | Shop floor raw material issuance, WIP stock tracking, and scrap recording |
+| **Costing & Financial GL** | [Financial Accounting](/modules/financial-accounting/) | Auto GL posting for WIP asset movement, labor expense absorption, and finished goods inventory receipt |

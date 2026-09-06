@@ -1,248 +1,99 @@
 ---
+aliases:
+- /modules-v2/ecommerce/
 title: "E-Commerce Module"
-description: "Comprehensive e-commerce operations with marketplace integration and online sales management"
-weight: 70
+description: "Omnichannel digital commerce engine managing online B2B/B2C storefronts, marketplace integrations, and automated ERP order processing."
+weight: 40
 ---
 
+The **E-Commerce Module** is BigLedger's omnichannel digital commerce engine. It powers customer-facing web portals, online shopping carts, multi-channel marketplace sync (Shopee, Lazada, TikTok Shop), and automated order injection directly into Sales, Inventory, and Financial Accounting.
 
-The E-Commerce Module enables businesses to sell online through multiple channels, including their own website, marketplaces, and B2B portals. It provides seamless integration between online and offline operations.
+## Architecture & Data Flow
 
-## Module Overview
+E-Commerce connects digital buyer touchpoints directly into core ERP fulfillment pipelines. When an online customer places an order, payment gateways authorize funds while BigLedger allocates stock and schedules packing fulfillment automatically.
 
-The E-Commerce Module consists of specialized applets that work together to provide:
-- **Multi-channel selling** across marketplaces and websites
-- **Inventory synchronization** between online and offline
-- **Order management** from multiple sources
-- **Website management** with CP-Commerce
-- **B2B operations** for wholesale customers
+| Architecture Layer | System Component | Primary Role in E-Commerce Operations |
+|-------------------|------------------|---------------------------------------|
+| **E-Commerce Engine** | [CP-Commerce Admin Applet](/applets/ecommerce/cp-commerce-admin-applet/) | Central management of digital product catalogs, webstore pricing rules, and online buyer accounts. |
+| **Buyer Storefront** | [Shopping Cart Applet](/applets/ecommerce/shopping-cart-applet/) | Customer browsing, online product search, shopping cart management, and payment gateway checkout. |
+| **Multi-Channel Sync** | [Seller Admin Applet](/applets/ecommerce/seller-admin-applet/) | Synchronizing product inventory and sales orders across external marketplaces and B2B portals. |
+| **Fulfillment & Accounting** | Sales, Inventory & Finance | Automated sales order creation, stock reservation, courier dispatch, and gateway settlement posting. |
 
-## Core Dependencies
+---
 
-This module requires the following Core Module applets:
-- **Customer Maintenance** - Customer data and accounts
-- **Inventory Item Maintenance** - Product master data
-- **Tax Configuration** - Tax calculations for online sales
-- **Organization** - Multi-location inventory
-- **Cashbook** - Payment processing
+## Who Uses This Module
 
-## E-Commerce Applets
+| Role | Primary Responsibilities | Core Applets Used |
+|------|--------------------------|-------------------|
+| **E-Commerce Manager** | Maintain online product catalogs, configure promotional banners, set webstore pricing schemes | [CP-Commerce Admin Applet](/applets/ecommerce/cp-commerce-admin-applet/) |
+| **Marketplace Specialist** | Synchronize inventory stock balances across external marketplaces (Shopee, Lazada, TikTok Shop) | [Seller Admin Applet](/applets/ecommerce/seller-admin-applet/), [Seller Applet](/applets/ecommerce/seller-applet/) |
+| **Online Buyer / Client** | Browse product catalogs, manage shopping cart items, complete credit card or FPX checkout | [Shopping Cart Applet](/applets/ecommerce/shopping-cart-applet/) |
+| **Order Fulfillment Clerk** | Monitor incoming webstore orders, generate shipping labels, track courier dispatches | [Internal Packing Order Applet](/applets/manufacturing/internal-packing-order-applet/) |
 
-### 1. EcomSync Applet
-**Purpose**: Central hub for marketplace integration
-- Connects to Lazada, Shopee, Shopify
-- Real-time inventory synchronization
-- Order consolidation
-- Pricing management across channels
+---
 
-[Learn more about EcomSync →](/modules/ecommerce/ecomsync-applet/)
+## Four E-Commerce Touchpoints Every Team Must Differentiate
 
-### 2. CP-Commerce Applet
-**Purpose**: Website and content management
-- Build and manage e-commerce website
-- Product catalog management
-- Content pages and blogs
-- SEO optimization
+Confusing online touchpoints leads to catalog sync errors and payment reconciliation discrepancies:
 
-[Configure CP-Commerce →](/modules/ecommerce/cp-commerce/)
+| Touchpoint Component | Business Purpose | Inventory Impact | Financial Accounting Impact |
+|----------------------|------------------|------------------|-----------------------------|
+| **Digital Catalog** | Online product listing showcasing SKUs, images, and public web prices | None | None |
+| **Shopping Cart Checkout** | Online customer basket authorization and payment gateway capture | Soft Stock Allocation | Payment Gateway Holding Accrual |
+| **ERP Order Injection** | Converting webstore checkout into an official ERP Sales Order | Hard Stock Reservation | None (Unbilled Order recorded) |
+| **Gateway Settlement** | Reconciling online payment processor net payouts into company bank ledgers | None | Bank Debited, Gateway Holding Cleared, Merchant Fees Expensed |
 
-### 3. B2B Portal Applet
-**Purpose**: Wholesale and B2B operations
-- Customer-specific pricing
-- Bulk order processing
-- Credit limit management
-- Custom catalogs
+---
 
-[Set up B2B Portal →](/modules/ecommerce/b2b/)
+## Applet Map
 
-### 4. Marketplace Integration Applets
-Individual connectors for each marketplace:
-- **Shopify Connector**
-- **Lazada Integration**
-- **Shopee Integration**
-- **WooCommerce Bridge**
+| Applet | What it does in this module |
+|--------|-----------------------------|
+| [CP-Commerce Admin Applet](/applets/ecommerce/cp-commerce-admin-applet/) | Central e-commerce control hub — webstore settings, product catalog publishing, and buyer access |
+| [Shopping Cart Applet](/applets/ecommerce/shopping-cart-applet/) | Customer-facing web shopping cart, shipping rate calculator, and payment gateway integration |
+| [Seller Admin Applet](/applets/ecommerce/seller-admin-applet/) | Multi-vendor seller management, B2B supplier portal configuration, and marketplace sync |
+| [Seller Applet](/applets/ecommerce/seller-applet/) | Vendor portal dashboard for third-party marketplace merchants to process orders and track payouts |
+| [EcomSync (index)](/applets/integrations/90-ecomsync-related-applets/) | Marketplace synchronisation — Lazada, Shopee, TikTok Shop and Shopify. EcomSync is not a single applet: the screens live in Organisation (the marketplace branch), Doc Item Maintenance (the listings) and Sales Order (Internal) (the orders), and the synchronisation itself runs as background jobs. Start here when you set a marketplace up or trace why something did not sync. |
 
-[View Integration Guides →](/modules/ecommerce/integration-with-shopify/)
+---
 
-## Key Features
+## ERP Dependency Table
 
-### Multi-Channel Management
-- **Centralized inventory** across all channels
-- **Unified order processing** regardless of source
-- **Consistent pricing** with channel-specific adjustments
-- **Stock allocation** by channel priority
+| Connected Module | What E-Commerce needs from it |
+|------------------|-------------------------------|
+| **Core** | Customer master records, organization branch entities, currency conversion rates |
+| **Sales & POS** | Sales Order generation pipeline, commercial pricing schemes, tax invoice rules |
+| **Inventory** | Real-time stock availability, multi-warehouse allocation, packing dispatch verification |
+| **Financial Accounting** | Chart of accounts mapping, payment gateway clearing accounts, merchant fee GLs |
 
-### Website Management
-- **Menu configuration** for site navigation
-- **Page builder** for content creation
-- **Product display** customization
-- **Mobile-responsive** templates
+---
 
-[Website Configuration Guide →](/modules/ecommerce/20-website-configuration/)
+## Go-Live Checklist
 
-### Order Processing
-- **Automatic order import** from all channels
-- **Order status synchronization**
-- **Batch processing** capabilities
-- **Shipping integration**
+- [x] Webstore domain and SSL certificates configured in CP-Commerce Admin Applet
+- [ ] Product master SKUs, images, and digital descriptions published from Inventory
+- [ ] Payment gateway merchant accounts (Stripe, FPX, PayPal) connected and tested
+- [ ] Shipping carrier API integrations and shipping rate calculation matrices verified
+- [ ] Automated webstore sales order injection mapped to ERP Sales & POS
+- [ ] Payment gateway fee reconciliation GL accounts established in Finance
 
-### Inventory Synchronization
-- **Real-time stock updates**
-- **Buffer stock management**
-- **Multi-location support**
-- **Pre-order handling**
+---
 
-## Integration with Other Modules
+## Module Learning Roadmap
 
-### Financial Accounting
-- Automatic invoice generation
-- Payment reconciliation
-- Tax calculation and reporting
-- Financial reporting
+Follow the documentation in this sequence to master the E-Commerce Module:
 
-### Inventory Module
-- Stock level management
-- Multi-warehouse allocation
-- Transfer orders
-- Stock reservations
+1. **[Core Concepts](core-concepts/)** *(Next Step)* — Understand digital order injection, inventory stock sync, and payment gateway clearing mechanics.
+2. **[Configuration](configuration/)** — Step-by-step setup guides for webstore themes, payment gateways, and shipping rules.
+3. **[Use Cases](use-cases/)** — Real-world reference architectures for B2C webstores, B2B portal ordering, and multi-channel marketplace sync.
+4. **[API Reference](api-reference/)** — Direct reference link to official developer e-commerce APIs.
+5. **[Best Practices](best-practices/)** — Operational recommendations for cart abandonment, inventory buffers, and gateway reconciliation.
+6. **[Reports & Analytics](reports/)** — Scenario guide for choosing the best online sales and conversion reports.
+7. **[Related Applets](related-applets/)** — Complete guide to native applet dependencies across the BigLedger ecosystem.
 
-### POS Module
-- Unified inventory across online/offline
-- Click-and-collect orders
-- Omnichannel customer data
-- Loyalty points integration
+---
 
-### Sales & CRM
-- Customer data synchronization
-- Sales analytics
-- Marketing automation
-- Customer service integration
-
-## Applet Configuration
-
-### Setup Sequence
-
-1. **Core Module Setup**
-   - Configure products in Inventory Item Maintenance
-   - Set up customers in Customer Maintenance
-   - Configure tax codes
-
-2. **EcomSync Configuration**
-   - Connect marketplace accounts
-   - Map product catalogs
-   - Set synchronization rules
-
-3. **CP-Commerce Setup** (if using own website)
-   - Configure website settings
-   - Design site structure
-   - Set up payment gateways
-
-4. **Channel Activation**
-   - Enable individual marketplaces
-   - Configure channel-specific settings
-   - Test order flow
-
-## Common Workflows
-
-### Product Listing
-1. Create product in Inventory Item Maintenance
-2. Configure in EcomSync
-3. Push to selected channels
-4. Monitor listing status
-
-### Order Fulfillment
-1. Orders auto-import from channels
-2. Inventory automatically reserved
-3. Process picking and packing
-4. Update shipping status
-5. Sync tracking to marketplace
-
-### Inventory Updates
-1. Stock changes in BigLedger
-2. EcomSync calculates available quantity
-3. Updates pushed to all channels
-4. Prevents overselling
-
-## Best Practices
-
-### Product Management
-- Use consistent SKUs across channels
-- Maintain detailed product descriptions
-- Optimize images for each platform
-- Regular price reviews
-
-### Inventory Control
-- Set appropriate buffer stocks
-- Configure channel priorities
-- Regular stock reconciliation
-- Monitor stock-out reports
-
-### Order Processing
-- Define clear SLAs by channel
-- Automate order routing
-- Set up exception handling
-- Monitor fulfillment metrics
-
-## Reporting & Analytics
-
-### Key Reports
-- Multi-channel sales analysis
-- Channel profitability
-- Inventory turnover by channel
-- Customer acquisition costs
-- Product performance metrics
-
-### Dashboards
-- Real-time sales monitoring
-- Order status tracking
-- Inventory levels
-- Channel performance comparison
-
-## Troubleshooting
-
-### Common Issues
-
-**Products not syncing**
-- Verify marketplace authentication
-- Check product mapping
-- Review sync logs
-- Validate required fields
-
-**Order import failures**
-- Check API connections
-- Verify customer data
-- Review tax configuration
-- Check inventory availability
-
-**Inventory discrepancies**
-- Run stock reconciliation
-- Check sync frequency
-- Review buffer stock settings
-- Verify multi-location setup
-
-## Related Documentation
-
-### Applet Guides
-- [EcomSync Features](/modules/ecommerce/ecomsync-features/)
-- [CP-Commerce Menu & Pages](/modules/ecommerce/cp-commerce-menu-pages/)
-- [Marketplace Tab Configuration](/modules/ecommerce/marketplace-tab/)
-
-### Integration Guides
-- [Shopify Integration](/modules/ecommerce/integration-with-shopify/)
-- [Introduction to EcomSync](/modules/ecommerce/introduction-to-ecomsync/)
-
-### Operations
-- [Creating Product Listings](/modules/ecommerce/create-single-tab/)
-- [Managing Listings](/modules/ecommerce/listing/)
-- [Update and Delete Items](/modules/ecommerce/update-and-delete-item/)
-
-## Next Steps
-
-1. **Review Core Module** dependencies
-2. **Plan channel strategy** for your business
-3. **Configure EcomSync** for selected channels
-4. **Test order flow** before going live
-5. **Train team** on multi-channel operations
-
-{{< callout type="tip" >}}
-**Success Tip**: Start with one channel, perfect the process, then expand to additional channels gradually.
+{{< callout type="info" >}}
+**Ready to explore digital commerce architecture?**  
+Proceed to **[Core Concepts →](core-concepts/)** to understand webstore order lifecycles and stock sync.
 {{< /callout >}}

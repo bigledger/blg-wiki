@@ -1,4 +1,6 @@
 ---
+aliases:
+- /modules-v2/membership/core-concepts/reward-types/
 title: "Reward Types and Redemption Mechanisms"
 description: "Three reward mechanisms in BigLedger - Pricing Schemes, Pricebooks, and Vouchers"
 weight: 25

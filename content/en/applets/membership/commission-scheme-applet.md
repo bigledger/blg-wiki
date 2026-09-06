@@ -329,6 +329,6 @@ Commission schemes, sales groups and pricing models are master data: no posting 
 
 ## Related documentation
 
-- [Membership module](/modules-v2/membership/) — core concepts and the MLM use case.
+- [Membership module](/modules/membership/) — core concepts and the MLM use case.
 - [Sales Commission Applet](/applets/sales-workflow/sales-commission-applet/) — commission reports and payouts.
 - [Membership Admin Applet](/applets/membership/membership-admin-applet/) — member classes, labels, MLM lineage and the points run.

@@ -586,7 +586,7 @@ and disappears if the row is written through the API.
 
 ## Related documentation
 
-- [Financial Accounting module](/modules-v2/financial-accounting/)
+- [Financial Accounting module](/modules/financial-accounting/)
 - [Investment Applet](/applets/finance/investment-applet/) — the adjacent treasury register
 - [General Ledger Applet](/applets/finance/general-ledger-applet/) — where the cash movement appears
 - [Chart of Account Applet](/applets/master-data/chart-of-account-applet/) — GL code setup

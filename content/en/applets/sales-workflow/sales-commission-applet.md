@@ -295,4 +295,4 @@ created.
 
 ## Related documentation
 
-- [Sales & CRM module](/modules-v2/crm-digital/) and [Membership module](/modules-v2/membership/).
+- [Sales & CRM module](/modules/crm-digital/) and [Membership module](/modules/membership/).

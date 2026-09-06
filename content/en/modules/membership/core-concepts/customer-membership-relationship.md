@@ -1,4 +1,6 @@
 ---
+aliases:
+- /modules-v2/membership/core-concepts/customer-membership-relationship/
 title: "Customer-Membership Relationship"
 description: "Understanding the one-to-many relationship between customers and memberships"
 weight: 21

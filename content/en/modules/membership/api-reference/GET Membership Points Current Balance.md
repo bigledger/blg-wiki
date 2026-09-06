@@ -1,4 +1,9 @@
-# GET Membership Points Current Balance
+---
+aliases:
+- /modules-v2/membership/api-reference/get-membership-points-current-balance/
+title: "GET Membership Points Current Balance"
+description: "Membership API — GET Membership Points Current Balance: endpoint, headers, request body and a worked response."
+---
 
 ## Endpoint
 

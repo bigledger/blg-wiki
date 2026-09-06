@@ -248,5 +248,5 @@ A type whose code contains `WITH` is stored in the withholding column (`tax_wht_
 
 - [Chart of Accounts Setup](/guides/accounting-guides/chart-of-accounts-setup/) — where the tax accounts and their default mappings come from.
 - [Journal Entries](/guides/accounting-guides/journal-entries/) — how a posted tax amount reads in the ledger.
-- [Financial Accounting module](/modules-v2/financial-accounting/)
-- [Core module](/modules-v2/core/)
+- [Financial Accounting module](/modules/financial-accounting/)
+- [Core module](/modules/core/)

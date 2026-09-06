@@ -126,7 +126,7 @@ The window title is **Consignor Purchase Billing Applet**; the sidebar entry is 
 
 | Position | Applet / document | Relationship |
 |---|---|---|
-| Module | [Purchasing](/modules-v2/purchasing/), [Inventory](/modules-v2/inventory/) | Consignment-purchase family |
+| Module | [Purchasing](/modules/purchasing/), [Inventory](/modules/inventory/) | Consignment-purchase family |
 | Upstream (source of the figures) | [Consignment GRN (Internal)](/applets/inventory-workflow/internal-consignment-grn-applet/), [Consignment GIN (Internal)](/applets/inventory-workflow/internal-consignment-gin-applet/), [Consignment Return (Internal)](/applets/purchase-workflow/internal-consignment-return-applet/), [Stock Balance](/applets/inventory-workflow/stock-balance-applet/) | The GRN and GIN are the documents that move consigned stock; the opening, net-purchase and closing quantities you type on a billing line come from them. The applet does not read them itself (see *Lifecycle*). |
 | Upstream (commitment) | [Consignment Purchase Order (Internal)](/applets/purchase-workflow/internal-consignment-purchase-order-applet/) | The order that placed the stock with you. Not linked to the billing. |
 | Master data | [Supplier](/applets/master-data/supplier-applet-1/), [Employee](/applets/master-data/employee-applet/), [Organisation](/applets/master-data/organisation-applet/), [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/), [Tax Configuration](/applets/master-data/tax-configuration-applet/) | Consignor entity, purchaser, company/branch/location, consignment-flagged items, SST/WHT codes |
@@ -332,6 +332,6 @@ Open work items on the applet (for context, not user action): Angular 14 migrati
 ## Related documentation
 
 - [Consignment purchasing guide](/guides/purchasing-guides/consignment-purchasing/)
-- [Purchasing module](/modules-v2/purchasing/) · [Inventory module](/modules-v2/inventory/)
+- [Purchasing module](/modules/purchasing/) · [Inventory module](/modules/inventory/)
 - [Consignment GRN (Internal)](/applets/inventory-workflow/internal-consignment-grn-applet/) · [Consignment GIN (Internal)](/applets/inventory-workflow/internal-consignment-gin-applet/) · [Consignment Purchase Order (Internal)](/applets/purchase-workflow/internal-consignment-purchase-order-applet/) · [Consignment Return (Internal)](/applets/purchase-workflow/internal-consignment-return-applet/)
 - [Consignment Billing Applet (Internal)](/applets/sales-workflow/internal-consignment-billing-applet/) — the sales-side counterpart

@@ -89,6 +89,6 @@ The supplier record every purchase requisition, order, goods receipt, purchase i
 ## Wiki impact
 
 - content/en/applets/master-data/supplier-applet-1.md — rewritten to the applet-page standard in run 26 (title "Supplier"). 11 of 16 screenshots dropped for privacy (person names / brand names / possible customer abbreviations / an AI infographic).
-- content/en/modules-v2/purchasing/configuration/_index.md — "Supplier Master Profiles & Payment Terms" currently points at Entity Maintenance; it should point here.
+- content/en/modules/purchasing/configuration/_index.md — "Supplier Master Profiles & Payment Terms" currently points at Entity Maintenance; it should point here.
 - Every `*-supplier-access-*` applet page and supplier-delivery-order-applet.md should state the Login-tab prerequisite.
 - Any page describing the entity listing endpoint as `/core2/tnt/ms/subquery` is stale.

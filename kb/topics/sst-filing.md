@@ -7,7 +7,7 @@ related: [tax-configuration, chart-of-accounts, organisation, doc-item-maintenan
 wiki:
   - content/en/applets/finance/sst-applet.md
   - content/en/applets/master-data/tax-configuration-applet.md
-  - content/en/modules-v2/financial-accounting/_index.md
+  - content/en/modules/financial-accounting/_index.md
 status: growing
 updated: 2026-09-06
 ---
@@ -58,6 +58,6 @@ How a Malaysian SST-registered company turns already-taxed documents into an SST
 ## Wiki impact
 
 - `content/en/applets/finance/sst-applet.md` — rewritten from this topic (run 32).
-- `content/en/modules-v2/financial-accounting/_index.md` — the SST rows describe the applet as aggregating "output and input tax from all posted transactions across the period", which is wrong for service tax (payment basis) and overstates what the SST-02 covers (hard-coded tax codes only). The FAQ answer about SST not tallying should name the live-vs-snapshot split.
+- `content/en/modules/financial-accounting/_index.md` — the SST rows describe the applet as aggregating "output and input tax from all posted transactions across the period", which is wrong for service tax (payment basis) and overstates what the SST-02 covers (hard-coded tax codes only). The FAQ answer about SST not tallying should name the live-vs-snapshot split.
 - `content/en/applets/master-data/tax-configuration-applet.md` — should note that SST-02 output depends on tax codes being named exactly `SRS6` / `SRS8` / `SVU-6` / `IMS6` / `SRG5` / `SRG10` / … , which makes the code string a compliance-critical value rather than a label.
 </content>

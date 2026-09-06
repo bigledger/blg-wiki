@@ -433,5 +433,5 @@ Reopening is done by setting the period back to `OPEN`; there is no separate app
 ## Related documentation
 
 - [Chart of accounts setup guide](/guides/accounting-guides/chart-of-accounts-setup/) — the walkthrough for a new tenant.
-- [Financial Accounting module](/modules-v2/financial-accounting/) and [Opening balances](/modules-v2/financial-accounting/opening-balance/).
-- [Core module](/modules-v2/core/).
+- [Financial Accounting module](/modules/financial-accounting/) and [Opening balances](/modules/financial-accounting/opening-balance/).
+- [Core module](/modules/core/).

@@ -55,7 +55,7 @@ It is read-only — no create screen, no save, no delete, no status action. Unli
 
 | Position | Document / applet | Why |
 |---|---|---|
-| Module | [Purchasing](/modules-v2/purchasing/), [Inventory](/modules-v2/inventory/) | Goods going back to the supplier. |
+| Module | [Purchasing](/modules/purchasing/), [Inventory](/modules/inventory/) | Goods going back to the supplier. |
 | The document | [Purchase Return (Internal)](/applets/purchase-workflow/internal-purchase-return-applet/) | Same rows; creation, FINAL and VOID happen there. |
 | Upstream (access) | [Supplier](/applets/master-data/supplier-applet-1/) | The login must be linked to the supplier entity (`bl_fi_mst_entity_login_subject_link`, `ACTIVE`). |
 | Upstream (document) | [Purchase Invoice Supplier Access (Internal)](/applets/purchase-workflow/internal-purchase-invoice-supplier-access-applet/), [Purchase GRN Supplier Access (Internal)](/applets/purchase-workflow/internal-purchase-grn-supplier-access-applet/) | The invoice or receipt the return is raised against. |
@@ -185,5 +185,5 @@ This applet writes nothing. The buyer-side document behaves as follows.
 ## Related documentation
 
 - [Purchase Return (Internal) applet](/applets/purchase-workflow/internal-purchase-return-applet/)
-- [Purchasing module](/modules-v2/purchasing/)
+- [Purchasing module](/modules/purchasing/)
 - [Supplier applet](/applets/master-data/supplier-applet-1/)

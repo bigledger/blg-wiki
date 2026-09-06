@@ -272,5 +272,5 @@ Links the saved conversion to MRP job orders through `inventory-stock-conversion
 ## Related documentation
 
 - [Related Applets - Stock Balance](/applets/inventory-workflow/related-applets-stock-balance/) — the processor chain this applet feeds and the refresh / recalculation jobs
-- [Inventory module](/modules-v2/inventory/) and [Manufacturing module](/modules-v2/manufacturing/) — where the applet is listed
+- [Inventory module](/modules/inventory/) and [Manufacturing module](/modules/manufacturing/) — where the applet is listed
 - [Stock Adjustment](/applets/inventory-workflow/stock-adjustment-applet/) — when a single-item correction is the better tool

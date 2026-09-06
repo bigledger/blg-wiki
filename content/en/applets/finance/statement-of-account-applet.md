@@ -324,5 +324,5 @@ a statement reports the receivable position, it does not create it.
 
 ## Related documentation
 
-- [Financial Accounting module](/modules-v2/financial-accounting/) — where customer statements sit in the collections cycle.
+- [Financial Accounting module](/modules/financial-accounting/) — where customer statements sit in the collections cycle.
 - [Customer Maintenance applet](/applets/master-data/customer-maintenance-applet/) — categories, sales agent and contact e-mail reference.

@@ -82,7 +82,7 @@ Cycles are normally created by a scheduled job from the company's *Claim Cut-Off
 | Downstream | [Payment Voucher (Internal)](/applets/finance/internal-payment-voucher-applet/), [Cashbook Applet](/applets/master-data/cashbook-applet/) | The PV Details Report is the working paper for the manual payment voucher; `bl_aat_claim_cycle_payment_line` carries a `payment_voucher_hdr_guid` for the link, but nothing in the claim domain creates the voucher. |
 | Downstream | External ETL | `PUT …/custom-integration/update-xtn-syncing-status/etl-ep` lets an integration mark a closed cycle `SYNCING` / `FINISHED_SYNC` / `FAILED_SYNC` after reading its PV details. |
 
-Module: [Claims Management](/modules-v2/claims/).
+Module: [Claims Management](/modules/claims/).
 
 ## Screens and menus
 
@@ -227,6 +227,6 @@ Each sampled line is a `bl_aat_claim_cycle_checking_sample_link` with `sampling_
 
 ## Related documentation
 
-- [Claims Management module](/modules-v2/claims/)
+- [Claims Management module](/modules/claims/)
 - [Claim Applet](/applets/claims/claim-applet/)
-- [Financial Accounting module](/modules-v2/financial-accounting/)
+- [Financial Accounting module](/modules/financial-accounting/)

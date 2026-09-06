@@ -61,4 +61,4 @@ A commission scheme is master data that says which sales documents qualify (head
 - `sales-workflow/sales-commission-applet.md` — should state that commission amounts come from ACTIVE schemes via `createTxnLines`, that PRICING_MODEL treatments are applied only in the full-commission pass, and link to the membership page.
 - `membership/membership-admin-applet.md` — link target should be the membership page (already is); MLM program `commission_scheme_guid` should be named.
 - `ecommerce/cp-commerce-admin-applet.md` — two links point at the sales-workflow duplicate; switch to `/applets/membership/commission-scheme-applet/` when the alias lands.
-- `modules-v2/membership/{core-concepts,use-cases}/_index.md` — links point at the sales-workflow duplicate; "Commission Scheme engine calculates multi-tier override payouts" should say the Sales Commission posting does.
+- `modules/membership/{core-concepts,use-cases}/_index.md` — links point at the sales-workflow duplicate; "Commission Scheme engine calculates multi-tier override payouts" should say the Sales Commission posting does.

@@ -69,7 +69,7 @@ Engine document type `INTERNAL_PURCHASE_RETURN`, amount signum **+1**, quantity 
 
 | Position | Document / applet | Why |
 |---|---|---|
-| Module | [Purchasing](/modules-v2/purchasing/), [Inventory](/modules-v2/inventory/), [Financial Accounting](/modules-v2/financial-accounting/), [E-Invoice](/modules-v2/e-invoice/) | Stock out, GL posting, and an e-Invoice purchase document type. |
+| Module | [Purchasing](/modules/purchasing/), [Inventory](/modules/inventory/), [Financial Accounting](/modules/financial-accounting/), [E-Invoice](/modules/e-invoice/) | Stock out, GL posting, and an e-Invoice purchase document type. |
 | Upstream | [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/), [Purchase Invoice No Stock In (Internal)](/applets/purchase-workflow/internal-purchase-invoice-no-stock-in-applet/), [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/) | The **Search** tab (Search By Supplier / By Invoice / By GRN / By Purchase Invoice No Stock In / By Serial Number) copies their lines, links the documents, and caps the return quantity at the source line. |
 | Upstream (knock-off) | [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) | The create screen's **KO For** tab. |
 | Downstream | [Payment Voucher (Internal)](/applets/finance/internal-payment-voucher-applet/), the **Contra** and **Settlement** tabs | Close the return's ARAP balance. |
@@ -341,6 +341,6 @@ Stock: quantity × −1 at the return location; the inventory transaction is vis
 
 ## Related documentation
 
-- [Purchasing module](/modules-v2/purchasing/) and its [related applets](/modules-v2/purchasing/related-applets/)
+- [Purchasing module](/modules/purchasing/) and its [related applets](/modules/purchasing/related-applets/)
 - [MyInvois setup](/guides/einvoice-guides/myinvois-setup/) and [e-Invoice validation](/guides/einvoice-guides/einvoice-validation/)
 - [Purchase Debit Note (Internal)](/applets/purchase-workflow/internal-purchase-debit-note-applet/) — the non-stock counterpart

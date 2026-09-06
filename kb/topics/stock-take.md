@@ -7,7 +7,7 @@ related: [stock-adjustment, stock-balance, stock-availability, stock-report, ser
 wiki:
   - content/en/applets/inventory-workflow/stock-take-applet.md
   - content/en/applets/inventory-workflow/stock-adjustment-applet.md
-  - content/en/modules-v2/inventory/_index.md
+  - content/en/modules/inventory/_index.md
 status: growing
 updated: 2026-09-05
 ---
@@ -53,6 +53,6 @@ A counting session for one location: devices are attached, records (item, quanti
 
 - content/en/applets/inventory-workflow/stock-take-applet.md — rewritten (run 13).
 - content/en/applets/inventory-workflow/introduction-to-stock-take-applet.md — duplicate; delete and alias.
-- content/en/modules-v2/inventory/_index.md and reports/_index.md — say the Stock Take applet does "variance posting" / "shrinkage expense GL allocation"; it does neither (no journal, no stock movement) — should point to Stock Adjustment for posting.
+- content/en/modules/inventory/_index.md and reports/_index.md — say the Stock Take applet does "variance posting" / "shrinkage expense GL allocation"; it does neither (no journal, no stock movement) — should point to Stock Adjustment for posting.
 - content/en/applets/master-data/inv-item-maintenance-applet.md — should name the scan-code field the stock take matches and the two-scan-code divergence.
 - content/en/applets/inventory-workflow/warehouse-management-applet.md — should mention the embedded stock take build.

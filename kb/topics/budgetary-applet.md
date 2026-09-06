@@ -8,7 +8,7 @@ wiki:
   - content/en/applets/finance/budgetary-applet.md
   - content/en/applets/finance/budget-applet.md
   - content/en/modules/budgetary.md
-  - content/en/modules-v2/financial-accounting/_index.md
+  - content/en/modules/financial-accounting/_index.md
 status: growing
 updated: 2026-09-05
 ---
@@ -53,5 +53,5 @@ The Budgetary Applet sets up budget control for a tenant: budget items classifie
 ## Wiki impact
 
 - `content/en/applets/finance/budget-applet.md` (no registry row) describes "automatic distribution of an initial amount across periods", "budget validation fails" and approval workflows that do not exist in code; it should be retired in favour of `budgetary-applet.md` (F-0079).
-- `content/en/modules/budgetary.md` and `content/en/modules-v2/financial-accounting/_index.md` claim overspend blocking / "budget validation"; the code only warns.
+- `content/en/modules/budgetary.md` and `content/en/modules/financial-accounting/_index.md` claim overspend blocking / "budget validation"; the code only warns.
 - `content/en/applets/purchase-workflow/internal-purchase-order-applet.md` should state that PO budget fields are informational (processor skips POs); PI and SI pages should document `SHOW_BUDGET` and the budget sub-line tab.

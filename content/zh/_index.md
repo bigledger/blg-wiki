@@ -36,8 +36,8 @@ BigLedger ERP 在一个强大的平台中统一您的所有业务运营。从会
 
 {{< cards >}}
   {{< card link="/zh/modules/financial-accounting" title="财务管理" subtitle="完整会计、GST/SST、财务报表" >}}
-  {{< card link="/zh/modules/inventory" title="库存与仓储" subtitle="多地点、条码、序列号/批次追踪" >}}
-  {{< card link="/zh/modules/crm" title="销售与CRM" subtitle="客户、报价、订单、开票" >}}
+  {{< card link="/modules/inventory/" title="库存与仓储" subtitle="多地点、条码、序列号/批次追踪" >}}
+  {{< card link="/modules/crm-digital/" title="销售与CRM" subtitle="客户、报价、订单、开票" >}}
 {{< /cards >}}
 
 **快速链接：** [开始使用](/zh/user-guide/introduction/) • [视频教程](/zh/demos-resources/) • [用户指南](/zh/user-guide/)
@@ -82,7 +82,7 @@ BigLedger ERP 在一个强大的平台中统一您的所有业务运营。从会
 {{< cards >}}
   {{< card link="/zh/modules/procurement" title="采购" subtitle="采购单、供应商管理、审批" >}}
   {{< card link="/zh/modules/manufacturing" title="制造" subtitle="BOM、生产、质量控制" >}}
-  {{< card link="/zh/modules/pos" title="销售点" subtitle="零售、餐厅、多网点" >}}
+  {{< card link="/modules/pos/" title="销售点" subtitle="零售、餐厅、多网点" >}}
   {{< card link="/zh/modules/hr" title="人力资源" subtitle="薪资、休假、报销、考勤" >}}
   {{< card link="/zh/modules/projects" title="项目管理" subtitle="任务、里程碑、时间追踪" >}}
   {{< card link="/zh/ecommerce/" title="电子商务" subtitle="Shopify、Lazada、Shopee 同步" >}}

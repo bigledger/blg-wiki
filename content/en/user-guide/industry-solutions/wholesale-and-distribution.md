@@ -78,6 +78,6 @@ main > br { display: none !important; }
 
 | Operational Area | Required Applets | Key Capabilities |
 | :--- | :--- | :--- |
-| **B2B Sales & Pricing** | [Sales Module](/modules-v2/sales-crm/) · [Pricebook Applet](/applets/master-data/pricebook-applet/) | Customer-specific tier pricing, volume discount matrix, credit hold rules, and quotation management |
-| **Warehouse & Bin Logistics** | [Inventory Module](/modules-v2/inventory/) | Multi-location bin tracking, batch & expiry date management, pick-pack-ship workflows, and stock transfer orders |
-| **Credit & Receivables Control** | [Financial Accounting](/modules-v2/financial-accounting/) · [Debtor Report](/applets/finance/debtor-report-applet/) | Real-time credit monitoring, automated overdue reminder statements, and collection tracking |
+| **B2B Sales & Pricing** | [Sales Module](/modules/sales-crm/) · [Pricebook Applet](/applets/master-data/pricebook-applet/) | Customer-specific tier pricing, volume discount matrix, credit hold rules, and quotation management |
+| **Warehouse & Bin Logistics** | [Inventory Module](/modules/inventory/) | Multi-location bin tracking, batch & expiry date management, pick-pack-ship workflows, and stock transfer orders |
+| **Credit & Receivables Control** | [Financial Accounting](/modules/financial-accounting/) · [Debtor Report](/applets/finance/debtor-report-applet/) | Real-time credit monitoring, automated overdue reminder statements, and collection tracking |

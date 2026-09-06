@@ -1,5 +1,6 @@
 ---
 title: "Tempat Jualan (POS)"
+draft: true  # unpublished 2026-09-07: its English original (content/en/modules/pos.md) was archived with the modules-tree consolidation — planning/specs/modules-tree-consolidation.md; retranslate from the rebuilt English module page
 description: "Penyelesaian tempat jualan lengkap untuk perniagaan runcit dan hospitaliti"
 weight: 20
 ---

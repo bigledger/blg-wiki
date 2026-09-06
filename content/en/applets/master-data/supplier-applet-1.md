@@ -554,4 +554,4 @@ For Peppol, the receiver on an outbound document is the participant ID flagged *
 
 - [Standard procurement workflow](/guides/purchasing-guides/standard-procurement-workflow/) — where the supplier record is used end to end.
 - [Direct invoice workflow](/guides/purchasing-guides/direct-invoice-workflow/) — buying without a purchase order.
-- [Purchasing module](/modules-v2/purchasing/) and [Financial Accounting module](/modules-v2/financial-accounting/).
+- [Purchasing module](/modules/purchasing/) and [Financial Accounting module](/modules/financial-accounting/).

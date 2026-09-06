@@ -362,6 +362,6 @@ Related open work: making a stock-take session expose a single configurable work
 
 ## Related documentation
 
-- [Core module](/modules-v2/core/) — where this applet sits.
+- [Core module](/modules/core/) — where this applet sits.
 - [Purchase Order](/applets/purchase-workflow/internal-purchase-order-applet/) — the reference example of Workflow Settings plus the separate Approval Settings.
 - [Tenant Admin](/applets/external-tenant-admin/tenant-admin-applet/) — roles, teams and permission sets.

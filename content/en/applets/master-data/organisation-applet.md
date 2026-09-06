@@ -525,5 +525,5 @@ What other documents read from here at FINAL (details and citations in *Configur
 
 - [Chart of Accounts setup guide](/guides/accounting-guides/chart-of-accounts-setup/) — creating the company and mapping its default GL codes
 - [Bank reconciliation guide](/guides/accounting-guides/bank-reconciliation-guide/) — why the company timezone matters for statement windows
-- [Core module](/modules-v2/core/) — where the Organization applet sits in the platform
-- [e-Invoice module configuration](/modules-v2/e-invoice/configuration/) — the company e-Invoice and Peppol settings in context
+- [Core module](/modules/core/) — where the Organization applet sits in the platform
+- [e-Invoice module configuration](/modules/e-invoice/configuration/) — the company e-Invoice and Peppol settings in context

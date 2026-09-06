@@ -96,7 +96,7 @@ bookCollapseSection: false
 - **[日常任务](/zh/user-guide/daily-tasks/)** - 在定价和交易中使用项目
 - **[模块](/zh/modules/)** - 项目流经所有业务模块
 - **[电子商务](/zh/modules/ecommerce/)** - 项目同步到在线商店
-- **[库存](/zh/modules/inventory/)** - 跟踪库存水平和变动
+- **[库存](/modules/inventory/)** - 跟踪库存水平和变动
 - **[会计](/zh/modules/financial-accounting/)** - 项目出现在财务交易中
 
 ## 故障排除快速参考

@@ -261,5 +261,5 @@ Client-side permissions: the registry (`bl_applet_client_side_perm_dfn`) seeds *
 
 ## Related documentation
 
-- [CRM & Digital module](/modules-v2/crm-digital/), [Financial Accounting module](/modules-v2/financial-accounting/)
+- [CRM & Digital module](/modules/crm-digital/), [Financial Accounting module](/modules/financial-accounting/)
 - [Sales Workflow applets](/applets/sales-workflow/)

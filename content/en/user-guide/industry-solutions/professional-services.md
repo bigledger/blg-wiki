@@ -79,5 +79,5 @@ main > br { display: none !important; }
 | Operational Area | Required Applets | Key Capabilities |
 | :--- | :--- | :--- |
 | **Budget & Commitment Guard** | [Vote Book Applet](/applets/finance/vote-book-applet/) · [Budget Applet](/applets/finance/budget-applet/) | Live commitment registers, cost-centre budget envelopes, and overspend blocking |
-| **Claims & Time Management** | [Claims Module](/modules-v2/claims/) | Mobile expense submissions, multi-tier manager approvals, and reimbursement processing |
-| **Revenue & Progress Invoicing** | [Revenue Management](/applets/finance/revenue-management-applet/) · [Sales Module](/modules-v2/sales-crm/) | Deferred revenue schedules, milestone billing, and project profitability reporting |
+| **Claims & Time Management** | [Claims Module](/modules/claims/) | Mobile expense submissions, multi-tier manager approvals, and reimbursement processing |
+| **Revenue & Progress Invoicing** | [Revenue Management](/applets/finance/revenue-management-applet/) · [Sales Module](/modules/sales-crm/) | Deferred revenue schedules, milestone billing, and project profitability reporting |

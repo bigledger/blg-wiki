@@ -54,5 +54,5 @@ EcomSync is the name for keeping marketplace shops (Lazada, Shopee, TikTok Shop,
 
 - `content/en/applets/integrations/90-ecomsync-related-applets.md` — rewritten as the index page (done, run 6).
 - `content/en/applets/finance/internal-receipt-voucher-applet.md` (Lane 2) — add a line that marketplace payout/settlement jobs create receipt vouchers, and `90-ecomsync-related-applets` to related links (next pass).
-- `content/en/modules-v2/ecommerce/related-applets/_index.md` (other lane) — link the index page; it currently lists Doc Item / Pricebook / Sales Order without the marketplace angle.
+- `content/en/modules/ecommerce/related-applets/_index.md` (other lane) — link the index page; it currently lists Doc Item / Pricebook / Sales Order without the marketplace angle.
 - `content/en/applets/_index.md` and `applet-catalog.md` link `/applets/90-ecomsync-related-applets/` — now served by the alias; no edit needed.

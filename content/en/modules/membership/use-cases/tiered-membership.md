@@ -1,4 +1,6 @@
 ---
+aliases:
+- /modules-v2/membership/use-cases/tiered-membership/
 title: "Tiered Membership Design"
 description: "Sophisticated multi-tier program with automatic progression, retention strategies, and tier-specific benefits"
 weight: 30

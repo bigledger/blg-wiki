@@ -1,4 +1,9 @@
-# POST Create Member Point Transaction
+---
+aliases:
+- /modules-v2/membership/api-reference/post-create-member-point-transaction/
+title: "POST Create Member Point Transaction"
+description: "Membership API — POST Create Member Point Transaction: endpoint, headers, request body and a worked response."
+---
 
 ## Endpoint
 

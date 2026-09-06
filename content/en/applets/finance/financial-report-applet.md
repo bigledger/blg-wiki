@@ -294,5 +294,5 @@ Creating a snapshot reads three sets of summary rows for the Set of Books' ledge
 
 - [Financial reporting guide](/guides/accounting-guides/financial-reporting/) — the month-end and snapshot walkthrough for the running example.
 - [Month-end closing tutorial](/tutorials/month-end-closing/)
-- [Financial Accounting module](/modules-v2/financial-accounting/)
+- [Financial Accounting module](/modules/financial-accounting/)
 - [Chart of Account applet](/applets/master-data/chart-of-account-applet/) — sections, categories, Sets of Books, default GL codes.

@@ -330,4 +330,4 @@ This is a master-data applet with its own tables — no server document type, no
 - [Inventory Workflow applets](/applets/inventory-workflow/)
 - [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) — where the `NSTI` item type is set
 - [POS General](/applets/sales-workflow/pos-general-applet/) — trade-in lines at the till
-- [Inventory module](/modules-v2/inventory/)
+- [Inventory module](/modules/inventory/)

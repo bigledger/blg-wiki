@@ -51,4 +51,4 @@ A priced offer to a customer before any commitment. Both signums are 0: FINAL as
 - `internal-sales-order-applet` and `internal-sales-invoice-applet`: Where-it-fits rows already list the quotation as an upstream KO source — keep.
 - `inventory-workflow/stock-availability-applet` (other lane): state that quotations never reduce availability.
 - `finance/internal-receipt-voucher-applet` (other lane): add the quotation as a source ("Convert to Internal Receipt Voucher" creates an RV and deletes the quotation).
-- Guides / module pages that promise "one-click quote-to-order conversion" (modules-v2/pos related-applets text) should be softened to "knocked off by the order".
+- Guides / module pages that promise "one-click quote-to-order conversion" (modules/pos related-applets text) should be softened to "knocked off by the order".

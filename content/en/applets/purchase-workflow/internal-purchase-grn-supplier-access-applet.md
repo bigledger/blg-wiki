@@ -65,7 +65,7 @@ The applet is read-only — there is no create screen and no save or delete cont
 
 | Position | Document / applet | Why |
 |---|---|---|
-| Module | [Purchasing](/modules-v2/purchasing/), [Inventory](/modules-v2/inventory/) | Confirms receipt of goods against a purchase order. |
+| Module | [Purchasing](/modules/purchasing/), [Inventory](/modules/inventory/) | Confirms receipt of goods against a purchase order. |
 | The document | [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/) | Same rows; the buyer creates and finalises there. |
 | Upstream (access) | [Supplier](/applets/master-data/supplier-applet-1/) | The login must be linked to the supplier entity (`bl_fi_mst_entity_login_subject_link`, status `ACTIVE`). |
 | Upstream (document) | [Purchase Order Supplier Access (Internal)](/applets/purchase-workflow/internal-purchase-order-supplier-access-applet/) | The order the GRN receives against; the Doc Link tab shows the pair. |
@@ -227,5 +227,5 @@ The backend has login-entity variants of both the print and the file endpoints (
 ## Related documentation
 
 - [Purchase GRN (Internal) applet](/applets/purchase-workflow/internal-purchase-grn-applet/)
-- [Purchasing module](/modules-v2/purchasing/)
+- [Purchasing module](/modules/purchasing/)
 - [Supplier applet](/applets/master-data/supplier-applet-1/)

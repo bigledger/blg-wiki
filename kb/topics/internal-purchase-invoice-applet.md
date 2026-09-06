@@ -61,8 +61,8 @@ The applet that records supplier bills. FINAL posts the supplier liability, purc
 ## Wiki impact
 
 - `content/en/applets/purchase-workflow/internal-purchase-debit-note-applet.md` (other lane) says a FINAL debit note "is not convertible to VOID (`checkIsGenDocConvertibletoVoid`)" when linked — per code that guard runs only in the e-Invoice cancellation queue, not on the applet's VOID; worth re-checking on that page.
-- `content/en/modules-v2/purchasing/_index.md` link to the Purchase Invoice page is now correct (verified 2026-09-05) — request closed.
+- `content/en/modules/purchasing/_index.md` link to the Purchase Invoice page is now correct (verified 2026-09-05) — request closed.
 
 - `content/en/applets/purchase-workflow/internal-purchase-grn-applet.md` — currently says GRN performs "automatic stock-in"; per code the standard GRN has quantity signum 0. Needs correction (other lane).
 - `content/en/guides/purchasing-guides/standard-procurement-workflow.md` and the previous version of the PI page — same inverted claim.
-- `content/en/modules-v2/purchasing/_index.md` — links "Purchase Invoice Applet" to the No Stock In page; should point to `/applets/finance/internal-purchase-invoice-applet/`.
+- `content/en/modules/purchasing/_index.md` — links "Purchase Invoice Applet" to the No Stock In page; should point to `/applets/finance/internal-purchase-invoice-applet/`.

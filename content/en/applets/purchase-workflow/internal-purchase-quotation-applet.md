@@ -105,7 +105,7 @@ It is a **record-only** document: server document type `INTERNAL_PURCHASE_QUOTAT
 
 ## Where it fits
 
-Module: [Purchasing](/modules-v2/purchasing/).
+Module: [Purchasing](/modules/purchasing/).
 
 | Direction | Document / applet | Relationship |
 |---|---|---|
@@ -309,4 +309,4 @@ Statuses: `TEMP` (created, not yet saved — the only state in which KO For work
 ## Related documentation
 
 - [Standard Procurement Workflow](/guides/purchasing-guides/standard-procurement-workflow/) — where a supplier quotation sits between requisition and order.
-- [Purchasing module](/modules-v2/purchasing/) — the module page and its applet list.
+- [Purchasing module](/modules/purchasing/) — the module page and its applet list.

@@ -1,95 +1,88 @@
-[//]: # (---)
+---
+aliases:
+- /modules-v2/membership/configuration/
+title: "Configuration"
+description: "Step-by-step guide for setting up the Membership Module — from member structure to points currencies and rewards."
+weight: 30
+bookCollapseSection: false
+---
 
-[//]: # (title: "Configuration")
+This section walks through the configuration of the Membership Module in the correct order. Each phase depends on the previous one. Skipping ahead causes errors that are hard to reverse.
 
-[//]: # (description: "Complete guide to configuring the Membership Module including member setup, points systems, and rewards programs")
+## Configuration Dependency Chain
 
-[//]: # (weight: 30)
+> [!WARNING]
+> Member Classes must exist **before** you create member records. Points Currencies must exist **before** you set conversion rates. Always follow the phase order.
 
-[//]: # (bookCollapseSection: false)
+---
 
-[//]: # (---)
+## Phase 1: Segment Structure
 
-The Configuration section provides comprehensive guidance for setting up and managing all aspects of the Membership Module. This is where you establish the foundation of your membership program, including member profiles, points currencies, conversion rules, and reward structures.
+**What you are doing:** Defining the tier and tagging system before any members are enrolled.
 
-## Configuration Overview
+**Use:** [Membership Admin Applet](/applets/membership/membership-admin-applet/) → Member Class and Member Label sections.
 
-Configuring the Membership Module involves three main areas that work together to create a complete loyalty program:
+| Task | What to decide |
+|------|---------------|
+| Create Member Classes | How many tiers? (e.g., Standard, Gold, Platinum). What are the benefits of each? |
+| Create Member Labels | What tags will you use for segmentation? (e.g., Newsletter, VIP, High-Value) |
 
-**Member Setup** establishes who your members are and how they're organized. This includes creating individual member records, defining member classes for tier-based programs, applying labels for segmentation, and importing large member databases efficiently.
+**Sub-sections:**
+- [Member Setup](/modules/membership/configuration/member-setup/)
+- [Points Setup](/modules/membership/configuration/points-setup/)
+- [Rewards Setup](/modules/membership/configuration/rewards-setup/)
 
-**Points Setup** defines your virtual currency systems and how points flow through your ecosystem. You'll configure point currencies, establish conversion rates between different point types, set up cash redemption rules for POS transactions, and implement expiry policies to maintain program health.
+---
 
-**Rewards Setup** determines what benefits members receive and how they access them. This involves configuring special pricing schemes, setting up pricebooks for member-exclusive offers, and implementing voucher-based rewards as alternatives to immediate discounts.
+## Phase 2: Member Records
 
-## Configuration Workflow
+**What you are doing:** Enrolling customers as members and linking them to a class.
 
-The recommended workflow for configuring a new membership program follows a logical sequence:
+**Use:** [Membership Admin Applet](/applets/membership/membership-admin-applet/) → Member Listing.
 
-**Phase 1: Foundation** begins with creating your member classes and labels. These organizational structures should be established before you create individual members, as they determine what options are available during member creation. Define your tier structure, segmentation strategy, and any class-specific benefits during this phase.
+| Task | Dependency |
+|------|-----------|
+| Create individual members manually | [Customer Maintenance Applet](/applets/master-data/customer-maintenance-applet/) record must exist first |
+| Bulk import members from CSV | Customer records and Member Classes must exist |
+| Assign members to classes | Member Class must already be created (Phase 1) |
 
-**Phase 2: Member Records** involves creating or importing your member database. For small programs, manual creation through the interface works well. For larger programs with hundreds or thousands of members, use the bulk import functionality to load member data from CSV files. During creation, you'll link members to existing customer records and assign them to the appropriate classes and labels.
+---
 
-**Phase 3: Points System** establishes your virtual currency ecosystem. Create point currencies first, then configure conversion rates between them. Set up cash conversion rules for POS redemption, and finally implement expiry rules to manage point liability. Each step builds on the previous configuration.
+## Phase 3: Points System
 
-**Phase 4: Rewards Structure** defines what members can access. Configure pricing schemes in Doc Item Maintenance to enable member-specific pricing, set up pricebooks that reference these schemes, and optionally configure voucher-based rewards for promotional campaigns. This phase connects your membership program to your product catalog.
+**What you are doing:** Creating the currencies that members earn and redeem.
 
-**Phase 5: Testing and Refinement** validates your configuration before launching to all members. Create test members in different classes, simulate point earning and redemption scenarios, verify that rewards appear correctly in transactions, and confirm that expiry rules behave as expected. Make adjustments based on test results.
+**Use:** [Membership Admin Applet](/applets/membership/membership-admin-applet/) → PTS CCY Module and PTS to CCY Config.
 
-## Configuration Dependencies
+| Task | Sequence |
+|------|---------|
+| Create at least one Points Currency | First |
+| Set the Points-to-Money conversion rate | After currency exists |
+| Configure Points-to-Points cross-conversion (if needed) | After currencies exist |
+| Set expiry rules | After currencies are active |
 
-Understanding configuration dependencies helps you avoid errors and rework:
+---
 
-Member classes must exist before you can assign members to them. While you can create members without classes, tier-based programs require class definitions first.
+## Phase 4: Rewards Structure
 
-Point currencies must be configured before you can set up conversion rates or expiry rules. The currency defines what you're converting or expiring.
+**What you are doing:** Connecting the membership program to pricing and campaign tools.
 
-Pricing schemes must be configured in Doc Item Maintenance before you can reference them in pricebooks. The scheme defines the special price; the pricebook controls who sees it.
+| Reward type | What to configure | Applet to use |
+|-------------|------------------|---------------|
+| Member-specific item pricing | Pricing schemes on items | [Doc Item Maintenance Applet](/applets/master-data/doc-item-maintenance-applet/) |
+| Tier-based pricebooks | Pricebook linked to Member Class | [Pricebook Applet](/applets/master-data/pricebook-applet/) |
+| Voucher-based campaigns | Voucher headers, ticket serials, redemption rules | [Voucher Management Applet](/applets/membership/voucher-management-applet/) |
 
-Member records must be linked to customer records. If you're importing members, ensure the corresponding customer records exist in BigLedger first, or plan to create them as part of the import process.
+---
 
-## Configuration Best Practices
+## Phase 5: Test and Validate
 
-**Start Simple, Then Expand.** Begin with a basic configuration—one member class, one point currency, a few reward items. Test this simple setup thoroughly, then add complexity gradually. This approach makes troubleshooting easier and helps users understand the system incrementally.
+Before going live, complete these tests. Each one validates a different layer of the configuration:
 
-**Document Your Decisions.** Record why you configured things in a particular way. Document your tier criteria, point expiry rationale, and reward selection logic. This documentation becomes invaluable when training new staff or reviewing program performance.
-
-**Plan for Scale.** Even if you're starting with a small program, configure in a way that supports growth. Use member labels for segmentation rather than creating multiple classes. Design point currencies that can handle future conversion scenarios. Structure pricebooks to accommodate expanding product lines.
-
-**Consider User Experience.** Configure with your members in mind. Choose point currency names that members will understand. Set conversion rates that make redemption calculations simple. Create pricebooks that highlight genuinely valuable rewards.
-
-**Maintain Data Hygiene.** Establish processes for keeping member data current. Plan how you'll update member classes as customers qualify for new tiers. Define how you'll remove inactive labels. Schedule regular reviews of expired points and obsolete pricebook entries.
-
-## Multi-Membership Considerations
-
-BigLedger supports multiple memberships per customer, which adds flexibility but also complexity:
-
-**Separate Contexts.** Each membership operates independently with its own point balances, tier status, and reward eligibility. A customer might be a Gold member in your retail program and a Silver member in your wholesale program, with different points and benefits in each.
-
-**Clear Communication.** When a customer has multiple memberships, ensure your staff understands which membership applies in each transaction context. POS systems should prompt for membership selection if multiple memberships are eligible.
-
-**Consistent Configuration.** If you're using multiple membership programs, maintain configuration consistency where appropriate. Use similar naming conventions, comparable tier structures, and aligned point values to reduce confusion.
-
-## Integration Points
-
-The Membership Module configuration integrates with several other BigLedger modules:
-
-**Sales & CRM** provides the customer records that members link to. Customer master data flows into member records, keeping contact information synchronized.
-
-**Financial Accounting** receives point liability transactions when points are issued and redeemed. Your point currency configuration affects how these transactions are valued.
-
-**POS Systems** use your points setup and rewards configuration during checkout. Point redemption rates and member pricing schemes must be configured before they'll work at the point of sale.
-
-**E-Commerce** can display member-specific pricing based on your pricebook configuration. Ensure pricebook effective dates align with your online promotion calendar.
-
-## Getting Started
-
-The subsections in this Configuration guide follow the recommended workflow sequence:
-
-**Member Setup** covers creating and organizing member records, including bulk import for large-scale programs.
-
-**Points Setup** explains configuring point currencies, conversion rates, cash redemption, and expiry rules.
-
-**Rewards Setup** details pricing schemes, pricebooks, and voucher-based rewards.
-
-Work through these subsections in order for the smoothest configuration experience, or jump to specific topics as needed for program modifications.
+| Test | What it validates |
+|------|------------------|
+| Create a test member and assign to a class | Member record creation and class assignment work |
+| Post +100 points manually | Point currency and adjustment flow works |
+| Post -50 points as a simulated redemption | Redemption logic works, balance updates correctly |
+| Run a test POS sale with member identified | Earning fires correctly after sale completes |
+| Check transaction history in Membership Admin | Audit trail is accurate |

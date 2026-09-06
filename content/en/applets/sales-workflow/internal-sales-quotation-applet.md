@@ -372,5 +372,5 @@ Not applied to quotations: the customer blacklist check (L1646–L1650 names cas
 ## Related documentation
 
 - [Installation Scheduling Workflow](/guides/sales-guides/installation-scheduling-workflow/)
-- [CRM & Digital module](/modules-v2/crm-digital/), [POS module](/modules-v2/pos/), [Financial Accounting module](/modules-v2/financial-accounting/)
+- [CRM & Digital module](/modules/crm-digital/), [POS module](/modules/pos/), [Financial Accounting module](/modules/financial-accounting/)
 - [Sales Workflow applets](/applets/sales-workflow/)

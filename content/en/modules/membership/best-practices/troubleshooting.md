@@ -1,4 +1,6 @@
 ---
+aliases:
+- /modules-v2/membership/best-practices/troubleshooting/
 title: "Troubleshooting Guide"
 description: "Systematic approaches to diagnosing and resolving common membership program issues"
 weight: 40

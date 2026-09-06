@@ -21,11 +21,11 @@ GadgetSphere Sdn Bhd buys from around **1,200 suppliers** — authorised distrib
 
 ## What you need to know first
 
-One idea from elsewhere in this section carries over: **[validation and clearance](/modules-v2/e-invoice/concepts/validation-and-clearance/)** — what it means for a document to be *Valid* at LHDN, and why a validated e-invoice carries an LHDN identifier and a QR code. That is the thing you are looking for on your supplier's document.
+One idea from elsewhere in this section carries over: **[validation and clearance](/modules/e-invoice/concepts/validation-and-clearance/)** — what it means for a document to be *Valid* at LHDN, and why a validated e-invoice carries an LHDN identifier and a QR code. That is the thing you are looking for on your supplier's document.
 
 Two words are used here in ways that will mislead you if you carry over their meaning from elsewhere:
 
-- **A matching queue is not a [submission queue](/modules-v2/e-invoice/concepts/pools-and-queues/).** A submission queue holds a document that is on its way to LHDN and will move on its own. A matching queue holds a row that waits for a counterpart to turn up, and if none ever does, it waits forever. That is normal, not a fault.
+- **A matching queue is not a [submission queue](/modules/e-invoice/concepts/pools-and-queues/).** A submission queue holds a document that is on its way to LHDN and will move on its own. A matching queue holds a row that waits for a counterpart to turn up, and if none ever does, it waits forever. That is normal, not a fault.
 - **Matching here is not three-way matching.** Comparing a purchase order, a goods received note and a supplier invoice is a purchasing job and lives in the [purchasing guides](/guides/purchasing-guides/). Matching in e-invoicing means pairing *your* purchase document with the *supplier's* e-invoice as a tax document.
 
 ## Before you start

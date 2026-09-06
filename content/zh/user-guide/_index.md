@@ -157,14 +157,14 @@ weight: 10
 ### 销售与客户运营
 建立强大的客户关系并优化您的销售流程：
 
-- **[CRM 模块](/zh/modules/crm/)** - 360度客户关系管理
+- **[数字 CRM 模块](/modules/crm-digital/)** - 360度客户关系管理
 - **[销售仪表板](/zh/business-operations/sales-dashboard/)** - 实时销售分析和洞察
 - **[订单管理](/zh/business-operations/order/)** - 端到端订单处理和履行
 
 ### 库存与供应链
 优化您的库存水平并简化供应链运营：
 
-- **[库存管理](/zh/modules/inventory/)** - 多地点库存控制和跟踪
+- **[库存管理](/modules/inventory/)** - 多地点库存控制和跟踪
 - **[采购](/zh/modules/procurement/)** - 采购订单和供应商关系管理
 - **[制造](/zh/modules/manufacturing/)** - 生产计划和制造控制
 

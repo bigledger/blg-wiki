@@ -1,4 +1,6 @@
 ---
+aliases:
+- /modules-v2/membership/configuration/rewards-setup/
 title: "Rewards Setup"
 description: "Configuring pricing schemes, pricebooks, and voucher rewards for member benefits"
 weight: 30

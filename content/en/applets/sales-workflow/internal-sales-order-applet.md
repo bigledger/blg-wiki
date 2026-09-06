@@ -390,5 +390,5 @@ The app also reads `SHOW_SO_DETAILED_REPORT_MENU`, `SHOW_PICK_PACK_QUEUE_MENU`, 
 ## Related documentation
 
 - [Standard Sales Workflow](/guides/sales-guides/standard-sales-workflow/), [Partial Delivery Workflow](/guides/sales-guides/partial-delivery-workflow/), [Installation Scheduling Workflow](/guides/sales-guides/installation-scheduling-workflow/)
-- [Inventory module](/modules-v2/inventory/), [E-Commerce module](/modules-v2/ecommerce/), [Financial Accounting module](/modules-v2/financial-accounting/)
+- [Inventory module](/modules/inventory/), [E-Commerce module](/modules/ecommerce/), [Financial Accounting module](/modules/financial-accounting/)
 - [Sales Workflow applets](/applets/sales-workflow/)

@@ -518,7 +518,7 @@ Expand your pricing management expertise:
 - [Pricing Schemes & Strategy Management](/user-guide/daily-tasks/pricing-scheme/) - Advanced pricing templates and strategies
 - [Price Set Configuration](/user-guide/daily-tasks/price-set/) - Rule-based pricing logic and conditions
 - [Item Maintenance](/user-guide/basic-operations/item-maintenance/) - Individual item pricing and management
-- [Customer Management](/modules/crm/) - Customer relationship and pricing integration
+- [Digital CRM Module](/modules/crm-digital/) - Customer relationship and pricing integration
 - [POS Configuration](/modules/pos/) - Retail pricing implementation
 - [E-Commerce Integration](/modules/ecommerce/) - Multi-channel pricing synchronization
 

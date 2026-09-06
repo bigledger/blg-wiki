@@ -223,5 +223,5 @@ Two backend details matter for support. First, the completion guard compares aga
 ## Related documentation
 
 - [Delivery Installation applet](/applets/delivery-installation/delivery-installation-applet/) — the dispatcher's reference, including trip and job statuses, return-reason and custom-status settings.
-- [Inventory module](/modules-v2/inventory/) — outbound movements and delivery orders.
+- [Inventory module](/modules/inventory/) — outbound movements and delivery orders.
 - No user guide covers the driver workflow yet; the sales-side guides [Installation Scheduling Workflow](/guides/sales-guides/installation-scheduling-workflow/) and [Partial Delivery Workflow](/guides/sales-guides/partial-delivery-workflow/) describe the documents that become jobs.

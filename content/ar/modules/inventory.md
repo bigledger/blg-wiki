@@ -1,5 +1,6 @@
 ---
 title: "إدارة المخزون"
+draft: true  # unpublished 2026-09-07: its English original (content/en/modules/inventory.md) was archived with the modules-tree consolidation — planning/specs/modules-tree-consolidation.md; retranslate from the rebuilt English module page
 description: "تتبع المخزون في الوقت الفعلي وإدارة المستودعات وتحسين سلسلة التوريد"
 weight: 40
 ---

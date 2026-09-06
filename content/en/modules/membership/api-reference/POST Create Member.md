@@ -1,4 +1,9 @@
-# POST Create Member
+---
+aliases:
+- /modules-v2/membership/api-reference/post-create-member/
+title: "POST Create Member"
+description: "Membership API — POST Create Member: endpoint, headers, request body and a worked response."
+---
 
 ## Endpoint
 

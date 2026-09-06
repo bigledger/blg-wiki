@@ -474,5 +474,5 @@ A FINAL invoice that has already been settled or knocked off is normally reverse
 ## Related documentation
 
 - [Standard Sales Workflow](/guides/sales-guides/standard-sales-workflow/), [Credit Sales Workflow](/guides/sales-guides/credit-sales-workflow/), [Partial Delivery Workflow](/guides/sales-guides/partial-delivery-workflow/), [Returns and Exchanges Workflow](/guides/sales-guides/returns-exchanges-workflow/)
-- [Financial Accounting module](/modules-v2/financial-accounting/), [Inventory module](/modules-v2/inventory/), [E-Invoice module](/modules-v2/e-invoice/)
+- [Financial Accounting module](/modules/financial-accounting/), [Inventory module](/modules/inventory/), [E-Invoice module](/modules/e-invoice/)
 - [Sales Workflow applets](/applets/sales-workflow/)

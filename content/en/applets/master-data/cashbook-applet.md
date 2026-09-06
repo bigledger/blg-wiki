@@ -400,5 +400,5 @@ Cashbooks, settlement methods, members and weightage configurations are master r
 ## Related documentation
 
 - [Bank reconciliation guide](/guides/accounting-guides/bank-reconciliation-guide/) — the month-end procedure that starts from a cashbook.
-- [Financial Accounting module](/modules-v2/financial-accounting/) and [Opening balances](/modules-v2/financial-accounting/opening-balance/).
-- [Core module](/modules-v2/core/).
+- [Financial Accounting module](/modules/financial-accounting/) and [Opening balances](/modules/financial-accounting/opening-balance/).
+- [Core module](/modules/core/).

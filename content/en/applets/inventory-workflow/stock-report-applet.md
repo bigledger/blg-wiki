@@ -224,5 +224,5 @@ Not applicable — read-only reports. Values are computed at run time from the s
 
 ## Related documentation
 
-- [Inventory module](/modules-v2/inventory/) — [reports](/modules-v2/inventory/reports/), [core concepts](/modules-v2/inventory/core-concepts/).
+- [Inventory module](/modules/inventory/) — [reports](/modules/inventory/reports/), [core concepts](/modules/inventory/core-concepts/).
 - [Inventory guides](/guides/inventory-guides/).

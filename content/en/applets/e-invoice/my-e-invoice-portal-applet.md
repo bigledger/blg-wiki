@@ -167,4 +167,4 @@ The portal writes the buyer's entity record, the pool row it processes and rejec
 
 - [E-Invoice Pools & Submission Routing](/guides/einvoice-guides/einvoice-pools-and-routing/)
 - [E-Invoice Validation Rules & Troubleshooting](/guides/einvoice-guides/einvoice-validation/)
-- [E-Invoice module](/modules-v2/e-invoice/)
+- [E-Invoice module](/modules/e-invoice/)

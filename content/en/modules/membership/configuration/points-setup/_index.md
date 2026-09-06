@@ -1,4 +1,6 @@
 ---
+aliases:
+- /modules-v2/membership/configuration/points-setup/
 title: "Points Setup"
 description: "Configuring point currencies, conversion rates, cash redemption, and expiry rules"
 weight: 20

@@ -49,5 +49,5 @@ The goods-received record. Amount and quantity signum are both 0, so FINAL write
 
 ## Wiki impact
 
-- `content/en/modules-v2/purchasing/_index.md` (lines 18, 44, 55) and `content/en/guides/purchasing-guides/standard-procurement-workflow.md` / `direct-grn-workflow.md` still describe the GRN as the stock-in document with a GRNI accrual; per the code that is the GRN Stock In applet. F-0038.
+- `content/en/modules/purchasing/_index.md` (lines 18, 44, 55) and `content/en/guides/purchasing-guides/standard-procurement-workflow.md` / `direct-grn-workflow.md` still describe the GRN as the stock-in document with a GRNI accrual; per the code that is the GRN Stock In applet. F-0038.
 - `static/images/internal-purchase-grn-applet/internal-purchase-grn-overview-infographic.png` is an AI-generated image with garbled text and the disproven claims; no longer referenced.

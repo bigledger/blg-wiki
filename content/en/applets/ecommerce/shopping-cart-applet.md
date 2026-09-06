@@ -301,6 +301,6 @@ The applet repository's only issue is the Angular 14 migration (gh:bigledger/blg
 
 ## Related documentation
 
-- [E-Commerce module](/modules-v2/ecommerce/) — where the cart sits between storefront and sales order.
+- [E-Commerce module](/modules/ecommerce/) — where the cart sits between storefront and sales order.
 - [Shopping Cart Customer Access (Internal)](/applets/ecommerce/internal-shopping-cart-customer-access-applet/) — the customer-side applet.
 - [Sales Order (Internal)](/applets/sales-workflow/internal-sales-order-applet/) — knocking a FINAL cart off into an order.

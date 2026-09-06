@@ -320,5 +320,5 @@ Two things the code does not do: no endpoint validates the order of transitions 
 ## Related documentation
 
 - [Installation Scheduling Workflow](/guides/sales-guides/installation-scheduling-workflow/) and [Partial Delivery Workflow](/guides/sales-guides/partial-delivery-workflow/) — the sales-side guides whose orders feed this applet.
-- [Inventory module](/modules-v2/inventory/) — outbound movements and delivery orders.
+- [Inventory module](/modules/inventory/) — outbound movements and delivery orders.
 - [Delivery And Installation Driver](/applets/delivery-installation/delivery-installation-driver-applet/) — the driver applet reference.

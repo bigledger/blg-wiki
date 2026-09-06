@@ -6,7 +6,7 @@ modules: [core, pos, membership, purchasing]
 related: [shipping-pricebook-applet, pos-general-applet, internal-sales-invoice-applet, internal-purchase-order-applet, membership-admin-applet, ocr-cash-bill-applet, organisation-applet]
 wiki:
   - content/en/applets/master-data/pricebook-applet.md
-  - content/en/modules-v2/membership/configuration/rewards-setup/pricebook-configuration.md
+  - content/en/modules/membership/configuration/rewards-setup/pricebook-configuration.md
 status: growing
 updated: 2026-09-05
 ---
@@ -49,6 +49,6 @@ A price book is a container of price sets; each price set is a `bl_fi_mst_price_
 ## Wiki impact
 
 - content/en/applets/master-data/pricebook-applet.md — rewritten (run 18).
-- content/en/modules-v2/membership/configuration/rewards-setup/pricebook-configuration.md — "assign the pricebook to the member class" should read "add a Member Class rule to the price set"; there is no link on the member class.
+- content/en/modules/membership/configuration/rewards-setup/pricebook-configuration.md — "assign the pricebook to the member class" should read "add a Member Class rule to the price set"; there is no link on the member class.
 - content/en/applets/sales-workflow/pos-general-applet.md — `PRICEBOOK_POINTS_AUTO_APPLY` has no reader; calculator limitations belong in its Troubleshooting.
 - content/en/applets/membership/ocr-cash-bill-applet.md — document `priceBookHdrGuid` on the job template and the POINT-only treatment.

@@ -1,4 +1,6 @@
 ﻿---
+aliases:
+- /modules/inventory/category-groups/
 title: "Doc Item Maintenance"
 description: "Reference for the Doc Item Maintenance applet — the item master (products, services, vouchers, account-code items) that every sales, purchase, POS and e-commerce document in BigLedger draws from."
 applet_code: "DocItemApplet"
@@ -592,7 +594,7 @@ Item code uniqueness is enforced by the backend among non-deleted items only. Wh
 
 ## Related documentation
 
-- [Core module](/modules-v2/core/) — where the item master sits among the other master-data applets.
-- [Inventory module configuration](/modules-v2/inventory/configuration/) and [E-Commerce module configuration](/modules-v2/ecommerce/configuration/) — module-level setup that starts with items.
-- [E-Invoice module configuration](/modules-v2/e-invoice/configuration/) — item classification requirements.
-- [POS module configuration](/modules-v2/pos/configuration/) — which pricing schemes POS reads.
+- [Core module](/modules/core/) — where the item master sits among the other master-data applets.
+- [Inventory module configuration](/modules/inventory/configuration/) and [E-Commerce module configuration](/modules/ecommerce/configuration/) — module-level setup that starts with items.
+- [E-Invoice module configuration](/modules/e-invoice/configuration/) — item classification requirements.
+- [POS module configuration](/modules/pos/configuration/) — which pricing schemes POS reads.

@@ -522,7 +522,7 @@ Picking Queue are left behind.
 
 ## Related documentation
 
-- [Inventory module](/modules-v2/inventory/) — where this applet sits.
+- [Inventory module](/modules/inventory/) — where this applet sits.
 - [Stock Transfer](/applets/inventory-workflow/stock-transfer-applet/) and
   [Delivery Order (Internal, outbound)](/applets/sales-workflow/internal-outbound-delivery-order-applet/)
   — the applets that finalise what this one drafts.

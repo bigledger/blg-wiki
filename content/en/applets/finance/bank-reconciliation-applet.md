@@ -405,7 +405,7 @@ All three read the links as they stand when you click Generate Report. Report 3 
 ## Related documentation
 
 - [Bank reconciliation guide](/guides/accounting-guides/bank-reconciliation-guide/) — the month-end procedure, step by step.
-- [Financial Accounting module](/modules-v2/financial-accounting/) — where reconciliation sits in the close.
+- [Financial Accounting module](/modules/financial-accounting/) — where reconciliation sits in the close.
 - [Cashbook applet](/applets/master-data/cashbook-applet/) — reference for the cashbook and its Weightage Configuration.
 
 ### Video walkthrough

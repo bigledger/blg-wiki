@@ -298,5 +298,5 @@ A customer is a master record with a status of `ACTIVE`, `INACTIVE` or `TEMP`; i
 ## Related documentation
 
 - [Credit sales workflow](/guides/sales-guides/credit-sales-workflow/) — the guide that sets up a customer with a credit term and limit and then sells on credit.
-- [Core module](/modules-v2/core/) and [CRM module use cases](/modules-v2/crm-digital/use-cases/).
-- [E-Invoice module configuration](/modules-v2/e-invoice/configuration/) — buyer data requirements.
+- [Core module](/modules/core/) and [CRM module use cases](/modules/crm-digital/use-cases/).
+- [E-Invoice module configuration](/modules/e-invoice/configuration/) — buyer data requirements.

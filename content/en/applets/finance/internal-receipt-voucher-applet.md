@@ -81,7 +81,7 @@ The **Receipt Voucher (Internal)** applet records money coming in from a custome
 | Downstream | [Debtor Report](/applets/finance/debtor-report-applet/), [Statement of Account](/applets/finance/statement-of-account-applet/) | Ageing and statements reflect contra'd receipts |
 | Mirror | [Payment Voucher (Internal)](/applets/finance/internal-payment-voucher-applet/) | The same document for money going out to suppliers |
 
-Modules: [Financial Accounting](/modules-v2/financial-accounting/) and Sales.
+Modules: [Financial Accounting](/modules/financial-accounting/) and Sales.
 
 ## Screens and menus
 
@@ -320,4 +320,4 @@ Editing a finalised voucher's settlement amount is refused while the cashbook li
 ## Related documentation
 
 - [Bank reconciliation guide](/guides/accounting-guides/bank-reconciliation-guide/)
-- [Financial Accounting module](/modules-v2/financial-accounting/)
+- [Financial Accounting module](/modules/financial-accounting/)

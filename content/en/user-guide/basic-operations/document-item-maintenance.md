@@ -659,7 +659,7 @@ Expand your document management expertise:
 - [Item Maintenance](/user-guide/basic-operations/item-maintenance/) - Core item management procedures and workflows
 - [Business Operations](/business-operations/) - Operational workflow integration and management
 - [Financial Accounting](/modules/financial-accounting/) - Financial document integration and processing
-- [Customer Management](/modules/crm/) - Customer document portal and communication
+- [Digital CRM Module](/modules/crm-digital/) - Customer document portal and communication
 - [Inventory Management](/modules/inventory/) - Inventory document workflows and integration
 
 ---

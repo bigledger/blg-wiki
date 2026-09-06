@@ -1,4 +1,6 @@
 ---
+aliases:
+- /modules-v2/membership/use-cases/points-redemption/
 title: "Points Redemption Strategies"
 description: "Comprehensive redemption models including discounts, products, vouchers, partners, and donations"
 weight: 40

@@ -51,4 +51,4 @@ The type-agnostic view of `bl_fi_mst_entity_hdr`: one record with `is_customer` 
 ## Wiki impact
 
 - content/en/applets/master-data/entity-applet.md — rewritten (run 7); title "Entity Maintenance".
-- Pages linking here as "Entity Applet" (debtor-report-applet, commission-scheme-applet) should say "Entity Maintenance" and, where they mean customer data, link Customer Maintenance instead; modules-v2 claims / hr-payroll / purchasing pages describe this applet as holding job grades, bank profiles and payment terms — those live in Employee Maintenance / Supplier / Customer Maintenance.
+- Pages linking here as "Entity Applet" (debtor-report-applet, commission-scheme-applet) should say "Entity Maintenance" and, where they mean customer data, link Customer Maintenance instead; modules claims / hr-payroll / purchasing pages describe this applet as holding job grades, bank profiles and payment terms — those live in Employee Maintenance / Supplier / Customer Maintenance.
