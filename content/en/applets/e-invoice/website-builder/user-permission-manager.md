@@ -36,7 +36,6 @@ Navigate to your website builder dashboard and access the User Permission Manage
 2. Enter the email address of the user you want to add as an admin
 3. The email must be valid (e.g., `user@example.com`)
 
-![User Permission Manager Interface](/images/website-builder/user-permission-manager/listing.png)
 
 ### Step 2: Verify User
 
@@ -67,7 +66,6 @@ If the user verification returns a "User Not Found" warning, you need to send th
 2. The system will send an email invitation to the specified address
 3. A confirmation message will appear indicating the invitation was sent successfully
 
-![Send Invitation](/images/website-builder/user-permission-manager/send-invitee.png)
 
 ### Step 2: Invitation Email
 
@@ -76,7 +74,6 @@ The invited user will receive an email containing:
 - An invitation link to join the system
 - Instructions for completing registration
 
-![Invitation Email](/images/website-builder/user-permission-manager/invitation_email.png)
 
 **Important:** The invitation link expires after a certain period. Users should complete registration promptly.
 
@@ -122,7 +119,6 @@ Once the invited user has completed their registration on akaun.com, you can ver
 
 ### Step 4: Grant Admin Access
 
-![User Verified Successfully](/images/website-builder/user-permission-manager/make-admin.png)
 
 1. After successful verification, you'll see:
    - ✅ Green success alert: **"User Verified Successfully!"**
@@ -184,7 +180,6 @@ If there are multiple admin users:
 2. Click the **trash icon** (🗑️) in the Actions column
 3. A confirmation dialog will appear
 
-![Remove Admin Access](/images/website-builder/user-permission-manager/remove-perm.png)
 
 ### Step 2: Confirm Removal
 

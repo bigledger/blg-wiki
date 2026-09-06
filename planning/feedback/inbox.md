@@ -736,3 +736,14 @@ with the analysis, the changes made, and the commit hash.
 - [ ] F-0201 (2026-09-05) Two inconsistent authorisation models: the applet's own endpoints check rank OWNER/ADMIN on the master-DB tenant link; role assignment and root iam/roles CRUD check tenant-DB permissions (TNT_TENANT_ADMIN/OWNER, TNT_LOG_TEAM_ROLE_ASSIGNMENT_*) — rank-only admins get 403 assigning roles (intranet #1927). Should rank-ADMIN admins automatically get TNT_TENANT_ADMIN in the tenant DB? Also: the Tenant Admin Applet CANNOT seed bl_applet_client_side_perm_dfn rows (Applets menu read-only) — every page saying "ask your tenant admin to attach the SHOW_* permission" needs rewording (cross-link batch). Audit Trail never records role/permission changes. Data Sync buttons are stubs; five settings links 404.
 - [x] F-0202 (2026-09-05) Four tenant-admin screenshots (real names, an e-mail, customer-identifying applet names) quarantined; one was embedded by user-guide/administration/team.md — embed removed. Four YouTube walkthroughs dropped with an inline-styled div grid — re-embed with {{< youtube >}}? (Vincent)
 
+## From Lane 3 run 26 — User Permission Manager (2026-09-06)
+
+### PRIVACY — five screenshots with personal Gmail addresses
+- [x] F-0203 (2026-09-06) All five images under static/images/website-builder/user-permission-manager/ show real personal Gmail addresses; two also a live customer hostname; one is a photograph of a private mailbox. They were embedded by the DUPLICATE page (e-invoice/website-builder/user-permission-manager.md). Embeds stripped and files quarantined by the loop.
+
+### product (website builder access) — revoke does not revoke
+- [ ] F-0204 (2026-09-06) "Remove Access" deletes only the app_mst_link_subject_to_role row, but Website Builder admin mode is decided by the CP Commerce Admin applet token from bl_applet_login_subject_link — so a removed person keeps full access (the dialog says "cannot be undone"). "Make Admin" sets the applet-link rank, not the tenant link (created at GUEST), so the promoted person cannot promote anyone else. Five guids in bl_cms_website_hdr.property_json.website_builder_config drive the screen and nothing writes them; HIDE_USER_PERMISSION_MANAGER read with no control; the route guard degenerates to "is logged in"; server failures end in console.error only. Staging sets cpCommerceAdminAppletCode "CPCommerceAdminConsole" — no registry row, so Website Builder admin mode never turns on there. Vincent: should Remove Access also uninstall the applet link? Register the staging code or fix the environment file?
+
+### /applets/ecommerce/cp-commerce-admin-applet/
+- [ ] F-0205 (2026-09-06) Its Webstore dashboard section claims 10 tiles and "role-based access control"; there are 13 tiles, 11 checkboxes, and no role is involved. Cross-link batch.
+
