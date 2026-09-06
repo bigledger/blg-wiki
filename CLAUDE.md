@@ -205,6 +205,35 @@ planning/
 **Structural changes to `content/en/` (renames, moves, new sections) require an approved
 spec in `planning/specs/` that cites its ADR.** Discuss first, decide, spec, then edit.
 
+## 🚫 Verify or unpublish — ADR-0008
+
+Vincent, 2026-09-06: *"some of the information in blg-wiki right now is not correct / inaccurate…
+we can unpublish the parts that are not sure, not confirmed, and put them into the worklog."*
+
+Every unit carries the authority to **unpublish what it disproves**, rather than filing a finding
+and leaving the false page live. Three tiers, and the test is reader harm, not whether a page
+happens to have been audited:
+
+| Tier | What it is | Action |
+|---|---|---|
+| **1** | Source contradicts it — an endpoint that does not exist, a screen that was removed, a setting never read, a behaviour reversed, a certification we cannot evidence | Unpublish immediately |
+| **2** | Nobody can confirm it **and** a reader would act on it — a procedure, an endpoint, a setting, a number to plan against | Unpublish |
+| **3** | Unverified, plausible, non-actionable — overviews and orientation prose | **Keep.** Queue for audit |
+
+**A page that mixes tiers goes.** Ten real endpoints under 28 fabricated ones is worse than
+neither, because the reader cannot tell them apart.
+
+Guard rails: **evidence before removal** (file:line, a query, a command — "looks wrong" means go
+and check); **never delete** — `draft: true` in place when the URL should survive, otherwise move
+to `planning/archive/`; **repair inbound links in the same commit**; **report to Vincent in the
+same turn if more than five pages go at once**; never unpublish a section wholesale from a sample;
+and never unpublish a tier-3 page for merely lacking a `sources:` map.
+
+Everything unpublished gets a `planning/worklog/` entry — reason, evidence, what was salvageable,
+and what a correct page would need. Read `planning/worklog/README.md` for the format. When a new
+*class* of error is found, add a lint to `tests/content-lint.sh` so it cannot recur (there are
+already checks for blockchain vocabulary, named prospects and the legacy core1 surface).
+
 ## 📝 Proofreading feedback: record first, fix in batches
 
 Vincent proofreads the **live site** and reports mistakes in conversation. The rule:
