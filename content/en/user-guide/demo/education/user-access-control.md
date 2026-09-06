@@ -310,8 +310,8 @@ BigLedger also provides:
 You've completed the Security & Access Control evaluation. Choose your next module:
 
 {{< cards >}}
-  {{< card link="../tax-management" title="Tax Management" subtitle="Configure tax rates and compliance" >}}
-  {{< card link="../" title="Back to Overview" subtitle="Choose a different module or finish" >}}
+  {{< card link="/user-guide/demo/education/tax-management/" title="Tax Management" subtitle="Configure tax rates and compliance" >}}
+  {{< card link="/user-guide/demo/education/" title="Back to Overview" subtitle="Choose a different module or finish" >}}
 {{< /cards >}}
 
 ---

@@ -9,7 +9,7 @@ The E-Invoice & PEPPOL Module integrates seamlessly with core and supporting app
 ## Core E-Invoice Applets
 
 {{< cards >}}
-  {{< card link="/applets/e-invoice/my-e-invoice-admin-applet" title="MY E-Invoice Admin Applet" subtitle="Central compliance control hub — tax mapping, digital certs, API credentials, and queue monitoring" >}}
+  {{< card link="/applets/e-invoice/my-e-invoice-admin-applet" title="MY E-Invoice Admin Applet" subtitle="Central compliance control hub — pools, submission and cancellation queues, consolidation, and reconciliation" >}}
   {{< card link="/applets/e-invoice/my-e-invoice-portal-applet" title="MY E-Invoice Portal Applet" subtitle="Billing clerk portal for manual tax invoice submission, clearance status checks, and PDF QR printing" >}}
   {{< card link="/applets/e-invoice/my-einvoice-for-customer-and-supplier-applet" title="MY E-Invoice for Customer & Supplier Applet" subtitle="External portal for trading partners to view validated tax documents and upload self-billed e-invoices" >}}
   {{< card link="/applets/e-invoice/mypeppol-admin-applet" title="MY PEPPOL Admin Applet" subtitle="International PEPPOL network access point configuration and global document exchange logs" >}}

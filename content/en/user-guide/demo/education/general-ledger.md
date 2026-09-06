@@ -311,9 +311,9 @@ After completing this module, you've seen that BigLedger:
 You've completed the General Ledger evaluation. Choose your next module:
 
 {{< cards >}}
-  {{< card link="../budget-management" title="Budget & Vote Book" subtitle="Learn how budget control prevents overspending" >}}
-  {{< card link="../journal-module" title="Journal Entries" subtitle="See how adjustments and corrections are made" >}}
-  {{< card link="../" title="Back to Overview" subtitle="Choose a different module" >}}
+  {{< card link="/user-guide/demo/education/budget-management/" title="Budget & Vote Book" subtitle="Learn how budget control prevents overspending" >}}
+  {{< card link="/user-guide/demo/education/journal-module/" title="Journal Entries" subtitle="See how adjustments and corrections are made" >}}
+  {{< card link="/user-guide/demo/education/" title="Back to Overview" subtitle="Choose a different module" >}}
 {{< /cards >}}
 
 ---

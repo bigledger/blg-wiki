@@ -26,3 +26,16 @@ three submission types plus "not set".
 
 If it is live, the pools-and-routing guide's decision table is incomplete. If it is not, the diagram
 should not be published (the workflow diagram is otherwise a strong candidate for the wiki).
+
+## Checked against source, 2026-09-06 (still open)
+
+`BatchPoolToIRBEnum` in the client SDK has exactly three values — `CONSOLIDATED`, `INDIVIDUAL`,
+`SINGLE_GENERAL` — and a grep of the backend for `multibank` / `MULTIBANK` returns nothing. That is
+evidence the branch is dead scaffolding in the diagram, not proof: `einvoice_submission_type` is a free
+`String` column on `bl_fi_generic_doc_hdr`, so a value the enum does not know about could still be
+written by an import or an integration. [src:git:blg-akaun-platform-java@1ff620ef0e]
+
+**Acted on:** the redrawn workflow diagram published on the guides section index
+(`layouts/shortcodes/einvoice-flow.html`) **omits the multibank branch** and shows the three documented
+submission types only. If multibank turns out to be live, that shortcode and the routing table in
+`einvoice-pools-and-routing.md` both need a fourth branch.

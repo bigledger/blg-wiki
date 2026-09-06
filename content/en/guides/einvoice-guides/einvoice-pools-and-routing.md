@@ -29,6 +29,8 @@ Each document carries an **e-invoice submission type** that drives the routing:
 | **Single General** | Try as an individual e-invoice using general buyer details; fall back to consolidation if it fails |
 | *(not set)* | The system decides based on the amount and available data |
 
+You can see and change it on the document itself: open the sales document and go to its **E-Invoice** tab → **Submission Type**. Most companies never touch it, because a sensible default is set per document type during setup — POS cash bills as *Consolidated*, corporate sales invoices as *Individual*. Change it on a single document only when that one sale is genuinely an exception.
+
 ## The RM 10,000 rule
 
 Transactions of **RM 10,000 or more must be submitted as individual e-invoices** — they cannot hide inside a consolidation. The system enforces this automatically:
@@ -131,6 +133,9 @@ Find the document in the Batch Pool, complete the customer's TIN/ID and address,
 
 **What happens if I can't get a buyer's TIN at all?**
 For local buyers, an individual e-invoice can still be issued with the General Public TIN plus a valid NRIC (see [General TINs](/guides/einvoice-guides/einvoice-validation/#general-tins--when-you-dont-have-the-buyers-tin)). Otherwise, move the document to the Batch Pool and let it be consolidated.
+
+**A customer is asking us for an e-invoice for a receipt from last week — do we have to key it ourselves?**
+Not necessarily. Your buyers can do it themselves through the [My E-Invoice Portal](/applets/e-invoice/my-e-invoice-portal-applet/): the customer finds their own receipt, fills in their tax number, identity and address, and submits. Their details land on your customer record and the pooled receipt is ready for you to complete with *Save and Resubmit*. For a 22-branch retailer this is the difference between chasing details and having them arrive. It does not work for a receipt that is already inside a validated consolidated e-invoice — that needs a cancellation inside 72 hours, or a credit note.
 
 **A document shows "skipped" — is that a problem?**
 Skipping is a deliberate action for documents that must not be e-invoiced (for example, when the counterparty issues the e-invoice instead). Skipped sales documents are still tracked for matching against incoming supplier e-invoices, and they are excluded from the monthly tally — which is exactly why a voided sale that was *not* marked skipped shows up as a gap when you reconcile.

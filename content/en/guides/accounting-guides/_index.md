@@ -17,7 +17,7 @@ Manage your financial accounting processes — from initial chart of accounts se
 New to accounting in BigLedger? Begin here to set up your financial foundation.
 
 {{< cards >}}
-  {{< card link="chart-of-accounts-setup" title="📋 Chart of Accounts Setup" subtitle="Design your account structure — the foundation for all financial reporting" >}}
+  {{< card link="/guides/accounting-guides/chart-of-accounts-setup/" title="📋 Chart of Accounts Setup" subtitle="Design your account structure — the foundation for all financial reporting" >}}
 {{< /cards >}}
 
 **What you'll set up:**
@@ -37,8 +37,8 @@ New to accounting in BigLedger? Begin here to set up your financial foundation.
 Guides for everyday accounting activities your team performs regularly.
 
 {{< cards >}}
-  {{< card link="journal-entries" title="📝 Journal Entries" subtitle="Record financial transactions — adjustments, accruals, reclassifications, and corrections" >}}
-  {{< card link="bank-reconciliation-guide" title="🏦 Bank Reconciliation" subtitle="Match bank statements to system records — detect discrepancies and ensure accuracy" >}}
+  {{< card link="/guides/accounting-guides/journal-entries/" title="📝 Journal Entries" subtitle="Record financial transactions — adjustments, accruals, reclassifications, and corrections" >}}
+  {{< card link="/guides/accounting-guides/bank-reconciliation-guide/" title="🏦 Bank Reconciliation" subtitle="Match bank statements to system records — detect discrepancies and ensure accuracy" >}}
 {{< /cards >}}
 
 **Typical daily workflow:**
@@ -72,7 +72,7 @@ Watch out for these frequent accounting issues:
 Generate and analyze your financial statements.
 
 {{< cards >}}
-  {{< card link="financial-reporting" title="📊 Financial Reporting" subtitle="Generate Balance Sheet, Profit & Loss, Trial Balance, and Cash Flow statements" >}}
+  {{< card link="/guides/accounting-guides/financial-reporting/" title="📊 Financial Reporting" subtitle="Generate Balance Sheet, Profit & Loss, Trial Balance, and Cash Flow statements" >}}
 {{< /cards >}}
 
 **Available Reports:**

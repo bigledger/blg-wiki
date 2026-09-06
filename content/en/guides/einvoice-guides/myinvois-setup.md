@@ -99,6 +99,8 @@ This is the long part, and it is worth every hour. Each counterparty needs:
 If a customer has several addresses, BigLedger sends the first one flagged as the e-invoice address, looking in the order **shipping, then billing, then main**. Flag exactly one and there is nothing to guess about later.
 {{< /callout >}}
 
+One thing to know before you start correcting records later: a document can carry its **own** copy of the buyer's e-invoice details, typed straight onto it, and when it does the customer record is not read at all. See [Which record does BigLedger actually send?](/guides/einvoice-guides/einvoice-validation/#which-record-does-bigledger-actually-send) — it explains the one rejection that otherwise makes no sense.
+
 You do not need every walk-in customer to be perfect — counter sales without buyer details are reported through consolidated e-invoices instead (see [Pools & Submission Routing](/guides/einvoice-guides/einvoice-pools-and-routing/)). What you *do* need is every customer who buys **RM 10,000 or more** at a time, because those sales cannot be consolidated and will sit in a pool until somebody chases the details.
 
 ## Step 5: Set the codes on your items
@@ -129,7 +131,7 @@ What matters to you is knowing the symptom if one is missing: **documents stop a
 
 Pick one straightforward sale — a named customer whose record you completed in Step 4, an ordinary amount, no foreign currency — and finalise it. Then watch it:
 
-1. It appears in the **Posting Queue**, briefly.
+1. It appears in the **Posting Queue** — the holding area every finalised document passes through before BigLedger decides where it goes. It should not stay there long.
 2. It becomes an e-invoice on **Internal Submission → To IRB E-Invoice** with status *IN_QUEUE*, then *Submitted*.
 3. Within a few minutes it becomes **Valid**, with an LHDN reference and a QR code on the printable version.
 

@@ -120,6 +120,8 @@ The loop is the same for each row, and it is quick once you have the rhythm:
 4. Correct it **on the customer record** in the [Customer Applet](/applets/master-data/customer-applet/), so the next sale to that customer is right too.
 5. Back on the To IRB E-Invoice row, use **Save and Resubmit**.
 
+If a row keeps failing on a field you can see is correct on the customer record, the document is carrying its own copy of the buyer's details and the customer record is never being read — fix it on the document's own e-invoice block instead. [Which record does BigLedger actually send?](/guides/einvoice-guides/einvoice-validation/#which-record-does-bigledger-actually-send) has the rule.
+
 {{< callout type="tip" >}}
 **Resubmitting keeps the original document date.** A correction you make on the 3rd of September still belongs to the August month — you are not pushing the sale into the wrong period by fixing it late.
 {{< /callout >}}

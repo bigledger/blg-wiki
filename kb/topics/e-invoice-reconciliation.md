@@ -60,6 +60,32 @@ standard reasons a tally does not balance, and the known blind spots.
 
 - 2026-08-04 — A monthly PM/engineer verification checklist was proposed as the safety net for silent automation failures, because every automated detector is itself a job that can die quietly. Its items: submission completeness per branch, ghost sweep, unsynced-document review, amount-mismatch review, parked ≥RM 10,000 documents, stuck queues, processor-configuration completeness, LHDN-side pull, duplicate scan, and two random end-to-end spot checks per tenant class. The stated reason it must exist: the scheduler records **enqueue** time, not success time, so a processor that throws on every run still looks healthy. [src:gh:bigledger/blg-intranet#5628] [src:gh:bigledger/blg-intranet#5625]
 
+### What the Discrepancies Report actually contains (source-verified 2026-09-06)
+
+Created per company and date range; lines are grouped totals (amount + document count) keyed by
+`section_code` on `bl_fi_einvoice_discrepancies_report_line`, rendered as four tabs:
+
+- **Main** — header: company, start date, end date, process status.
+- **ERP Transaction Summary** — your own documents. Total sales = invoice + cash bill + debit note,
+  less credit note and refund note; the mirror shape for purchases; plus a **Skip Einvoice Documents**
+  line.
+- **IRB Audit Summary** — the e-invoice side per document type, each split into **Internal Submission**,
+  **From E-commerce (self billed)** and **From Supplier (Matched)**, with a **Cancelled** amount beside
+  every type.
+- **Document vs E-Invoice Discrepancy** — `existGenDocNotToIRB` ("Exists in ERP, Missing in Einvoice")
+  and `existToIRBNotGenDoc` ("Exists in Einvoice, Missing in ERP"), each broken out per document type,
+  and repeated in an `…ExclConsolidated` variant.
+
+Each line drills into the documents behind it (generic-doc listing, to-IRB listing, and for a
+consolidated e-invoice the list of source documents inside it); `bl_fi_einvoice_discrepancies_report_line_detail`
+holds the per-line references. [src:git:blg-applet-wavelet-my-invoice-admin-applet@d7841e7] [src:git:blg-akaun-platform-java@1ff620ef0e]
+
+`E_INVOICE_DISCREPANCIES_REPORT_SCHEDULER_PROCESSOR` generates **last month's** report for every company
+whose `einvoice_status` is `ENABLED`, queues `E_INVOICE_DISCREPANCIES_REPORT_PROCESSOR` to build it, and
+— when the tenant has a `DISCREPANCY_REPORT_EMAIL_NOTIFICATION` application config with an `email` key —
+queues `DISCREPANCY_REPORT_EMAIL_NOTIFICATION_PROCESSOR` to send it. So the monthly reconciliation can be
+delivered by e-mail without anyone opening the applet. [src:git:blg-akaun-platform-java@1ff620ef0e]
+
 ## How it connects
 
 - **e-invoice-consolidation** — the tally is run inside the 1st–7th window and drives what gets pushed into the last consolidation.

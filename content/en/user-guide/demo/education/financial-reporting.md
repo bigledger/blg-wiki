@@ -306,9 +306,9 @@ After completing this module, you've seen that BigLedger:
 You've completed the Financial Reporting evaluation. Choose your next module:
 
 {{< cards >}}
-  {{< card link="../user-access-control" title="Security & Access" subtitle="See user permissions and audit trails" >}}
-  {{< card link="../tax-management" title="Tax Management" subtitle="Explore tax configuration" >}}
-  {{< card link="../" title="Back to Overview" subtitle="Choose a different module" >}}
+  {{< card link="/user-guide/demo/education/user-access-control/" title="Security & Access" subtitle="See user permissions and audit trails" >}}
+  {{< card link="/user-guide/demo/education/tax-management/" title="Tax Management" subtitle="Explore tax configuration" >}}
+  {{< card link="/user-guide/demo/education/" title="Back to Overview" subtitle="Choose a different module" >}}
 {{< /cards >}}
 
 ---

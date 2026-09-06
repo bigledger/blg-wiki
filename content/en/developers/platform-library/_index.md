@@ -21,10 +21,10 @@ The BigLedger platform is published as a set of versioned Java libraries. Your a
 ## What you get
 
 {{< cards >}}
-  {{< card link="./getting-started" title="Getting Started" icon="download" subtitle="Get access, add the dependency, and run your first build" >}}
-  {{< card link="./building-your-application" title="Building Your Application" icon="code" subtitle="Add endpoints and services, and boot the platform" >}}
-  {{< card link="./versioning-and-upgrades" title="Versioning & Upgrades" icon="refresh" subtitle="How releases are numbered and how to move between them" >}}
-  {{< card link="./troubleshooting" title="Troubleshooting" icon="support" subtitle="Common errors and current limitations" >}}
+  {{< card link="/developers/platform-library/./getting-started/" title="Getting Started" icon="download" subtitle="Get access, add the dependency, and run your first build" >}}
+  {{< card link="/developers/platform-library/./building-your-application/" title="Building Your Application" icon="code" subtitle="Add endpoints and services, and boot the platform" >}}
+  {{< card link="/developers/platform-library/./versioning-and-upgrades/" title="Versioning & Upgrades" icon="refresh" subtitle="How releases are numbered and how to move between them" >}}
+  {{< card link="/developers/platform-library/./troubleshooting/" title="Troubleshooting" icon="support" subtitle="Common errors and current limitations" >}}
 {{< /cards >}}
 
 ## The libraries

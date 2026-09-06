@@ -3,7 +3,7 @@ description: Configure PEPPOL for international e-invoicing.
 tags:
 - user-guide
 title: PEPPOL Configuration Guide
-weight: 20
+weight: 45
 ---
 
 Configure PEPPOL for international e-invoicing.

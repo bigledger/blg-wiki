@@ -452,26 +452,26 @@ Download our OpenAPI (Swagger) specification:
 ## API Modules
 
 {{< cards >}}
-{{< card link="../authentication" title="Authentication" icon="key" subtitle="OAuth 2.0 flows, API key management, and security best practices." >}}
-{{< card link="./accounting" title="Accounting APIs" icon="chart-bar" subtitle="Chart of accounts, journal entries, and financial reporting endpoints." >}}
-{{< card link="./einvoice" title="E-Invoice APIs" icon="document-text" subtitle="PEPPOL and MyInvois compliance with automated validation." >}}
-{{< card link="./inventory" title="Inventory APIs" icon="cube" subtitle="Stock management, transfers, adjustments, and real-time tracking." >}}
+{{< card link="/developers/api-reference/../authentication/" title="Authentication" icon="key" subtitle="OAuth 2.0 flows, API key management, and security best practices." >}}
+{{< card link="/developers/api-reference/./accounting/" title="Accounting APIs" icon="chart-bar" subtitle="Chart of accounts, journal entries, and financial reporting endpoints." >}}
+{{< card link="/developers/api-reference/./einvoice/" title="E-Invoice APIs" icon="document-text" subtitle="PEPPOL and MyInvois compliance with automated validation." >}}
+{{< card link="/developers/api-reference/./inventory/" title="Inventory APIs" icon="cube" subtitle="Stock management, transfers, adjustments, and real-time tracking." >}}
 
-{{< card link="./sales" title="Sales & CRM APIs" icon="user-group" subtitle="Customers, sales orders, quotes, invoices, and CRM operations." >}}
+{{< card link="/developers/api-reference/./sales/" title="Sales & CRM APIs" icon="user-group" subtitle="Customers, sales orders, quotes, invoices, and CRM operations." >}}
 
-{{< card link="./purchasing" title="Purchasing APIs" icon="shopping-bag" subtitle="Purchase orders, suppliers, bills, and procurement workflows." >}}
+{{< card link="/developers/api-reference/./purchasing/" title="Purchasing APIs" icon="shopping-bag" subtitle="Purchase orders, suppliers, bills, and procurement workflows." >}}
 
 {{< card link="./pos" title="POS APIs" icon="shopping-cart" subtitle="Point-of-sale transactions, sessions, and retail operations." >}}
 
-{{< card link="./reports" title="Reporting APIs" icon="chart-pie" subtitle="Financial reports, analytics, and business intelligence data." >}}
+{{< card link="/developers/api-reference/./reports/" title="Reporting APIs" icon="chart-pie" subtitle="Financial reports, analytics, and business intelligence data." >}}
 
-{{< card link="../webhooks" title="Webhooks API" icon="bell" subtitle="Real-time event notifications and webhook management." >}}
+{{< card link="/developers/api-reference/../webhooks/" title="Webhooks API" icon="bell" subtitle="Real-time event notifications and webhook management." >}}
 
-{{< card link="./batch" title="Batch Operations" icon="archive" subtitle="Bulk operations for high-volume data processing." >}}
+{{< card link="/developers/api-reference/./batch/" title="Batch Operations" icon="archive" subtitle="Bulk operations for high-volume data processing." >}}
 
-{{< card link="./integrations" title="Integration APIs" icon="link" subtitle="Third-party integrations and data synchronization." >}}
+{{< card link="/developers/api-reference/./integrations/" title="Integration APIs" icon="link" subtitle="Third-party integrations and data synchronization." >}}
 
-{{< card link="./errors" title="Error Handling" icon="warning" subtitle="Comprehensive error codes and troubleshooting guide." >}}
+{{< card link="/developers/api-reference/./errors/" title="Error Handling" icon="warning" subtitle="Comprehensive error codes and troubleshooting guide." >}}
 {{< /cards >}}
 
 ## Quick Reference

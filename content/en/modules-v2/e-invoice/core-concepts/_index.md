@@ -16,10 +16,10 @@ Tax compliance submission follows a structured 5-step lifecycle. Each step repre
 | Step | Milestone | Business Purpose | Applet Used |
 |------|-----------|------------------|-------------|
 | **1** | **Commercial Invoice Generation** | Sales order billing or POS checkout creates commercial invoice in ERP | [Sales Invoice Applet](/applets/sales-workflow/internal-sales-invoice-applet/) |
-| **2** | **Data Transformation & Sign** | Data formatted into mandatory JSON/XML schema and digitally signed | [MY E-Invoice Admin Applet](/applets/e-invoice/my-e-invoice-admin-applet/) |
+| **2** | **Data Transformation & Sign** | Data formatted into LHDN's schema and digitally signed by BigLedger as your intermediary — no certificate of yours is involved | [MY E-Invoice Admin Applet](/applets/e-invoice/my-e-invoice-admin-applet/) |
 | **3** | **Tax Authority API Submission** | Real-time REST API transmission to tax gateway (e.g., LHDN) | [MY E-Invoice Admin Applet](/applets/e-invoice/my-e-invoice-admin-applet/) |
 | **4** | **QR Code & UUID Clearance** | Tax authority validates schema, issues unique UUID and clearance QR stamp | Government Tax API |
-| **5** | **Recipient Dispatch & Archival** | Cleared e-invoice dispatched to customer; archived for 7-year audit compliance | [MY E-Invoice Portal Applet](/applets/e-invoice/my-e-invoice-portal-applet/) |
+| **5** | **Recipient Dispatch** | Validated e-invoice, with its QR code, e-mailed to the buyer and viewable by them | [MY E-Invoice Portal Applet](/applets/e-invoice/my-e-invoice-portal-applet/) |
 
 ---
 
@@ -33,5 +33,6 @@ While government tax APIs handle local country tax compliance, the **PEPPOL (Pan
 
 ## What to Read Next
 
-- **[Configuration](/modules-v2/e-invoice/configuration/)** — Set up tax registrations, digital certificates, and classification codes.
+- **[Configuration](/modules-v2/e-invoice/configuration/)** — Set up tax registrations, intermediary authorisation and classification codes.
+- **[MyInvois Setup](/guides/einvoice-guides/myinvois-setup/)** — the same ground as a step-by-step guide, if you are the one doing it.
 - **[Use Cases](/modules-v2/e-invoice/use-cases/)** — Review reference architectures for commercial B2B billing, consolidated retail POS, and foreign self-billing.

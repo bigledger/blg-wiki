@@ -105,16 +105,16 @@ BigLedger is a **cloud-based financial management system** designed specifically
 Each module below has its own test script. **Click on any module to start evaluating:**
 
 {{< cards >}}
-  {{< card link="general-ledger" title="General Ledger & Chart of Accounts" subtitle="Start here - the foundation of all accounting" >}}
-  {{< card link="budget-management" title="Budget & Vote Book" subtitle="Essential for government budget control" >}}
-  {{< card link="accounts-payable" title="Accounts Payable (Payments)" subtitle="How you pay your suppliers" >}}
-  {{< card link="accounts-receivable" title="Accounts Receivable (Collections)" subtitle="How you collect money owed" >}}
-  {{< card link="journal-module" title="Journal Entries" subtitle="Recording adjustments and corrections" >}}
-  {{< card link="cash-management" title="Cash & Banking" subtitle="Managing bank accounts and reconciliation" >}}
-  {{< card link="asset-management" title="Asset Management" subtitle="Track equipment, furniture, and property" >}}
-  {{< card link="financial-reporting" title="Financial Reports" subtitle="Generate statements and compliance reports" >}}
-  {{< card link="user-access-control" title="Security & Access Control" subtitle="User permissions and audit trails" >}}
-  {{< card link="tax-management" title="Tax Configuration" subtitle="SST, withholding tax, and e-invoice" >}}
+  {{< card link="/user-guide/demo/education/general-ledger/" title="General Ledger & Chart of Accounts" subtitle="Start here - the foundation of all accounting" >}}
+  {{< card link="/user-guide/demo/education/budget-management/" title="Budget & Vote Book" subtitle="Essential for government budget control" >}}
+  {{< card link="/user-guide/demo/education/accounts-payable/" title="Accounts Payable (Payments)" subtitle="How you pay your suppliers" >}}
+  {{< card link="/user-guide/demo/education/accounts-receivable/" title="Accounts Receivable (Collections)" subtitle="How you collect money owed" >}}
+  {{< card link="/user-guide/demo/education/journal-module/" title="Journal Entries" subtitle="Recording adjustments and corrections" >}}
+  {{< card link="/user-guide/demo/education/cash-management/" title="Cash & Banking" subtitle="Managing bank accounts and reconciliation" >}}
+  {{< card link="/user-guide/demo/education/asset-management/" title="Asset Management" subtitle="Track equipment, furniture, and property" >}}
+  {{< card link="/user-guide/demo/education/financial-reporting/" title="Financial Reports" subtitle="Generate statements and compliance reports" >}}
+  {{< card link="/user-guide/demo/education/user-access-control/" title="Security & Access Control" subtitle="User permissions and audit trails" >}}
+  {{< card link="/user-guide/demo/education/tax-management/" title="Tax Configuration" subtitle="SST, withholding tax, and e-invoice" >}}
 {{< /cards >}}
 
 {{< callout type="info" >}}
@@ -184,6 +184,6 @@ We're here to support your evaluation:
 Click on the **General Ledger & Chart of Accounts** module below to begin your evaluation:
 
 {{< cards >}}
-  {{< card link="general-ledger" title="Start Evaluation: General Ledger" subtitle="Begin with the foundation of the financial system" >}}
+  {{< card link="/user-guide/demo/education/general-ledger/" title="Start Evaluation: General Ledger" subtitle="Begin with the foundation of the financial system" >}}
 {{< /cards >}}
 

@@ -15,10 +15,10 @@ Seni bina modular kami membolehkan anda memilih dan melaksanakan hanya fungsi ya
 ### Modul ERP Teras
 
 {{< cards >}}
-{{< card link="financial-accounting" title="Perakaunan Kewangan" icon="document-text" subtitle="Sistem pengurusan kewangan dan perakaunan lengkap dengan sokongan multi-mata wang" >}}
-{{< card link="pos" title="Tempat Jualan" icon="shopping-cart" subtitle="Penyelesaian POS moden untuk perniagaan runcit dan hospitaliti" >}}
-{{< card link="inventory" title="Pengurusan Inventori" icon="cube" subtitle="Penjejakan inventori masa nyata dan pengurusan gudang" >}}
-{{< card link="crm" title="Pengurusan Hubungan Pelanggan" icon="users" subtitle="Pandangan 360 darjah pelanggan dengan pengurusan pipeline jualan" >}}
+{{< card link="/ms/modules/financial-accounting/" title="Perakaunan Kewangan" icon="document-text" subtitle="Sistem pengurusan kewangan dan perakaunan lengkap dengan sokongan multi-mata wang" >}}
+{{< card link="/ms/modules/pos/" title="Tempat Jualan" icon="shopping-cart" subtitle="Penyelesaian POS moden untuk perniagaan runcit dan hospitaliti" >}}
+{{< card link="/ms/modules/inventory/" title="Pengurusan Inventori" icon="cube" subtitle="Penjejakan inventori masa nyata dan pengurusan gudang" >}}
+{{< card link="/ms/modules/crm/" title="Pengurusan Hubungan Pelanggan" icon="users" subtitle="Pandangan 360 darjah pelanggan dengan pengurusan pipeline jualan" >}}
 {{< /cards >}}
 
 ## Integrasi Modul

@@ -902,15 +902,15 @@ $invoice = $client->invoices->create([
 Now that you've made your first API calls, explore these topics:
 
 {{< cards >}}
-{{< card link="./api-reference" title="API Reference" icon="book-open"  subtitle="Complete documentation for all endpoints" >}}
+{{< card link="/developers/api-reference/" title="API Reference" icon="book-open"  subtitle="Complete documentation for all endpoints" >}}
 
-{{< card link="./authentication" title="Authentication" icon="key"  subtitle="OAuth 2.0 and advanced authentication" >}}
+{{< card link="/developers/authentication/" title="Authentication" icon="key"  subtitle="OAuth 2.0 and advanced authentication" >}}
 
-{{< card link="./webhooks" title="Webhooks" icon="bell"  subtitle="Real-time event notifications" >}}
+{{< card link="/developers/webhooks/" title="Webhooks" icon="bell"  subtitle="Real-time event notifications" >}}
 
 {{< card link="./examples" title="Code Examples" icon="code"  subtitle="Production-ready integration patterns" >}}
 
-{{< card link="./sdks" title="SDKs" icon="cube"  subtitle="Official libraries for popular languages" >}}
+{{< card link="/developers/sdks/" title="SDKs" icon="cube"  subtitle="Official libraries for popular languages" >}}
 
 {{< card link="./migration" title="Migration Guides" icon="arrow-right"  subtitle="Migrate from other accounting platforms" >}}
 {{< /cards >}}

@@ -283,9 +283,9 @@ After completing this module, you've seen that BigLedger:
 You've completed the Cash Management evaluation. Choose your next module:
 
 {{< cards >}}
-  {{< card link="../asset-management" title="Asset Management" subtitle="Track equipment and property" >}}
-  {{< card link="../financial-reporting" title="Financial Reporting" subtitle="Generate financial statements" >}}
-  {{< card link="../" title="Back to Overview" subtitle="Choose a different module" >}}
+  {{< card link="/user-guide/demo/education/asset-management/" title="Asset Management" subtitle="Track equipment and property" >}}
+  {{< card link="/user-guide/demo/education/financial-reporting/" title="Financial Reporting" subtitle="Generate financial statements" >}}
+  {{< card link="/user-guide/demo/education/" title="Back to Overview" subtitle="Choose a different module" >}}
 {{< /cards >}}
 
 ---

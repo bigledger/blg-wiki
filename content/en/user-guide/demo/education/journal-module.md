@@ -281,9 +281,9 @@ After completing this module, you've seen that BigLedger:
 You've completed the Journal Module evaluation. Choose your next module:
 
 {{< cards >}}
-  {{< card link="../cash-management" title="Cash Management" subtitle="Explore banking and reconciliation" >}}
-  {{< card link="../financial-reporting" title="Financial Reporting" subtitle="See how reports are generated" >}}
-  {{< card link="../" title="Back to Overview" subtitle="Choose a different module" >}}
+  {{< card link="/user-guide/demo/education/cash-management/" title="Cash Management" subtitle="Explore banking and reconciliation" >}}
+  {{< card link="/user-guide/demo/education/financial-reporting/" title="Financial Reporting" subtitle="See how reports are generated" >}}
+  {{< card link="/user-guide/demo/education/" title="Back to Overview" subtitle="Choose a different module" >}}
 {{< /cards >}}
 
 ---

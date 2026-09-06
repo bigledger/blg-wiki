@@ -281,9 +281,9 @@ After completing this module, you've seen that BigLedger:
 You've completed the Budget Management evaluation. Choose your next module:
 
 {{< cards >}}
-  {{< card link="../accounts-payable" title="Accounts Payable" subtitle="Learn how supplier payments work" >}}
-  {{< card link="../accounts-receivable" title="Accounts Receivable" subtitle="See how collections are managed" >}}
-  {{< card link="../" title="Back to Overview" subtitle="Choose a different module" >}}
+  {{< card link="/user-guide/demo/education/accounts-payable/" title="Accounts Payable" subtitle="Learn how supplier payments work" >}}
+  {{< card link="/user-guide/demo/education/accounts-receivable/" title="Accounts Receivable" subtitle="See how collections are managed" >}}
+  {{< card link="/user-guide/demo/education/" title="Back to Overview" subtitle="Choose a different module" >}}
 {{< /cards >}}
 
 ---

@@ -96,10 +96,10 @@ To implement a membership program in BigLedger:
 Explore the detailed documentation organized into these sections:
 
 {{< cards >}}
-  {{< card link="core-concepts" title="Core Concepts" subtitle="Understand the architectural principles and key terminology of the Membership Module" >}}
+  {{< card link="/modules/membership/core-concepts/" title="Core Concepts" subtitle="Understand the architectural principles and key terminology of the Membership Module" >}}
   {{< card link="setup-configuration" title="Setup & Configuration" subtitle="Step-by-step guides for implementing and configuring membership programs" >}}
   {{< card link="operations" title="Operations" subtitle="Day-to-day management of memberships, points, and member interactions" >}}
-  {{< card link="use-cases" title="Use Cases & Examples" subtitle="Real-world implementation scenarios across different industries" >}}
+  {{< card link="/modules/membership/use-cases/" title="Use Cases & Examples" subtitle="Real-world implementation scenarios across different industries" >}}
 {{< /cards >}}
 
 ## Best Practices

@@ -53,6 +53,27 @@ holds what the identity rules actually are and what the failures look like at sc
 - 2026-06-22 — Gap in that chain: pool rows mapped from a generic document do not always carry `einvoice_buyer/supplier_entity_json`, so a clerk who keys a walk-in customer's details straight into the pool row and presses Save and Resubmit can lose them. Requested fix: always populate the JSON from `doc_entity_guid` when it is null or empty. [src:gh:bigledger/blg-intranet#2032]
 - 2026-04-02 — For tenants fed by the legacy platform, a **default customer TIN** is configured at the ETL source; if the master is wrong there, every synced document is wrong. [src:gh:bigledger/blg-intranet#3781]
 
+### Which counterparty record is actually sent (source-verified 2026-09-06)
+
+`MyEInvoiceToIRBProcessorService.handleSalesDoc` / `handlePurchaseDoc` resolve the counterparty in a
+three-step ladder, and this is what the internal `einvoice-entity-json-priority-chart` asset encodes:
+
+1. the role-specific block on the document — `einvoice_buyer_entity_hdr_json` on a sales document,
+   `einvoice_supplier_entity_hdr_json` on a purchase document — **if it is not empty**;
+2. otherwise the document's general block, `einvoice_entity_hdr_json`, if that is not empty;
+3. otherwise the linked entity record (`doc_entity_hdr_guid`), read fresh at submission time.
+
+**"Not empty" means any one of eight fields is non-blank** — e-mail, entity ID, ID number, entity name,
+ID type, phone, tax number, service-tax number (`isBuyerEntityEmpty` / `isGeneralEntityEmpty` /
+`isSupplierEntityEmpty`). So a *partially* typed on-document override wins the whole block and the
+master record is never consulted: the other seven fields go to LHDN blank even though they are correct
+on the customer record. This is the mechanism behind "the customer record looks right and the document
+still fails". [src:git:blg-akaun-platform-java@1ff620ef0e]
+
+A separate gap-filler runs only on TEMP documents built from an e-invoiced source (a Sales Return raised
+off a Sales Invoice): `GenericDocumentService.fillMissingEInvoiceBuyerFromToIrb` back-fills blank buyer
+fields from the source's to-IRB header, never overwriting a value already present. [src:git:blg-akaun-platform-java@1ff620ef0e]
+
 ## How it connects
 
 - **e-invoice-submission-errors** — identity defects are the largest single class of Invalid results, and until the pre-flight validation asked for in #5567 exists they are only visible after LHDN answers.

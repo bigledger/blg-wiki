@@ -1,33 +1,44 @@
 ---
 title: "Reports & Analytics"
-description: "Practical scenario guide and reporting matrix for tax authority submission logs, clearance rejection tracking, and audit compliance."
+description: "Which e-invoice report answers which question — the live status list, the submission archive, the monthly reconciliation, and the PEPPOL logs."
 weight: 45
 bookCollapseSection: false
 ---
 
-The E-Invoice & PEPPOL Module provides audit and compliance analytics for tax managers, accounts receivable supervisors, and financial controllers to verify clearance statuses, audit submission queues, and monitor tax liability accuracy.
+There are fewer e-invoice reports than people expect, and the difference between two of them is the single most expensive misunderstanding in the module. This page names the ones that exist and what each is for.
 
-## Reporting Scenario Decision Matrix ("Which Report to Use When")
+{{< callout type="warning" >}}
+**To IRB E-Invoice carries the live LHDN status. Submission History does not.** Submission History is an archive of what each submission looked like *at the moment it was sent*, so it will keep saying "Submitted" for a document LHDN has since marked Invalid. Never build a work list of rejections from Submission History.
+{{< /callout >}}
 
-Select the appropriate report based on your specific operational or business decision scenario:
+## Which report answers which question
 
-| Business Scenario / Question | Recommended Report | Primary Applet | Key Metrics & Decision Value | Actionable Business Outcome |
-|------------------------------|--------------------|----------------|------------------------------|-----------------------------|
-| **"Which commercial invoices were rejected by the tax authority and require TIN/BRN correction?"** | Submission Rejection & Exception Log | [MY E-Invoice Admin Applet](/applets/e-invoice/my-e-invoice-admin-applet/) | Submission timestamp, invoice ID, error rejection code, error description. | Triggers immediate master data correction and invoice resubmission within statutory windows. |
-| **"What is our total validated tax clearance volume and Output SST tax liability for the month?"** | Cleared E-Invoice Tax Audit Summary | [MY E-Invoice Admin Applet](/applets/e-invoice/my-e-invoice-admin-applet/) | Cleared invoice count, gross invoice total, tax amount, clearance UUID count. | Reconciles tax portal totals against General Ledger Output Tax liability ledgers. |
-| **"What foreign service supplier invoices require self-billed e-invoice submission?"** | Pending Self-Billed Import Audit | [MY E-Invoice for Customer & Supplier Applet](/applets/e-invoice/my-einvoice-for-customer-and-supplier-applet/) | Foreign AP invoice ID, vendor TIN, self-billing status, submission deadline. | Ensures timely generation of self-billed e-invoices to protect input tax deductions. |
-| **"What cross-border B2B documents were transmitted via the global PEPPOL access point?"** | PEPPOL Network Exchange Log | [MY PEPPOL Admin Applet](/applets/e-invoice/mypeppol-admin-applet/) | PEPPOL Participant ID, UBL document type, dispatch timestamp, transmission status. | Verifies global B2B delivery confirmation with international trading partners. |
+| Your question | Where to look | What you get |
+|---|---|---|
+| **"Which e-invoices did LHDN reject, and why?"** | *Internal Submission → To IRB E-Invoice* in the [MY E-Invoice Admin Applet](/applets/e-invoice/my-e-invoice-admin-applet/), tab **Export** | One row per e-invoice with the **live** status (Valid, Invalid, Submitted, IN_QUEUE), the LHDN error code and message, document number, branch and company. Sort on status and your work list writes itself. |
+| **"What exactly did we send LHDN on the 3rd, and what did they say back at the time?"** | *Internal Submission → Submission History*, tab **Export** | The submission archive: request, response and the status as at submission. Use it for evidence, never for current status. |
+| **"Did everything we invoiced last month actually reach LHDN?"** | *Monthly Report → Discrepancies Report* | Per company and period: your own documents (ERP Transaction Summary), what reached LHDN split by document type and by cancelled amount (IRB Audit Summary), and the gap in both directions (Document vs E-Invoice Discrepancy), with a drill-down to the documents behind every line. This is the module's reconciliation. |
+| **"What is still waiting, and where?"** | *Batch Pool*, *Individual Pool*, *Single General Pool*, and *Internal Submission → Individual / Consolidated / Validation Queue* | Every document that has not reached LHDN yet, and the reason. Two of the three pools never empty themselves. |
+| **"Which supplier e-invoices has LHDN got for us, and do they match our purchase documents?"** | *External Reception* and *Reconciliation (Purchase)* | Incoming e-invoices fetched from LHDN, and the matched / unmatched lists against your purchase documents. |
+| **"What did we send and receive over PEPPOL?"** | *Internal Submission → To Peppol AP / Queue / History* and *External Reception → From Peppol AP* in the [MY PEPPOL Admin Applet](/applets/e-invoice/mypeppol-admin-applet/) | One row per PEPPOL document with sender and receiver participant IDs, plus the transmission outcome on the queue rows. *Monthly Report → Queue / History* holds the per-company period summaries. |
 
 ---
 
-## Detailed Operational Reporting Guides
+## The monthly rhythm these reports support
 
-### 1. Daily Submission Queue Audit
-- **Purpose:** Tracks real-time status of all invoices transmitted to government tax APIs (Pending vs Cleared vs Rejected).
-- **Key Parameters:** Filter by Submission Status Code, Date Range, and Branch Entity.
-- **Operational Utility:** Prevents uncleared invoices from being issued to customers and guarantees tax compliance.
+1. **Daily** — read *To IRB E-Invoice*, clear anything Invalid.
+2. **Weekly** — read the **Individual** and **Single General** pools, and filter the **Batch Pool** for *processed / failed* rows. Nothing here moves on its own and nothing raises an alert.
+3. **Monthly, between the 1st and the 7th** — run the **Discrepancies Report** for the closing month and clear it before the consolidation deadline, while cancellation is still possible.
 
-### 2. Statutory Audit Archival Export
-- **Purpose:** Generates structured compliance data packages containing cleared JSON payloads and UUID stamps for tax auditors.
-- **Key Parameters:** Filter by Tax Year, Financial Quarter, and Document Type (Invoice vs Credit Note vs Self-Billed).
-- **Operational Utility:** Streamlines official tax audits and eliminates manual paper compilation.
+The step-by-step version is [The Month-End E-Invoice Cycle](/guides/einvoice-guides/einvoice-month-end/).
+
+{{< callout type="info" >}}
+**What none of these reports can see.** They compare your documents against *BigLedger's* e-invoice records. They do not pull back what LHDN holds — so an invoice keyed straight into the MyInvois portal, or sent by another system, never appears in a BigLedger report. If your LHDN dashboard shows more documents than BigLedger does, that is the first thing to check.
+{{< /callout >}}
+
+## Related documentation
+
+{{< cards >}}
+  {{< card link="/guides/einvoice-guides/einvoice-month-end/" title="The Month-End E-Invoice Cycle" subtitle="The 1st-to-7th routine these reports exist for" >}}
+  {{< card link="/applets/e-invoice/my-e-invoice-admin-applet/" title="MY E-Invoice Admin Applet" subtitle="Every screen named above, field by field" >}}
+{{< /cards >}}

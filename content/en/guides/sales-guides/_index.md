@@ -14,8 +14,8 @@ Complete guides for managing your sales processes from customer order through de
 New to sales in BigLedger? Start with the standard workflow to learn the complete process.
 
 {{< cards >}}
-  {{< card link="standard-sales-workflow" title="📋 Standard Sales Workflow" subtitle="The complete order-to-delivery flow — start here to understand the full sales process" >}}
-  {{< card link="cash-sales-workflow" title="💵 Cash Sales Workflow" subtitle="Simplest sales flow — walk-in customers with immediate payment and delivery" >}}
+  {{< card link="/guides/sales-guides/standard-sales-workflow/" title="📋 Standard Sales Workflow" subtitle="The complete order-to-delivery flow — start here to understand the full sales process" >}}
+  {{< card link="/guides/sales-guides/cash-sales-workflow/" title="💵 Cash Sales Workflow" subtitle="Simplest sales flow — walk-in customers with immediate payment and delivery" >}}
 {{< /cards >}}
 
 **Before you begin, ensure:**
@@ -37,23 +37,23 @@ Guides for everyday sales operations your team performs regularly.
 ### Core Sales Processes
 
 {{< cards >}}
-  {{< card link="standard-sales-workflow" title="Standard Sales Workflow" subtitle="Complete order-to-delivery flow with deposit collection and scheduled delivery" >}}
-  {{< card link="credit-sales-workflow" title="Credit Sales Workflow" subtitle="Sales to approved customers with credit terms, no upfront deposit required" >}}
-  {{< card link="cash-sales-workflow" title="Cash Sales Workflow" subtitle="Walk-in cash sales with immediate payment and delivery" >}}
+  {{< card link="/guides/sales-guides/standard-sales-workflow/" title="Standard Sales Workflow" subtitle="Complete order-to-delivery flow with deposit collection and scheduled delivery" >}}
+  {{< card link="/guides/sales-guides/credit-sales-workflow/" title="Credit Sales Workflow" subtitle="Sales to approved customers with credit terms, no upfront deposit required" >}}
+  {{< card link="/guides/sales-guides/cash-sales-workflow/" title="Cash Sales Workflow" subtitle="Walk-in cash sales with immediate payment and delivery" >}}
 {{< /cards >}}
 
 ### Specialized Sales Scenarios
 
 {{< cards >}}
-  {{< card link="instalment-sales-workflow" title="Instalment Sales Workflow" subtitle="Sales with financing agreements through AEON, JCL, or other providers" >}}
-  {{< card link="partial-delivery-workflow" title="Partial Delivery Workflow" subtitle="Split shipments and multiple delivery handling" >}}
-  {{< card link="installation-scheduling-workflow" title="Installation Scheduling" subtitle="Appliances and equipment requiring professional installation" >}}
+  {{< card link="/guides/sales-guides/instalment-sales-workflow/" title="Instalment Sales Workflow" subtitle="Sales with financing agreements through AEON, JCL, or other providers" >}}
+  {{< card link="/guides/sales-guides/partial-delivery-workflow/" title="Partial Delivery Workflow" subtitle="Split shipments and multiple delivery handling" >}}
+  {{< card link="/guides/sales-guides/installation-scheduling-workflow/" title="Installation Scheduling" subtitle="Appliances and equipment requiring professional installation" >}}
 {{< /cards >}}
 
 ### Post-Sales Processes
 
 {{< cards >}}
-  {{< card link="returns-exchanges-workflow" title="Returns & Exchanges" subtitle="Handling product returns and exchanges after delivery" >}}
+  {{< card link="/guides/sales-guides/returns-exchanges-workflow/" title="Returns & Exchanges" subtitle="Handling product returns and exchanges after delivery" >}}
 {{< /cards >}}
 
 ---

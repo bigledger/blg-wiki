@@ -67,6 +67,16 @@ What actually goes wrong between "document finalised" and "Valid at LHDN", as re
 - 2026-06-22 — Insufficient permissions granted to BigLedger as intermediary on the MyInvois portal, and expired intermediary configurations, together account for a recurring share of "all submissions failing" reports. [src:gh:bigledger/blg-intranet#2048] [src:gh:bigledger/blg-intranet#1778]
 - 2026-08-01 — And one report of "duplicated e-invoices at LHDN" turned out to be two independent document-number sequences colliding — no duplicate existed, and acting on the report would have destroyed valid e-invoices. Always check the document type before cancelling. [src:gh:bigledger/blg-intranet#5588]
 
+### Verified against the current backend and applet source (2026-09-06)
+
+Read directly from the checked-out repos, which corroborate and sharpen the 2026-07/08 internal reports.
+
+- The submission queue **does** carry a `remaining_retries` column. It is written as `5` when the queue row is created (`EInvoiceToIRBSubmissionQueueProcessorService`) and reset to `5` on resubmission (`MyEInvoiceToIrbResubmissionService`). **Nothing anywhere calls `getRemaining_retries()`**, and nothing decrements it. The "5 retries remaining" that operations staff read on 564 failed rows is a literal that was never going to change. [src:git:blg-akaun-platform-java@1ff620ef0e]
+- `E_INVOICE_TO_IRB_SUBMISSION_PROCESSOR` deletes and processes **one** `NOT_SUBMITTED` row per iteration (`DELETE … LIMIT 1 FOR UPDATE SKIP LOCKED`), up to a default 50 iterations per run — i.e. submission is strictly serial, one document per LHDN call. A row that throws is stamped `FAILED` / `SUBMISSION_FAILED` with the reason in `request_error`. [src:git:blg-akaun-platform-java@1ff620ef0e]
+- `E_INVOICE_FAILED_SUBMISSION_PROCESSOR` re-drives failed rows **newest-first** (`orderBy created_date`, `order DESC`) with a default `limit` of 10. The starvation of the oldest failures reported in July is **still present** in this checkout. [src:git:blg-akaun-platform-java@1ff620ef0e]
+- The **Validation Queue** is the one place with a working retry counter: `doc_status_update_retries` increments on each status poll and the queue row is permanently deleted at 10 attempts, or once LHDN's `dateTimeReceived` is 3 days old. [src:git:blg-akaun-platform-java@1ff620ef0e]
+- **Validation Queue → Submit is capped at 20 rows** (`maxSelection = 20`): the grid trims any selection above 20, select-all included, with the toaster *"You can only select up to 20 records per submission."* The cap is a UI guard on a synchronous endpoint — `processValidationQueueGuids` loops the selected GUIDs and makes one `getDocumentDetailByDocumentId` call to LHDN per row inside the single request. Added 2026-07-14 with the bulk checkboxes. [src:git:blg-applet-wavelet-my-invoice-admin-applet@d7841e7] [src:git:blg-akaun-platform-java@1ff620ef0e] [src:gh:bigledger/blg-intranet#5458]
+
 ## How it connects
 
 - **my-e-invoice-admin-applet** — the Submission History vs To IRB E-Invoice distinction, the IN_QUEUE row, and the Bulk TIN Validation tool all live on that page; the troubleshooting table needs rows for blank number / blank client_doc_1 / report mismatch.

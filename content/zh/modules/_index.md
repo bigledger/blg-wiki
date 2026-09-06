@@ -15,10 +15,10 @@ BigLedger 提供完整的集成式业务管理模块套件，旨在简化运营�
 ### 核心 ERP 模块
 
 {{< cards >}}
-{{< card link="financial-accounting" title="财务会计" icon="document-text" subtitle="具备多币种支持的完整财务管理和会计系统" >}}
-{{< card link="pos" title="销售终端系统" icon="shopping-cart" subtitle="适用于零售和酒店业务的现代POS解决方案" >}}
-{{< card link="inventory" title="库存管理" icon="cube" subtitle="实时库存跟踪和仓库管理" >}}
-{{< card link="crm" title="客户关系管理" icon="users" subtitle="360度客户视图与销售管道管理" >}}
+{{< card link="/zh/modules/financial-accounting/" title="财务会计" icon="document-text" subtitle="具备多币种支持的完整财务管理和会计系统" >}}
+{{< card link="/zh/modules/pos/" title="销售终端系统" icon="shopping-cart" subtitle="适用于零售和酒店业务的现代POS解决方案" >}}
+{{< card link="/zh/modules/inventory/" title="库存管理" icon="cube" subtitle="实时库存跟踪和仓库管理" >}}
+{{< card link="/zh/modules/crm/" title="客户关系管理" icon="users" subtitle="360度客户视图与销售管道管理" >}}
 {{< /cards >}}
 
 ### 运营模块

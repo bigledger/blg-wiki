@@ -317,7 +317,7 @@ After completing this module, you've seen that BigLedger:
 You've completed all modules in the UTM Integrated Financial System evaluation!
 
 {{< cards >}}
-  {{< card link="../" title="Back to Overview" subtitle="Review all modules or restart" >}}
+  {{< card link="/user-guide/demo/education/" title="Back to Overview" subtitle="Review all modules or restart" >}}
 {{< /cards >}}
 
 ---

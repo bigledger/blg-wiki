@@ -17,7 +17,7 @@ Manage your inventory operations — from initial stock setup and item configura
 New to inventory in BigLedger? Start with these foundational steps.
 
 {{< cards >}}
-  {{< card link="stock-management" title="📦 Stock Management" subtitle="Set up your items, warehouses, and stock tracking — the foundation for all inventory operations" >}}
+  {{< card link="/guides/inventory-guides/stock-management/" title="📦 Stock Management" subtitle="Set up your items, warehouses, and stock tracking — the foundation for all inventory operations" >}}
 {{< /cards >}}
 
 **What you'll set up:**
@@ -38,7 +38,7 @@ New to inventory in BigLedger? Start with these foundational steps.
 Guides for everyday inventory activities your warehouse team performs.
 
 {{< cards >}}
-  {{< card link="stock-transfer" title="🔄 Stock Transfer Procedures" subtitle="Move stock between warehouses, branches, and locations — with full audit trail" >}}
+  {{< card link="/guides/inventory-guides/stock-transfer/" title="🔄 Stock Transfer Procedures" subtitle="Move stock between warehouses, branches, and locations — with full audit trail" >}}
 {{< /cards >}}
 
 **Typical daily workflow:**

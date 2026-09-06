@@ -15,10 +15,10 @@ weight: 30
 ### وحدات تخطيط موارد المؤسسة الأساسية
 
 {{< cards >}}
-{{< card link="financial-accounting" title="المحاسبة المالية" icon="document-text" subtitle="نظام إدارة مالية ومحاسبة متكامل مع دعم العملات المتعددة" >}}
-{{< card link="pos" title="نقاط البيع" icon="shopping-cart" subtitle="حل نقاط بيع حديث لشركات التجزئة والضيافة" >}}
-{{< card link="inventory" title="إدارة المخزون" icon="cube" subtitle="تتبع المخزون في الوقت الفعلي وإدارة المستودعات" >}}
-{{< card link="crm" title="إدارة علاقات العملاء" icon="users" subtitle="رؤية شاملة للعملاء مع إدارة خط أنابيب المبيعات" >}}
+{{< card link="/ar/modules/financial-accounting/" title="المحاسبة المالية" icon="document-text" subtitle="نظام إدارة مالية ومحاسبة متكامل مع دعم العملات المتعددة" >}}
+{{< card link="/ar/modules/pos/" title="نقاط البيع" icon="shopping-cart" subtitle="حل نقاط بيع حديث لشركات التجزئة والضيافة" >}}
+{{< card link="/ar/modules/inventory/" title="إدارة المخزون" icon="cube" subtitle="تتبع المخزون في الوقت الفعلي وإدارة المستودعات" >}}
+{{< card link="/ar/modules/crm/" title="إدارة علاقات العملاء" icon="users" subtitle="رؤية شاملة للعملاء مع إدارة خط أنابيب المبيعات" >}}
 {{< /cards >}}
 
 ## تكامل الوحدات

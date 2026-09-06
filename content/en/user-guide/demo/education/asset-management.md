@@ -359,9 +359,9 @@ After completing this module, you've seen that BigLedger:
 You've completed the Asset Management evaluation. Choose your next module:
 
 {{< cards >}}
-  {{< card link="../financial-reporting" title="Financial Reporting" subtitle="Generate financial statements" >}}
-  {{< card link="../user-access-control" title="Security & Access" subtitle="See security features" >}}
-  {{< card link="../" title="Back to Overview" subtitle="Choose a different module" >}}
+  {{< card link="/user-guide/demo/education/financial-reporting/" title="Financial Reporting" subtitle="Generate financial statements" >}}
+  {{< card link="/user-guide/demo/education/user-access-control/" title="Security & Access" subtitle="See security features" >}}
+  {{< card link="/user-guide/demo/education/" title="Back to Overview" subtitle="Choose a different module" >}}
 {{< /cards >}}
 
 ---

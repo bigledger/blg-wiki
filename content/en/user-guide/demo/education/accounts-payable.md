@@ -301,9 +301,9 @@ After completing this module, you've seen that BigLedger:
 You've completed the Accounts Payable evaluation. Choose your next module:
 
 {{< cards >}}
-  {{< card link="../accounts-receivable" title="Accounts Receivable" subtitle="Learn how collections work" >}}
-  {{< card link="../cash-management" title="Cash Management" subtitle="Explore banking and reconciliation" >}}
-  {{< card link="../" title="Back to Overview" subtitle="Choose a different module" >}}
+  {{< card link="/user-guide/demo/education/accounts-receivable/" title="Accounts Receivable" subtitle="Learn how collections work" >}}
+  {{< card link="/user-guide/demo/education/cash-management/" title="Cash Management" subtitle="Explore banking and reconciliation" >}}
+  {{< card link="/user-guide/demo/education/" title="Back to Overview" subtitle="Choose a different module" >}}
 {{< /cards >}}
 
 ---

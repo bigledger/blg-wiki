@@ -81,11 +81,23 @@ Both the supplier and the buyer address must carry an **address line 1** (up to 
 
 If address line 1, city or state is missing, the document is not submitted at all — it goes to a pool for you to complete.
 
-## Which address does BigLedger actually send?
+## Which record does BigLedger actually send?
 
-If your customer has several addresses on file, this is the question you need answered before you go correcting the wrong one.
+Before you go correcting a customer record, make sure it is the record the e-invoice was built from. There are two places the other party's details can live — the **customer or supplier record**, and an **e-invoice block typed directly onto the sales or purchase document** — and the document wins.
 
-BigLedger sends the **first address flagged as the e-invoice address**, looking in this order: **shipping, then billing, then main**. Flag exactly one and the guesswork disappears. If the buyer's details were typed straight onto the sales document rather than pulled from the customer record, that typed address is used exactly as entered.
+| What is on the document | Whose details go on the e-invoice |
+|---|---|
+| E-invoice buyer details (on a sale) or supplier details (on a purchase) typed onto the document | **Those**, exactly as typed. The customer or supplier record is never read |
+| That block empty, but the document's general e-invoice counterparty block filled in | The general block on the document |
+| Both blocks empty | The linked **customer or supplier record**, read fresh at submission time |
+
+{{< callout type="warning" >}}
+**A half-filled override still wins the whole block.** BigLedger treats the on-document block as "in use" if *any one* of name, identity type, identity number, tax number, service-tax number, e-mail or phone has something in it. Fill in one field and the other seven are sent blank — even though they are perfectly correct on the customer record. So fill the block completely or leave every field of it empty. This is the reason behind the most baffling rejection there is: a document that fails on a field you can see is right on the customer's record.
+{{< /callout >}}
+
+### Which address
+
+If your customer has several addresses on file: BigLedger sends the **first address flagged as the e-invoice address**, looking in this order: **shipping, then billing, then main**. Flag exactly one and the guesswork disappears. If the buyer's details were typed straight onto the sales document rather than pulled from the customer record, that typed address is used exactly as entered.
 
 {{< callout type="tip" >}}
 **Your own company address is the supplier address on every sales e-invoice.** So one bad field on the company record — a state that will not resolve, a missing city — fails *every* document at once, across every branch. If everything is failing and no single customer looks wrong, check the company record in the [Organisation Applet](/applets/master-data/organisation-applet/) first.
@@ -147,7 +159,9 @@ For transactions of RM 10,000 or more where the buyer's identity type is a busin
 
 **Fix:** Correct the base currency to `MYR` on the source document, then reprocess the e-invoice.
 
-*Example:* GadgetSphere invoices a Singapore distributor USD 4,800. Keyed with document currency USD, base currency MYR and the exchange rate recorded, it submits cleanly. Keyed with base currency USD by mistake, LHDN rejects it.
+*Example:* GadgetSphere invoices a Singapore distributor USD 4,800. Keyed with document currency USD, base currency MYR and the exchange rate recorded, it submits cleanly. Keyed with base currency USD by mistake, LHDN rejects it with error `DC511`.
+
+{{< figure src="/images/e-invoice/forex-validation-error.jpg" alt="Validation Error Table on an e-invoice showing error code DC511 against the target currency property, with the message Foreign target currency should always be MYR" caption="The Validation Error table on the rejected e-invoice. Hover a truncated message to read it in full — here, error DC511, \"Foreign target currency should always be MYR\"." >}}
 
 ### 2. General TIN misuse
 
